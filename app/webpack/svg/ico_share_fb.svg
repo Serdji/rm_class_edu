@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_share_fb</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="ICON" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-152.000000, -210.000000)" fill="#315EFB">
+            <g id="ico_share_fb" transform="translate(152.000000, 210.000000)">
+                <g id="fb-copy">
+                    <path d="M12,23 C18.0751322,23 23,18.0751322 23,12 C23,5.92486775 18.0751322,1 12,1 C5.92486775,1 1,5.92486775 1,12 C1,18.0751322 5.92486775,23 12,23 Z M12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 Z" id="bg" fill-rule="nonzero"></path>
+                    <g id="icon_fb" transform="translate(8.000000, 7.000000)">
+                        <path d="M4.44224,6.06610526 L6.0864,6.06610526 L6.33336,4.15166316 L4.44224,4.15166316 L4.44224,2.92444211 C4.44224,2.36852632 4.5912,1.98938947 5.38584,1.98938947 L6.4,1.98995789 L6.4,0.271052632 C6.22472,0.247747368 5.62272,0.2 4.92216,0.2 C3.46056,0.2 2.4604,1.09071579 2.4604,2.73458947 L2.4604,4.15166316 L0.8,4.15166316 L0.8,6.06610526 L2.45984,6.06610526 L2.45984,11 L4.44224,11 L4.44224,6.06610526 Z" id="fb"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

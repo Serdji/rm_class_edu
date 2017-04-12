@@ -1,0 +1,31 @@
+= content_for :head_buttons do
+  = link_to t("label.create"), new_admin_employee_path, class: 'btn btn-primary'
+
+= render 'admin/shared/head'
+
+table.table.table-hover
+  thead
+    tr
+      th = sort_link(@q, :id, 'ID')
+      th = sort_link(@q, :first_name, [:first_name, :last_name, :email], 'Сотрудник')
+      th.text-center = sort_link(@q, :updated_at)
+      th.text-center = sort_link(@q, :created_at)
+      th.text-center = t('label.handlers')
+
+  tbody.middle-vertical-align
+    - employees.each do |employee|
+      tr
+        td.ids = employee.id
+        - if can? controller_name, 'edit'
+          td = link_to employee.name_with_email, edit_admin_employee_path(employee)
+        - else
+          td = employee.name_with_email
+        td.date = employee.human_updated_at
+        td.date = employee.human_created_at
+        td.handlers.text-center
+          .btn-group
+            - if can? controller_name, 'destroy'
+              - opts = { class: 'btn btn-danger btn-sm', method: :delete }
+              - opts.merge!(data: { confirm: 'Вы уверены?', toggle: 'tooltip', placement: 'top', title: 'Удалить' })
+              = link_to admin_employee_path(employee), opts do
+                span.fa.fa-trash

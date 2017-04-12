@@ -1,0 +1,43 @@
+.search-page
+
+  .search-page__item
+    .search-page__title
+      = "Результаты поиска по запросу «#{params[:query]}»"
+
+    - active = 'search-page__subtitle--active'
+    a.search-page__subtitle class=(active if questions_active?) href=search_serp_path(type: 'questions', query: params[:query])
+      span.search-page__subtitle-text Вопросы
+      span.search-page__counter = "(#{@search_result.questions_found})"
+
+    a.search-page__subtitle class=(active if tags_active?) href=search_serp_path(type: 'tags', query: params[:query])
+      span.search-page__subtitle-text Темы
+      span.search-page__counter = "(#{@search_result.tags_found})"
+
+    - if @search_result.empty?
+      .search-page__null-result
+        = svg name: 'search-null-result', klass: 'search-page__null-result-image'
+        - type_name = tags_active? ? 'Темы' : 'Вопросы'
+        .search-page__null-result-text = "#{type_name} не найдены"
+
+  - if @search_result.empty?
+    - if questions_active?
+      - cache_desktop [:serp, :fresh_questions], expires_in: 1.minute do
+        - if search_facade.fresh_questions.any?
+          .question-common__up-title
+            span> Новые вопросы
+          .questions
+            - options = { collection: search_facade.fresh_questions, as: :question, locals: { ads: 'home' } }
+            = render partial: 'front/questions/question_with_ad', **options
+    - else
+      - cache_desktop [:serp, :most_answered_tags], expires_in: 1.minute do
+        .question-common__up-title
+          span> Популярные темы
+        .tag
+          - options = { collection: search_facade.most_answered_tags, as: :tag }
+          = render partial: 'front/search/various_tag', **options
+
+  - if @search_result.any?
+    = render 'questions' if questions_active?
+    = render 'tags' if tags_active?
+
+.pagination-wrapper.js-search-pag-ads = pagination(@search_result)

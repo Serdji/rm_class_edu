@@ -1,0 +1,23 @@
+User-agent: Yandex
+Disallow: /tmp
+Disallow: /assets
+Allow: /assets/font
+Disallow: /uploads
+Disallow: /licenses.001.txt
+Host: https://class.rambler.ru
+
+User-agent: Googlebot
+Disallow: /tmp
+Disallow: /assets
+Allow: /assets/font
+Disallow: /uploads
+Disallow: /licenses.001.txt
+
+User-agent: *
+Disallow: /tmp
+Disallow: /assets
+Allow: /assets/font
+Disallow: /uploads
+Disallow: /licenses.001.txt
+
+Sitemap: https://class.rambler.ru/sitemap.xml.gz

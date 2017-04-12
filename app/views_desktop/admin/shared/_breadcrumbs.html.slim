@@ -1,0 +1,7 @@
+- if breadcrumbs.size > 1
+  - active_crumb = breadcrumbs.pop
+  .nav.navbar.navbar-default
+    ol.breadcrumb.breadcrumb-admin
+      - breadcrumbs.each do |crumb|
+        li = link_to crumb.human_name, crumb.path
+      li.active = active_crumb.human_name

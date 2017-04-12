@@ -1,0 +1,43 @@
+= form_for [:admin, @complaint], as: :complaint, namespace: :qa, html: { class: 'form-horizontal' } do |f|
+  .row
+    h4 Данные темы
+
+  .row
+    .form-group
+      .col-sm-2.text-right= complaint.complain_from
+      .col-sm-5= link_to complaint.title(false), complaint.url(:front)
+
+    .form-group
+      .col-sm-2.text-right Пользователь оставивший жалобу:
+      .col-sm-8
+        div.user.form-control-text
+          - if url = complaint.user.avatar_url
+            img.user__avatar> src=url
+          span.user__full-name> = complaint.user.full_name
+
+    .form-group
+      .col-sm-2.text-right Причина жалобы:
+      .col-sm-5== complaint.cause_human_names.join('<br />')
+
+    .form-group
+      .col-sm-2.text-right Описание:
+      .col-sm-5== sanitize(complaint.body, tags: %w(a), attributes: %w(href target))
+
+    .form-group
+      .col-sm-2.text-right Email для обратной связи:
+      .col-sm-5= mail_to(complaint.email)
+
+    .form-group
+      .col-sm-2.text-right= complaint.complain_from('В административном разделе %s доступен по url:')
+      .col-sm-5= link_to complaint.title(false), complaint.url(:admin)
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :comment, class: 'control-label required'
+      .col-sm-5
+        = f.text_area :comment, cols: 40, rows: 10, class: 'js-text-editor form-control'
+        = render 'admin/shared/field_errors', object: @complaint, field: :comment
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button t("label.#{action_name}"), class: 'btn btn-primary'

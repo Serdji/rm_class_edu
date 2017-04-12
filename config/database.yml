@@ -1,0 +1,46 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 1 } %>
+  reconnect: true
+  prepared_statements: false # pgbouncer!!!
+
+development:
+  <<: *default
+  database: education_development
+
+test:
+  <<: *default
+  database: education_test
+
+staging:
+  <<: *default
+  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+staging2:
+  <<: *default
+  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+preprod:
+  <<: *default
+  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  hostname: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>

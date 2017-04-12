@@ -1,0 +1,97 @@
+= form_for [:admin, @question], html: { class: 'form-horizontal' } do |f|
+  .row
+    h4 Данные вопроса
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :created_at
+      .col-sm-5
+        span> = l(@question.created_at, format: :question)
+
+    .form-group
+      .col-sm-2.text-right
+        label.control-label Автор вопроса
+      .col-sm-8
+        div.user.form-control-text
+          - if url = @question.user.avatar_url
+            img.user__avatar> src=url
+          span.user__full-name> = @question.user.full_name
+
+    - if @question.answers.size > 0
+      .form-group
+        .col-sm-2.text-right
+          label.control-label Ответы на вопрос
+        .col-sm-5
+          div.form-control-text
+            = link_to 'Открыть', admin_answers_path(filter: { question_id: @question.id }), target: :_blank
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :title, class: 'control-label required'
+      .col-sm-5
+        = f.text_field :title, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @question, field: :title
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :slug
+      .col-sm-5
+        = f.text_field :slug, class: 'form-control'
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :body, class: 'control-label'
+      .col-sm-5
+        = f.text_area :body, cols: 40, rows: 10, class: 'js-text-editor form-control'
+        = render 'admin/shared/field_errors', object: @question, field: :body
+
+    .form-group
+      = f.label :tag_ids, class: 'col-sm-2 control-label required'
+      .col-sm-5
+        - html_opts = { class: 'js-select-ize', multiple: true }
+        - html_opts.merge!(data: { placeholder: t('label.choose_tags'), url: search_admin_tags_path(search: '') })
+
+        = f.select :tag_ids, qa_tags_for_select(@question.tags), { include_blank: true }, html_opts
+        = render 'admin/shared/field_errors', object: @question, field: :tag_ids
+
+    .form-group
+      .col-sm-2.text-right
+        label.control-label Ссылка на сайте
+      .col-sm-5
+        div.form-control-text
+          - url = DomainFactory.url + question_path(@question.id, tag_slug: @question.tags.first.slug, slug: @question.slug)
+          = link_to 'Открыть', url, target: :_blank
+
+  .row
+    h4 Отображение на страницах сайта
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :is_interesting
+      .col-sm-5
+        = f.check_box :is_interesting
+
+  .row
+    h4 Публикация вопроса
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :state
+      .col-sm-5
+        - attributes = { class: 'js-select-ize _textbooks-class _states-select', data: { placeholder: 'Выберите статус' } }
+        = f.select :state, Qa::Question.states_for_select, {}, attributes
+        span.warning.hidden.states-warning.red Внимание! При скрытии вопроса также скроются все его ответы
+
+
+  .row
+    h4 SEO
+
+  = render 'admin/shared/seo_fields', f: f
+
+  .row
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.button t("label.#{action_name}"), class: 'btn btn-primary'

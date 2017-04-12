@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <style>
+    @font-face {
+      font-family: CorsicaRamblerLX-Medium;
+      font-style: normal;
+      src: url(/CorsicaRamblerLX-Medium.otf);
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      height: 90vh;
+      background: #eef2f4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      display: inline-block;
+      color: #315efb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+      display: block;
+      font-size: 15px;
+    }
+
+    .error {
+      width: 575px;
+      margin: auto;
+      box-sizing: border-box;
+      font-family: Roboto, sans-serif;
+      font-size: 1px;
+    }
+
+    .error__img,
+    .error__comm,
+    .error__content {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .error__img {
+      height: 100%;
+      margin-right: 57px;
+    }
+
+    .error__img img {
+      width: 133px;
+    }
+
+    .error__comm {
+      margin-top: 10px;
+    }
+
+    .error__title,
+    .error__content {
+      margin-bottom: 10px;
+    }
+
+    .error__title {
+      font-family: CorsicaRamblerLX-Medium;
+      font-size: 24px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .error__content {
+      width: 380px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #000;
+    }
+
+    .error__menu {
+      font-size: 15px;
+      line-height: 1.3;
+      margin-bottom: 40px;
+    }
+
+    .error__logo {
+      margin-bottom: 8px;
+    }
+
+    .error__logo img {
+      height: 20px;
+    }
+
+    .error__letter {
+      font-size: 13px;
+      line-height: 1.2;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
+    .error__copy {
+      font-size: 13px;
+      line-height: 1.2;
+      color: #000;
+    }
+
+    .heading {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      body {
+        height: 590px;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .error {
+        width: 320px;
+        padding: 0 24px;
+        margin: 0 auto;
+      }
+
+      .error__img {
+        margin: 30px auto;
+        width: 133px;
+        display: inherit
+      }
+
+      .error__title {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .error__content,
+      .error__menu,
+      .error__menu li {
+        font-size: 17px;
+        width: 260px;
+      }
+
+      .error__letter, .error__copy {
+        font-size: 15px;
+      }
+
+      .heading {
+        position: relative;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        background: #fff;
+        border-bottom: 1px solid rgba(52, 59, 76, 0.1);
+        height: 50px;
+      }
+
+      .heading__box {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+
+      .heading__logo {
+        position: relative;
+        height: 24px;
+        width: 144px;
+      }
+
+      .heading__rambler,
+      .heading__class {
+        position: absolute;
+        height: 50px;
+        top: -14px;
+      }
+
+      .heading__rambler {
+        left: 0;
+        width: 60%;
+      }
+
+      .heading__class {
+        right: 0;
+        width: 40%;
+      }
+
+      .heading__icon {
+        width: 100%;
+        height: 100%;
+      }
+
+      .heading__button {
+        width: 20px;
+        height: 19px;
+      }
+
+      .heading__button._burger {
+        width: 15px;
+        height: 14px;
+      }
+    }
+  </style>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-57x57.png" sizes="57x57">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-60x60.png" sizes="60x60">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-72x72.png" sizes="72x72">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-114x114.png" sizes="114x114">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-144x144.png" sizes="144x144">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/8f56f789/front/apple-icon-180x180.png" sizes="180x180">
+  <link rel="icon" type="image/x-icon" href="/8f56f789/front/android-icon-36x36.png" sizes="36x36">
+  <link rel="icon" type="image/x-icon" href="/8f56f789/front/android-icon-48x48.png" sizes="48x48">
+  <link rel="icon" type="image/x-icon" href="/8f56f789/front/android-icon-72x72.png" sizes="72x72">
+  <link rel="icon" type="image/x-icon" href="/8f56f789/front/android-icon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/x-icon" href="/8f56f789/front/android-icon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/8f56f789/front/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/8f56f789/front/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/8f56f789/front/favicon-96x96.png" sizes="96x96">
+  <link rel="shortcut icon" type="image/x-icon" href="/8f56f789/front/favicon.ico">
+  <title>404</title>
+</head>
+<body>
+<div class="topline-wrapper">
+  <!--[if IE]><![if gt IE 9]><![endif]-->
+  <script type="text/javascript">
+    (function () {
+      window.ramblerToplineParams = {
+        projectName: 'class', // Символьный код проекта, полный список ниже
+        logoName: 'head', // Необязательный параметр. Нужен, когда utm-метки и лого должны различаться. Поумолчанию равен projectName. Если задан, то логотип будет отображаться только один - на главную.
+        showLogo: false, // Показывать логотип проекта (default: true) если для проекта не предусмотрен лого в топлайне, то этот параметр бесполезен
+        showLogoMobile: false, // Показывать логотип проекта в Мобильном топлайне (default: true)
+        showUser: true, // Показывать блок пользователя (default: true)
+        menuMailCounter: true, // Показывать счетчик писем у пункта 'Почта' в меню проектов (default: true)
+        linksTargetBlank: true, // Открывать ссылки меню в новом окне/табе (default: false)
+        fullWidth: false, // Резиновый топлайн, 100% ширины (default: false)
+        fullWidthGap: 20, // Размер отступа резинового топлайна в пикселях, (default: 20)
+        mobileTopline: { // Опции мобильного топлайна
+          always: false, // Показывать независимо от брейпоинтов мобильный топлайн
+          show: false, // Показывать мобильный топлайн на узких экранах (default: false)
+          logoLinkMode: false, // Если true, то в сайдбаре не будет пункта меню 'Главная', а логотип будет вести на главную (default: false)
+          desktopSwitcher: { // Опции переключателя на полную версию
+            show: false, // Показывать ссылку на полную версию (default: false)
+            url: '', // Ссылка на полную версию (default: '')
+          },
+          menuApplications: { // Меню мобильных приложений
+            show: false, // Показывать данный блок (default: false)
+            apps: { // Настройки ссылок на мобильные приложения
+              mail: { // Настройка ссылки на Почту
+                url: '' // Ссылка на приложение (default: '')
+              },
+              news: { // Настройка ссылки на Новости
+                url: '' // Ссылка на приложение (default: '')
+              },
+              horoscopes: { // Настройка ссылки на Гороскопы
+                url: '' // Ссылка на приложение (default: '')
+              },
+              dating: { // Настройка ссылки на Знакомства
+                url: '' // Ссылка на приложение (default: '')
+              }
+            }
+          }
+        },
+        customLinks: [ // Дополнительные ссылки в дроп-даун блоке пользователя (default: [] - без ссылок)
+          {'title': 'Новости', 'href': 'http://news.rambler.ru'},
+          // {} ...
+        ],
+        regParam: encodeURIComponent('//id.rambler.ru/account/external-registration?back=' + window.location.href), // Добавит параметр registration_link со значением //example.com к ссылке на авторизационный фрейм(default: ')
+        enableAdBlock: false, // Включить скипт проверки подписки Rambler AdBlock
+        theme: { // Кастомизировать расцветку топлайна
+          logoColor: null, // Цвет логотипа, иконки логина, иконки бургера\крестика (default: #315efb)
+          fontColor: null, // Общий цвет текста и ссылок в топлайна (default: #494e59)
+          fontColorHover: null, // Цвет для hover-ссылок (default: #315efb)
+          backgroundColor: null, // Цвет фона топлайна, дропдауна и юзер-дропдауна (default: #fff)
+          borderColor: null, // Цвет бордера топлайна и дропдауна (default: #e8e8e8)
+          iconsColor: null, // Цвет икононки 'еще проекты' (default: #b0b0b0) и фона нотификации 'непрочитанных писем' (default: #315efb)
+          dropDownBorderColor: null, // Цвет бордера в юзер-дропдауне (default: #edeef3)
+          dropDownFooterColor: null, // Цвет текста и ссылок в юзер-дропдауне (default: rgba(#262626, 0.6))
+          dropDownFooterColorHover: null, // Цвет hover-ссылок в юзер-дропдауне (default: rgba(#262626, 1))
+          dropDownMailLinkColor: null, // Цвет ссылки на почту в юзер-дропдауне (default: #2d57ff)
+          dropDownMailLinkColorHover: null, // Цвет hover-ссылки на почту в юзер-дропдауне (default: #284ee5)
+          dropDownFooterBackground: null // Фон нижней части юзер-дропдауна (default: #f6f7fa)
+        },
+        testing: false, // Активация панели тестирования параметров топлайна (default: false)
+        breakpoints: { // брейкпоинты для переключения топлайна с шириной экрана
+          viewports: { // ширина экрана (ниже дефолтные значения)
+            large: 1279,
+            medium: 900,
+            small: 767
+          },
+          widths: { // ширина .rambler-topline__inner
+            large: 1200,
+            medium: 900,
+            small: 767
+          }
+        }
+      };
+    })();
+    !function (e, t) {
+      var n = t.createElement("script"), r = t.scripts, i = r[r.length - 1];
+      n.src = e, n.id = "rambler-topline-injector", i.parentNode.insertBefore(n, i.nextSibling)
+    }
+    ("//topline.rambler.ru/new/latest/bundle.js", document);
+  </script>
+  <!--[if IE]><![endif]><![endif]-->
+</div>
+<div class="heading js-scroll-heading">
+  <div class="heading__box _center">
+    <div class="heading__logo">
+      <a class="heading__rambler" data-cerber-logo="logo_rambler"
+         href="https://www.rambler.ru/?utm_source=mclass&amp;utm_content=mhead&amp;utm_medium=logo&amp;utm_campaign=self_promo"></a>
+      <a class="heading__class" data-cerber-logo="logo_class" href="/"></a>
+      <img src="/logo.png" class="heading__icon" alt="Рамблер/класс">
+    </div>
+  </div>
+</div>
+<div class="error">
+  <div class="error__img">
+    <img src="/404.png" alt="404">
+  </div>
+  <div class="error__comm">
+    <div class="error__title">
+      Кажется, вы заблудились
+    </div>
+    <div class="error__content">
+      Страница не найдена. Попробуйте начать с главной страницы <a href="/">Рамблер/класс</a> или&nbspперейти
+      в&nbspразделы:
+    </div>
+    <div class="error__menu">
+      <ul>
+        <li>&mdash; <a href="/otvety">Ответы</a></li>
+        <li>&mdash; <a href="/temy">Темы</a></li>
+      </ul>
+    </div>
+    <div class="error__footer">
+      <div class="error__logo">
+        <img src="/l-o-g-o.svg" alt=""/>
+      </div>
+      <div class="error__letter">
+        <a href="mailto: class@rambler-co.ru"> class@rambler-co.ru </a>
+      </div>
+      <div class="error__copy">
+        &#169; Рамблер, <span class="js-date"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  (function () {
+    var copyDate = document.querySelector('.js-date');
+    var date = new Date();
+    copyDate.innerText = date.getFullYear();
+  })();
+</script>
+</body>
+</html>

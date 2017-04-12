@@ -1,0 +1,50 @@
+= render 'admin/shared/head', title: t('activemodel.models.question')
+
+.nav.navbar.navbar-default
+  = form_for [:admin, @search], url: admin_questions_path, method: :get, html: { class: 'navbar-form navbar-left unvisible' } do |f|
+    .form-group
+      = f.label :without_answers
+      = f.check_box :without_answers
+
+    .form-group
+      = f.label :without_best_answer
+      = f.check_box :without_best_answer
+
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+
+    .form-group
+      - attributes = { class: 'js-select-ize _textbooks-class', multiple: true, data: { placeholder: 'Выберите статус' } }
+      = f.select :states, Qa::Question.states_for_select, { include_blank: true }, attributes
+
+    = f.submit t('label.search'), class: 'btn btn-default'
+
+table.table.table-hover
+  thead.text-center
+    tr
+      th = qa_sort_link(:id)
+      th = I18n.t(:title, scope: 'activemodel.attributes.qa/question')
+      th.nowrap = qa_sort_link(:is_interesting)
+      th = qa_sort_link(:state)
+      th.nowrap = qa_sort_link(:updated_at)
+      th.nowrap = qa_sort_link(:created_at)
+
+  tbody.middle-vertical-align
+    - questions.each do |question|
+      tr
+        td.ids.text-center = question.id
+        td = link_to question.safe_title, edit_admin_question_path(question)
+        td.text-center
+          - if question.is_interesting?
+            i.color-green class="fa fa-check" aria-hidden="true"
+          - else
+            i.color-red class="fa fa-times" aria-hidden="true"
+        td.nowrap.text-center
+          - klass = question.state.fresh? ? 'purple' : 'default'
+          label.label class="label-#{klass}" = question.human_state_name
+        td.nowrap.date.text-center = question.human_updated_at
+        td.nowrap.date.text-center = question.human_created_at
+
+.text-center
+  = will_paginate(@questions, renderer: BootstrapPagination::Rails, param_name: 'page[number]')

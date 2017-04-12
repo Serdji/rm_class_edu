@@ -1,0 +1,38 @@
+development:
+  url: redis://localhost:6379
+test:
+  url: redis://localhost:6379
+staging:
+  url: redis://cache01.stage.class.rambler.ru:6379
+  password: <%= ENV["REDIS_PASSWORD"] %>
+staging2:
+  url: redis://cache02.stage.class.rambler.ru:6379
+  password: <%= ENV["REDIS_PASSWORD"] %>
+preprod:
+  url: redis://mymaster
+  password: <%= ENV["REDIS_PASSWORD"] %>
+  role: master
+  sentinels:
+    - host: queue01.preprod.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>
+    - host: queue02.preprod.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>
+    - host: queue03.preprod.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>
+production:
+  url: redis://mymaster
+  password: <%= ENV["REDIS_PASSWORD"] %>
+  role: master
+  sentinels:
+    - host: queue01.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>
+    - host: queue02.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>
+    - host: queue03.class.rambler.ru
+      port: <%= ENV["SENTINEL_PORT"] %>
+      password: <%= ENV["REDIS_PASSWORD"] %>

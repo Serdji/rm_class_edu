@@ -1,0 +1,88 @@
+= form_for [:admin, @answer], as: :answer, html: { class: 'form-horizontal' } do |f|
+  .row
+    h4 Данные вопроса
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = fields_for @answer.question do |f|
+          = f.label :title, class: 'control-label'
+      .col-sm-8
+        div.form-control-text
+          = link_to @answer.question.title, edit_admin_question_path(@answer.question), target: :_blank
+
+    .form-group
+      .col-sm-2.text-right
+        = fields_for @answer.question do |f|
+          = f.label :body
+      .col-sm-8
+        - size = @answer.question.body.length
+        - if size > 150
+          div.hidden.expanded.form-control-text == sanitize(@answer.question.body)
+          div.collapsed.form-control-text == sanitize(@answer.question.body).truncate(150)
+          a.collapse-expand href="#"
+            span Показать
+            span.hidden Скрыть
+        - else
+          div.collapsed.form-control-text == sanitize(@answer.question.body)
+
+  .row
+    h4 Данные ответа
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :created_at
+      .col-sm-8
+        span> = l(@answer.created_at, format: :edit_answer)
+
+    .form-group
+      .col-sm-2.text-right
+        label.control-label Автор ответа
+      .col-sm-8
+        div.user.form-control-text
+          - if url = @answer.user.avatar_url
+            img.user__avatar> src=url
+          span.user__full-name> = @answer.user.full_name
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :best_answer
+      .col-sm-8
+        = f.check_box :best_answer
+        - if !@answer.best_answer? && @answer.question.has_best_answer?
+          span>  Внимание! У вопроса уже есть лучший ответ
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :body, class: 'control-label required'
+      .col-sm-5
+        = f.text_area :body, cols: 40, rows: 10, class: 'js-text-editor form-control'
+        span data-max-length-counter="true"
+        = render 'admin/shared/field_errors', object: @answer, field: :body
+
+    .form-group
+      .col-sm-2.text-right
+        label.control-label Ссылка на сайте
+      .col-sm-5
+        div.form-control-text
+          - anchor = "answers-#{@answer.id}"
+          - url = DomainFactory.url + question_path(@answer.question.id, tag_slug: @answer.question.tags.first.slug, slug: @answer.question.slug, anchor: anchor)
+          = link_to 'Открыть', url, target: :_blank
+
+  .row
+    h4 Публикация ответа
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :state
+      .col-sm-5
+        - attributes = { class: 'js-select-ize _textbooks-class', data: { placeholder: 'Выберите статус' } }
+        = f.select :state, Qa::Answer.states_for_select, {}, attributes
+        = render 'admin/shared/field_errors', object: @answer, field: :state
+
+  .row
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.button t("label.#{action_name}"), class: 'btn btn-primary'

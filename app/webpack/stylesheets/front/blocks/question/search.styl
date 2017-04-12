@@ -1,0 +1,151 @@
+.search
+  centerBlock()
+  flex-grow 1
+  position relative
+
+  &__select
+    position relative
+    height 40px
+    flex-grow 1
+    margin-right 20px
+
+    input
+      width 100%
+      height 40px
+      font-size 14px
+
+      &:focus
+        border-color #315efb
+
+    .clear-input
+      cursor pointer
+      width 11px
+      height 11px
+      position absolute
+      top 12px
+      right 13px
+      &-svg
+        width 100%
+        height 100%
+
+
+  &__botton
+    height 40px
+
+
+.search-result
+  &_hidden
+    display none
+
+  position absolute
+  background #fff
+  width 100%
+  top 100%
+  z-index 4
+  margin-top 1px
+  box-shadow 0 2px 5px 0 rgba(70, 76, 91, 0.15)
+
+  &__title
+    text-transform uppercase
+    font-size 11px
+    line-height 3.38
+    letter-spacing 1px
+    color #8d96b2
+    padding 7px 15px 0
+    border-bottom 1px solid #eeeeee
+
+  &__item
+    centerBlock()
+    height 40px
+    text-decoration none
+    padding 0 15px
+    border-bottom 1px solid #eeeeee
+    color #262626
+    font-size 14px
+    white-space nowrap
+    text-overflow ellipsis
+    overflow hidden
+    box-sizing border-box
+
+    &:hover
+      background-color #EAEFFF
+
+    b
+      background-color #fff57f
+      font-weight normal
+      display inline-block
+      margin-left 2px
+      margin-right 2px
+
+  &__icon
+    width 24px
+    height 24px
+    margin-right 12px
+
+.search-result-global
+  font-size 13px
+  line-height 3.69
+  padding 0 15px
+  display flex
+  height 45px
+
+  &__linck
+    centerBlock()
+    cursor pointer
+
+    &:hover
+      .search-result-global__all-result
+        color  #315efb
+      .search-result-global__icon-svg
+        opacity 0
+        &._activ
+          opacity 1
+
+  &__icon
+    position relative
+    margin-right 13px
+    color #315efb
+    width 19px
+    height 29px
+
+    &-svg
+      top 0
+      position absolute
+      width 100%
+      height 100%
+      opacity 1
+      transition transAll
+
+      &._activ
+        opacity 0
+
+  &__all-result
+    color #656565
+    margin-right 6px
+    transition transAll
+
+  &__search-query
+    font-weight 500
+    color #262626
+    opacity .8
+
+  &__in-internet
+    margin-left auto
+    a
+      color #262626
+      opacity .4
+
+main
+  &.overlap
+    position relative
+
+    &:before
+      content ""
+      position absolute
+      background rgba(0,0,0,.4)
+      display block
+      z-index 3
+      top -54px // add .question-menu height
+      left 0
+      right 0
+      bottom 0

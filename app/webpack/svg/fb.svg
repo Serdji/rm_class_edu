@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>fb</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FOOTER" transform="translate(-770.000000, -30.000000)">
+            <g id="SM">
+                <g transform="translate(730.000000, 30.000000)">
+                    <g id="fb" transform="translate(40.000000, 0.000000)">
+                        <circle id="bg" fill="#272D3C" cx="15" cy="15" r="15"></circle>
+                        <g id="icon_fb" transform="translate(5.000000, 5.000000)">
+                            <rect id="Rectangle-2" x="0" y="0" width="20" height="20"></rect>
+                            <path d="M10.5528,11.3326316 L12.608,11.3326316 L12.9167,8.93957895 L10.5528,8.93957895 L10.5528,7.40555263 C10.5528,6.71065789 10.739,6.23673684 11.7323,6.23673684 L13,6.23744737 L13,4.08881579 C12.7809,4.05968421 12.0284,4 11.1527,4 C9.3257,4 8.0755,5.11339474 8.0755,7.16823684 L8.0755,8.93957895 L6,8.93957895 L6,11.3326316 L8.0748,11.3326316 L8.0748,17.5 L10.5528,17.5 L10.5528,11.3326316 Z" id="fb" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

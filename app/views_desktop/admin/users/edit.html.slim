@@ -1,0 +1,38 @@
+= render 'admin/shared/head', title: 'Редактирование пользователя'
+
+= form_for([:admin, @user], html: {class: 'form-horizontal'}) do |f|
+  .row
+    h4 Данные пользователя
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        label Изображение, ФИО
+      .col-sm-8
+        div.user
+          - if url = @user.avatar_url
+            img.user__avatar> src=url
+          span.user__full-name> = @user.full_name
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :answers_count
+      .col-sm-8
+        = @user.answers_count
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :questions_count
+      .col-sm-8
+        = @user.questions_count
+
+    .form-group
+      .col-sm-2.text-right
+        = f.label :is_sentry
+      .col-sm-5
+        = f.check_box :is_sentry, disabled: !can?(controller_name, 'is_sentry')
+
+  .row
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.button t("label.#{action_name}"), class: 'btn btn-primary'

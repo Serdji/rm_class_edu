@@ -1,0 +1,952 @@
+Rect.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Promise.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+Promise polyfill under MIT license: https://github.com/taylorhakes/promise-polyfill
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Delay.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Env.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EventUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Sizzle.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+Arr.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Tools.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DomQuery.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Styles.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+TreeWalker.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Range.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Entities.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+StyleSheetLoader.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DOMUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ScriptLoader.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+AddOnManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+NodeType.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Zwsp.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretContainer.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+RangeUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+NodeChange.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Node.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Schema.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+SaxParser.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DomParser.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Writer.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Serializer.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Serializer.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+TridentSelection.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+VK.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ControlSelection.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Fun.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretCandidate.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ClientRect.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ExtendingChar.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretPosition.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretBookmark.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+BookmarkManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Selection.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ElementUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Preview.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Hooks.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Formatter.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Diff.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Fragments.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Levels.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+UndoManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EnterKey.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ForceBlocks.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+CaretWalker.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+InsertList.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+InsertContent.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EditorCommands.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+URI.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Class.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EventDispatcher.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Binding.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Observable.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ObservableObject.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Selector.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Collection.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DomUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+BoxUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ClassList.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ReflowQueue.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Control.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Factory.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+KeyboardNavigation.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Container.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DragHelper.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Scrollable.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Panel.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Movable.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Resizable.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FloatPanel.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Window.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+MessageBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+WindowManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Tooltip.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Widget.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Progress.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Notification.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+NotificationManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+NodePath.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Quirks.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+EditorObservable.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Mode.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Shortcuts.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Uploader.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Conversions.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ImageScanner.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+BlobCache.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+UploadStatus.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EditorUpload.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FakeCaret.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Dimensions.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+LineWalker.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+LineUtils.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+MousePosition.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+DragDropOverrides.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+SelectionOverrides.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Uuid.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Sidebar.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Editor.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+I18n.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FocusManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+EditorManager.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+LegacyInput.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+XHR.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+JSON.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+JSONRequest.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+JSONP.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+LocalStorage.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Compat.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Layout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+AbsoluteLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Button.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ButtonGroup.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Checkbox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ComboBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ColorBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+PanelButton.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ColorButton.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Color.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ColorPicker.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Path.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ElementPath.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FormItem.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Form.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FieldSet.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+LinkTargets.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FilePicker.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FitLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FlexLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FlowLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+FormatControls.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+GridLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Iframe.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+InfoBox.js
+Released under LGPL License.
+Copyright (c) 1999-2016 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Label.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Toolbar.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+MenuBar.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+MenuButton.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+MenuItem.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Throbber.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Menu.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ListBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Radio.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+ResizeHandle.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+SelectBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Slider.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Spacer.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+SplitButton.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+StackLayout.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+TabPanel.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+TextBox.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing
+
+Register.js
+Released under LGPL License.
+Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+License: http://www.tinymce.com/license
+Contributing: http://www.tinymce.com/contributing

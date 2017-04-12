@@ -1,0 +1,19 @@
+= render 'admin/shared/head', title: 'Жалобы'
+= render 'menu', answer: @answer
+- answer.complaints.each do |complaint|
+  p.complaint
+    = link_to 'Жалоба', edit_admin_complaint_path(complaint)
+    span<> от
+    span= l(complaint.created_at, format: :complaint)
+
+  = form_for [:admin, complaint], as: :complaint, remote: true, html: { class: 'form-horizontal complaint-form-js' } do |f|
+    .form-group
+      .col-sm-5
+        = f.label :comment, class: 'control-label required'
+    .form-group
+      .col-sm-5
+        = f.text_area :comment, cols: 40, rows: 4, class: 'js-text-editor form-control'
+        = render 'admin/shared/field_errors', object: complaint, field: :comment
+    .form-group
+      .col-sm-10
+        = f.button t('label.edit'), class: 'btn btn-primary'

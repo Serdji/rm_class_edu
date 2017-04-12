@@ -1,0 +1,48 @@
+script type="text/template" class="js-search-suggest-template"
+  <% if (questions.length > 0) { %>
+    .search-result__title Вопросы
+
+    <% questions.forEach(function(question) { %>
+      - url = "<%= question.url %>".html_safe
+      a.search-result__item.js-search-question data-search-suggest="klass::search::element_question" href=url <%= question.title %>
+    <% }) %>
+  <% } %>
+
+  <% if (tags.length > 0) { %>
+    .search-result__title Темы
+
+    <% tags.forEach(function(tag) { %>
+      - url = "<%= tag.url %>".html_safe
+      - image_url = "<%= tag.image_url %>".html_safe
+      a.search-result__item.js-search-theme data-search-suggest="klass::search::element_theme" href=url
+        img.search-result__icon src=image_url
+        <%= tag.name %>
+    <% }) %>
+  <% } %>
+
+
+  .search-result-global
+    a.search-result-global__linck.js-search-linck data-href=search_serp_path(query: '', :_openstat => 'Ui1rbGFzczs7Ow')
+      .search-result-global__icon
+        = svg name: 'search', klass: 'search-result-global__icon-svg'
+        = svg name: 'search-hover', klass: 'search-result-global__icon-svg _activ'
+      .search-result-global__all-result.js-search-result data-search-suggest="klass::search::all_results" Все результаты:
+      .search-result-global__search-query <%= inputText %>
+    .search-result-global__in-internet
+      - url = "<%= novaGlobalUrl %>".html_safe
+      a._hover-reference-blue.js-search-search data-search-suggest="klass::search::global_search" target="_blank" href=url Искать в интернете
+
+.search.js-search
+  .search__select
+    .input-select
+      input.js-search-input placeholder="Искать вопросы и темы"
+        .clear-input.js-clear-input data-search-suggest="klass::search::cross_button"
+          = svg name: 'close', klass: "clear-input-svg"
+
+    .search-result.search-result_hidden
+
+  .search__botton._button-dark-blue.js-open-pop-up-ques.js-clear-button data-search-suggest="klass::search::create_issue_button"
+    | Задать вопрос
+  = render 'front/questions/pop_up_question'
+  = render 'front/questions/pop_up_complaint'
+

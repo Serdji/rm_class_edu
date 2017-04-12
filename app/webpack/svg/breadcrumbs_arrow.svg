@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="6px" height="9px" viewBox="0 0 6 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CLASS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04-Solution-page" transform="translate(-187.000000, -425.000000)" fill="#BCBCBC">
+            <g id="Bread-Crumbs" transform="translate(19.000000, 415.000000)">
+                <g id="arrows" transform="translate(60.000000, 9.000000)">
+                    <path d="M110.871068,6.87106781 L106.668306,6.87106781 C106.344466,6.87106781 106.071068,7.13969696 106.071068,7.47106781 C106.071068,7.7927475 106.338461,8.07106781 106.668306,8.07106781 L111.473829,8.07106781 C111.635299,8.07106781 111.784229,8.00428311 111.892981,7.89623575 C112.001885,7.78720826 112.071068,7.63828082 112.071068,7.47382927 L112.071068,2.66830635 C112.071068,2.34446645 111.802439,2.07106781 111.471068,2.07106781 C111.149388,2.07106781 110.871068,2.33846061 110.871068,2.66830635 L110.871068,6.87106781 Z" id="arrow" transform="translate(109.071068, 5.071068) rotate(-45.000000) translate(-109.071068, -5.071068) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

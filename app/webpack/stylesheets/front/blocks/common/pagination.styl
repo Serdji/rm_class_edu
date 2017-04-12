@@ -1,0 +1,97 @@
+.pagination-wrapper
+  width 100%
+  margin-bottom space * 2
+  margin 0 auto 20px
+  centerBlock()
+  &:empty
+    display none
+
+.pagination
+  margin auto
+  display flex
+
+  a
+  em
+  span
+    display flex
+    align-items center
+    justify-content center
+    font-family Roboto
+    font-size 12px
+    font-weight 500
+    color #000
+    width 30px
+    height 30px
+    border 1px solid transparent
+    margin-right 15px
+    font-style normal
+    border-radius 50%
+    &:hover
+      border-color #315efb
+
+
+  em
+    color #fff
+    background-color #315efb
+
+  .previous_page
+  .next_page
+  .gap
+    &:hover
+      border-color transparent
+
+  .previous_page
+  .next_page
+    color #315efb
+
+  .disabled
+    color #c5c5c5
+
+  .next_page
+    position relative
+    &:after
+      content ''
+      position absolute
+      top 7px
+      left 0
+      width 15px
+      height 15px
+      background #eef2f4
+      border-top 1px solid #000000
+      border-right 1px solid #000000
+      transform rotate(45deg)
+
+    &:hover
+      &:after
+        border-top 1px solid #315efb
+        border-right 1px solid #315efb
+
+    &.disabled
+      &:after
+        border-top 1px solid #c5c5c5
+        border-right 1px solid #c5c5c5
+
+
+  .previous_page
+    position relative
+    &:after
+      content ''
+      position absolute
+      top 7px
+      left 14px
+      width 15px
+      height 15px
+      background #eef2f4
+      border-top 1px solid #000000
+      border-left 1px solid #000000
+      transform rotate(-45deg)
+
+    &:hover
+      &:after
+        border-top 1px solid #315efb
+        border-left 1px solid #315efb
+
+    &.disabled
+      &:after
+        border-top 1px solid #c5c5c5
+        border-left 1px solid #c5c5c5

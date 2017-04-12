@@ -1,0 +1,30 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+
+    = csrf_meta_tags
+    = include_favicons('admin')
+
+    = stylesheet_link_tag    'admin/application', media: 'all'
+
+    title Рамблер/Класс
+  body
+    - if flash.present?
+      div.errors
+        - flash.each do |type, text|
+          div= text
+    = yield
+
+    javascript:
+      var Education = (function() {
+        var education = {};
+
+        education.config = #{(Settings.to_hash || {}).to_json.html_safe};
+        education.config.env = "#{Rails.env}";
+
+        return education;
+      })();
+    = javascript_include_tag 'admin/application'

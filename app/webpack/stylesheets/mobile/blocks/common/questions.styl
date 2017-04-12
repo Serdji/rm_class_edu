@@ -1,0 +1,139 @@
+.questions
+  background blockBack
+  margin-bottom space
+  padding-top 20px
+
+  &__user,
+  &__data,
+  &__footer,
+  &__answer
+    centerBlock()
+
+  &__header,
+  &__content,
+  &__footer
+    padding 0 20px
+
+  &__user
+    margin-bottom 20px
+
+  &__avatar
+    overflow hidden
+    width 32px
+    height 32px
+    border-radius 50%
+    margin-right 20px
+
+    img
+      width 100%
+
+  &__name
+    font-size 14px
+    font-family Roboto-Medium
+    color #000000
+
+  &__title
+    font-family CorsicaRamblerLX-SemiBold
+    font-size 17px
+    line-height 1.29
+    color #000000
+    word-wrap break-word
+
+  &__text
+    font-family Georgia
+    font-size 15px
+    line-height 1.33
+    color #000000
+    margin 10px 0
+    word-wrap break-word
+    img
+      width 100%
+      margin 10px 0
+
+  &__data
+    opacity 0.5
+    font-size 13px
+    margin-bottom 15px
+
+    &-icon
+      display inline-block
+      width 13px
+      height 13px
+      margin-right 6px
+
+      &-svg
+        width 100%
+        height 100%
+
+  &__hash
+    font-size 1px
+    width 90%
+    margin-bottom 20px
+
+    &._hide
+      height 30px
+      overflow hidden
+  .question-common__point,
+  &__point
+    border-radius 100px
+    background #eef2f4
+    display inline-block
+    padding 7px 15px
+    margin-right 5px
+    margin-bottom 10px
+    transition transAll
+    span
+      transition transAll
+      font-size 13px
+      color #343b4c
+    &:hover
+      background #315efb
+      span
+        color #ffffff
+
+    &._button-tag
+      position absolute
+
+  &__footer
+    position relative
+    background #ffffff
+    height 58px
+    border-top 1px solid rgba(141, 150, 178, 0.2)
+
+  &__answer
+    font-size 13px
+    color #262626
+
+    &-icon
+      display inline-block
+      width 16px
+      height 16px
+      margin-right 6px
+
+      &-svg
+        width 100%
+        height 100%
+
+  &__social
+    position absolute
+    right 20px
+    top 13px
+    overflow hidden
+    width 31px
+    height 31px
+    transition transAll
+
+
+    &-icon
+      right 0
+      width 31px
+      height 31px
+      display inline-block
+      cursor pointer
+
+      &-svg
+        width 100%
+        height 100%
+
+    &._activ
+      width 180px

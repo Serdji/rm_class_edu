@@ -1,0 +1,23 @@
+.input-select
+
+  label
+    line-height 2.86
+    color #262626
+
+  input, select
+    margin-bottom 8px
+    outline none
+    border 1px solid #d8d8d8
+    padding-left 15px
+    background transparent
+    box-sizing border-box
+    line-height 2.5
+    color #262626
+    transition transAll
+    &:focus
+      border 1px solid #315efb
+      &::placeholder
+          color transparent
+
+  input::-ms-clear
+    display none

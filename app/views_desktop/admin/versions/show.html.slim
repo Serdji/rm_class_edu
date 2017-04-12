@@ -1,0 +1,5 @@
+= render 'admin/shared/head', title: t('label.version_log')
+
+- version.diff.each do |key, line|
+  = key
+  = line.html_safe

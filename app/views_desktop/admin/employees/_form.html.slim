@@ -1,0 +1,51 @@
+= form_for([:admin, @employee], html: {class: 'form-horizontal'}) do |f|
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.text_field :email, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @employee, field: :email
+
+  .form-group class=('js-change-password' unless @employee.new_record?)
+    = f.label :password, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.password_field :password, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @employee, field: :password
+
+  .form-group class=('js-change-password' unless @employee.new_record?)
+    = f.label :password_confirmation, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.password_field :password_confirmation, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @employee, field: :password_confirmation
+
+  - unless @employee.new_record?
+    .form-group
+      .col-sm-offset-2.col-sm-5
+        = check_box_tag :employee_change_password, 1, @employee.new_record? || request.request_parameters['employee_change_password']
+        label for='employee_change_password'
+          = t('label.change_password')
+
+  .form-group
+    = f.label :first_name, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.text_field :first_name, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @employee, field: :first_name
+
+  .form-group
+    = f.label :last_name, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.text_field :last_name, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @employee, field: :last_name
+
+  -unless @employee.new_record?
+    .form-group
+      = f.label :roles, class: 'col-sm-2 control-label'
+      .col-sm-5
+        = f.collection_select :role_ids, roles, :id, :human_name, {include_blank: t('label.choose_role'), index: true}, class: 'form-control', name: "#{f.object_name}[role_ids][]"
+        = render 'admin/shared/field_errors', object: @employee, field: :role_ids
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t("label.#{action_name}"), class: 'btn btn-primary'
+      - unless @employee.new_record?
+        - opts = { method: :delete, class: 'btn btn-danger btn-remove', data: { confirm: 'Вы уверены?' } }
+        = link_to t('label.delete'), admin_employee_path(@employee), opts

@@ -1,0 +1,62 @@
+._button-blue,
+._button-dark-blue,
+._button-opacity,
+._button-tab
+  centerBlock()
+  textTransUp()
+  transition transAll
+  justify-content center
+  font-weight 100
+  font-size 12px
+  cursor pointer
+  letter-spacing 1.3px
+  padding 0 20px
+  min-width 100px
+  height 35px
+
+
+._button-blue
+  background #eaefff
+  color #315efb
+  &:hover
+    background #d6dffe
+  &:active
+    background #c1cefd
+  &[disabled="disabled"]
+    pointer-events none
+    background #eaefff
+    color #a0b5fd
+
+._button-dark-blue
+  background #315efb
+  color #ffffff
+  &:hover
+    background #2c54e1
+  &:active
+    background #274bc8
+  &[disabled="disabled"]
+    pointer-events none
+    background #315efb
+    color #839efc
+
+._button-opacity
+  color #000000
+  border 1px solid #d0d0d0
+  &:hover
+    border 1px solid #000000
+
+._button-tab
+  color #262626
+  border 1px solid #d8d8d8
+  text-transform none
+  font-size 13px
+  &:not(._activ)
+    &:hover
+      z-index 1
+      background #eaeefe
+      border 1px solid #315efb
+      border-right 1px solid #315efb !important
+      span
+        color #3869fc
+    &:active
+      background #c1cefd

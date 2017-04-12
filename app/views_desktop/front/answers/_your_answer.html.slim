@@ -1,0 +1,18 @@
+.question-common__up-title#your-new-answer
+  span ваш ответ
+
+.your-answer.js-your-answer.js-your-answer-ads
+  .your-answer__block
+    - question = questions_facade.question.object
+    - path = question_answers_path(question_id: question.id)
+    = form_for Qa::Answer.new(question_id: question.id, body: nil), url: path, html: { class: 'your-answer__form js-form' } do |f|
+      = f.text_area :body, class: 'your-answer__ditor js-editor-your-answer', placeholder: 'Введите ваш ответ...'
+      .your-answer__box.js-answer-ui._disabled-user
+        .your-answer__button._button-none._button-dark-blue.js-form-button отправить
+        .question-common__user
+          img.question-common__avatar.js-answer-ui-avatar
+          .question-common__name.js-answer-ui-avatarname
+          .question-common__is-sentry.js-answer-ui-sentry дежурный
+      .pop-up-question__agreement
+        span> Нажимая кнопку «отправить», вы принимаете условия 
+        a._hover-reference-blue href="http://help.rambler.ru/class/class-legal/1552/" target="_blank" пользовательского соглашения

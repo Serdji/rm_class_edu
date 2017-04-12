@@ -1,0 +1,40 @@
+= render 'admin/shared/head', title: t('activemodel.models.complaint')
+
+.nav.navbar.navbar-default
+  - options = { class: 'navbar-form navbar-left search-filter' }
+  = form_for [:admin, @search], url: admin_complaints_path, method: :get, html: options do |f|
+    .form-group
+      = f.label :body
+      = f.text_field :body, class: 'form-control'
+
+    .form-group
+      - attributes = { class: 'js-select-ize _textbooks-class', data: { placeholder: 'Выберите тип жалобы' } }
+      - options = [['Только вопросы', 'Question'], ['Только ответы', 'Answer']]
+      = f.select :complainable_type, options, { include_blank: true }, attributes
+
+    = f.submit t('label.search'), class: 'btn btn-default'
+    = link_to t('label.reset'), admin_complaints_path, class: 'btn btn-default'
+
+table.table.table-hover
+  thead.text-center
+    tr
+      th = qa_sort_link(:id)
+      th Название
+      th = qa_sort_link('users.first_name')
+      th.nowrap = qa_sort_link(:updated_at)
+      th.nowrap = qa_sort_link(:created_at)
+
+  tbody.middle-vertical-align
+    - complaints.each do |complaint|
+      tr
+        td.ids.text-center = complaint.id
+        - if can? controller_name, 'edit'
+          - css_class = complaint.updated_at == complaint.created_at ? 'new-complaint' : ''
+          td = link_to complaint.title, edit_admin_complaint_path(complaint), class: css_class
+        - else
+          td = complaint.title
+        td = link_to complaint.user.full_name, edit_admin_user_path(complaint.user)
+        td.nowrap.date.text-center = complaint.human_updated_at
+        td.nowrap.date.text-center = complaint.human_created_at
+.text-center
+  = will_paginate(@complaints, renderer: BootstrapPagination::Rails, param_name: 'page[number]')

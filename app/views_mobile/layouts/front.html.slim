@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+
+html
+
+  head
+    script src="//ssp.rambler.ru/lpdid.js"
+    script src="//ssp.rambler.ru/capirs.js"
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+
+    = render 'common/seo_open_graph'
+
+    link rel="stylesheet" media="all" href=stylesheet_path('vendors', app: 'mobile')
+    link rel="stylesheet" media="all" href=stylesheet_path('application', app: 'mobile')
+
+    = front_include_favicons
+
+    link rel="canonical" href=canonical /
+
+    = content_for :relation_links
+
+    title = content_for(:head_title) || 'Рамблер/Класс'
+  body
+    = embedded_svg :mobile
+
+    - cache_mobile [:front, :ads, :google_tag] do
+      = render 'common/ads/google_tag'
+
+    - cache_mobile [:front, :ads, :fullscreen] do
+      = render 'front/ads/fullscreen'
+
+    - cache_mobile [:front, :ads, :rich_format] do
+      = render 'front/ads/rich_format'
+
+    header
+      - cache_mobile [:front, :common, :heading] do
+        = render 'front/common/heading'
+
+      - type = %w(questions home).include?(controller_name) ? :questions : :tags
+      - cache_mobile [:front, :common, :menu, type] do
+        = render 'front/common/menu'
+
+    main
+      - cache_mobile [:front, :ads, :top_banner] do
+        .baner
+          = render 'front/ads/top_banner'
+      .main__content
+        = yield
+
+    - unless @hide_ban_footer
+      .ban_footer
+        #ban_footer
+
+    footer
+      - cache_mobile [:front, :common, :footer] do
+        = render 'front/common/footer'
+
+      script src=javascript_path('vendors', app: 'mobile')
+      script src=javascript_path('application', app: 'mobile')
+
+      - if Rails.env.production?
+        - cache_mobile [:common, :counters, :counters_mobile_app] do
+          = render 'common/counters/counters_mobile_app'

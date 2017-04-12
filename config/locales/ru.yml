@@ -1,0 +1,396 @@
+ru:
+  qa:
+    errors:
+      invalid_size: имеет неверный размер
+
+  placeholders:
+    subject:
+      image: 'Разрешается загружать изображения в формате png не более 10 мб. Иконка должна быть в белом цвете с прозрачным фоном. Например:'
+
+  flashes:
+    create:
+      success: 'Успешно создано'
+      danger: 'Возникли ошибки при создании'
+
+    update:
+      success: 'Успешно обновлено'
+      danger: 'Возникли ошибки при обновлении'
+
+    destroy:
+      success: 'Успешно удалено'
+
+  time:
+    formats:
+      complaint:   '%d.%m.%Y'
+      paragraph:   '%d.%m.%Y'
+      question:    '%d.%m.%Y, %H:%M'
+      answer:      '%d.%m.%Y, %H:%M'
+      textbook:    '%d.%m.%Y'
+      edit_answer: '%d %B %Y, %H:%M'
+  date:
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    abbr_month_names:
+    -
+    - янв.
+    - февр.
+    - марта
+    - апр.
+    - мая
+    - июня
+    - июля
+    - авг.
+    - сент.
+    - окт.
+    - нояб.
+    - дек.
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    order:
+    - :day
+    - :month
+    - :year
+
+  section_form:
+    section_types:
+      catalogs:   Главы и параграфы
+      paragraphs: Решение
+
+  states:
+    shared: &shared
+      fresh:              Новый
+      without_complaints: Без жалоб
+      with_complaints:    Были замечания
+      hidden:             Скрыт
+
+    answer:
+      <<: *shared
+
+    question:
+      <<: *shared
+
+    textbook:
+      draft:              Черновик
+      published:          Опубликовано
+      part_published:     Опубликовано частично
+      unpublished:        Снято с публикации
+      published_not_good: Опубликовано, но требует доработки
+    paragraph:
+      draft:              Черновик
+      published:          Опубликовано
+      unpublished:        Снято с публикации
+      published_not_good: Опубликовано, но требует доработки
+
+  label:
+    change_password:   Изменение пароля
+    choose_authors:    Выберите авторов
+    choose_blocks:     Выберите блоки
+    choose_employee:   Выберите сотрудника
+    choose_events:     Выберите события
+    choose_grades:     Выберите классы
+    choose_publishing: Выберите издательство
+    choose_role:       Выберите роль
+    choose_subject:    Выберите предмет
+    choose_tags:       Выберите тему
+    create:            Создать
+    delete:            Удалить
+    edit:              Сохранить
+    handlers:          Действия
+    logout:            Выход
+    new:               Создать
+    new_catalog:       Новый раздел
+    root_catalog:      Содержание
+    new_paragraph:     Новый параграф
+    published:         Опубликовано
+    reset:             Сбросить
+    search:            Поиск
+    update:            Сохранить
+    show:              Детальная страница
+    version_log:       Лог действий
+    url_label:         URL страницы на сайте
+    books_title:       Учебники, которые пригодятся на уроке
+
+  events:
+    create:            Создание
+    update:            Редактирование
+    destroy:           Удаление
+
+  roles:
+    superuser:         Администратор
+    chief_editor:      Главный редактор
+    editor:            Редактор
+
+  settings:
+    el_per_page:       Элементов на странице
+
+  will_paginate:
+    previous_label: '<'
+    next_label:     '>'
+    page_gap:       '...'
+
+  activemodel:
+    attributes:
+      defaults: &defaults
+        title:           Заголовок
+        body:            Содержимое
+        slug:            Чпу
+        created_at:      Дата создания
+        updated_at:      Дата обновления
+        id:              ID
+      question_filter:
+        without_answers:     Без ответов
+        without_best_answer: Без лучшего ответа
+        title:               Заголовок
+      user_filter:
+        first_name:      Имя
+        last_name:       Фамилия
+      complaint_filter:
+        body:            Содержимое
+      section_form:
+        name:            Название
+        catalog_id:      Укажите вложение раздела в оглавлении
+        section_type:    Тип раздела
+      qa/complaint:
+        <<: *defaults
+        user:            Пользователь
+        comment:         Решение по жалобе
+      qa/complaint/users:
+        first_name:      Пользователь
+      qa/image:
+        image:           Изображение
+      qa/question:
+        <<: *defaults
+        is_interesting:  Интересный вопрос
+        state:           Статус
+        tag_ids:         Темы
+      qa/tag:
+        <<: *defaults
+        name:            Название
+        weight:          Сортировка
+        linked_tag_ids:  Связанные темы
+        is_published:    При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
+      qa/answer:
+        <<: *defaults
+        state:       Статус
+        best_answer: Лучший ответ
+      qa/user:
+        is_sentry:       Дежурный
+        answers_count:   Кол-во ответов
+        questions_count: Кол-во вопросов
+        state:           Статус
+        best_answer:     Лучший ответ
+    models:
+      question:       Вопросы
+      tag:            Темы
+      user:           Пользователи
+      answer:         Ответы
+      complaint:      Жалобы
+      qa/question:
+        one:          вопрос
+        few:          вопроса
+        many:         вопросов
+        other:        вопросы
+        accusative:   вопроса
+        genitive:     вопрос
+        dative:       вопросу
+        zero:         вопросов
+      qa/answer:
+        one:          ответ
+        few:          ответа
+        many:         ответов
+        other:        ответы
+        accusative:   ответа
+        genitive:     ответ
+        dative:       ответу
+        zero:         ответов
+      qa/tag:
+        one:          тема
+        few:          темы
+        many:         тем
+        other:        темы
+        accusative:   темы
+        genitive:     тема
+        dative:       теме
+        zero:         тем
+  activerecord:
+    errors:
+      messages:
+        blank: поле обязательно для заполнения
+        invalid_size: имеет неверный размер
+
+    models:
+      application: Главная
+      library:     Библиотека
+      author:      Авторы
+      book:        Книги
+      textbook:    Учебники
+      catalog:     Каталог
+      dashboard:   Главная
+      employee:    Сотрудники
+      grade:       Классы
+      metapage:    SEO-информация
+      page:        Страницы
+      publishing:  Издательства
+      role:        Роли
+      subject:     Предметы
+      seo:         SEO
+      seo_link:   SEO-блок
+      section:     Решения к учебнику
+      paragraph:   Решения к учебнику
+      question:    Вопросы
+      user:        Пользователи
+      answer:      Ответы
+      complaint:   Жалобы
+      tag:         Темы
+      setting:     Настройки
+      settings:    Настройки
+      version:     Лог действий
+
+    attributes:
+      defaults: &defaults
+        created_at:   Дата создания
+        updated_at:   Дата обновления
+        first_name:   Имя
+        last_name:    Фамилия
+        patronymic:   Отчество
+        email:        Email
+        name:         Название
+        slug:         Чпу
+        is_published: Опубликовано
+        on_main_page: Показывать в промоблоке на главной
+        content:      Содержимое
+        seo:
+          keywords:   Ключевые слова
+
+      author:
+        <<: *defaults
+        full_name:     ФИО
+        description:   Описание
+        slug:          Чпу
+        is_published:  При снятии флажка, все связанные учебники и решения снимутся с публикации
+
+      author/photo:
+        photo: Фото
+        _destroy: Удалить
+
+      book:
+        <<: *defaults
+        subject_id:    Предмет
+        publishing_id: Издательство
+        grade_ids:     Классы
+        grades:        Классы
+        author_ids:    Авторы
+        authors:       Авторы
+        year:          Год издания
+        isbn:          ISBN
+        udk:           УДК
+        bbk:           ББК
+        weight:        Сортировка
+        description:   Описание
+        state:         Статус
+
+      textbook:
+        <<: *defaults
+        is_popular:      Популярные учебники
+        is_often_search: Показывать в блоке "Часто ищут" на главной
+        block_name:      Название промоблока
+        books_title:     Заголовок для блока
+        blockbook_ids:   Учебники
+        published_at:    Дата публикации
+
+      catalog:
+        <<: *defaults
+        parent_id: Вложение раздела в оглавлении
+
+      employee:
+        <<: *defaults
+        password:              Пароль
+        password_confirmation: Подтверждение
+        roles:                 Роли
+
+      grade:
+        <<: *defaults
+        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
+        grade:        Идентификатор класса
+
+      metapage:
+        <<: *defaults
+        label:       Идентификатор страницы
+        title:       Заголовок страницы
+        description: Описание
+        metapages_type_id: Раздел сайта
+
+      page:
+        <<: *defaults
+
+      paragraph:
+        <<: *defaults
+        condition:   Условие задачи
+        solution:    Решение
+        answer:      Ответ
+        state:       Статус
+        catalog_id:  Вложение раздела в оглавлении
+        is_empty:    Отображать на сайте не кликабельное решение
+        author_info: Автор решения задачи
+
+      subject:
+        <<: *defaults
+        weight:       Сортировка
+        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
+
+      seo_link:
+        <<: *defaults
+        title:        Заголовок
+        url:          Ссылка
+
+      subject/icon:
+        icon: Иконка
+        _destroy: Удалить
+
+      publishing:
+        <<: *defaults
+        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
+
+      image:
+        alt_text: Алтернативный текст
+
+      images/cover:
+        image: Обложка
+        _destroy: Удалить
+
+      seo:
+        title:       Title-заголовок
+        description: Описание
+        keywords:    Ключевые слова
+
+      version:
+        <<: *defaults
+        id:      ID
+        from_at: Начиная с даты
+        to_at:   Заканчивая датой

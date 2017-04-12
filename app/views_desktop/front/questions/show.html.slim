@@ -1,0 +1,42 @@
+.js-page-question-ads
+- cache_desktop :answer_template do
+  = render 'front/answers/answer_template'
+
+= render 'common/seo_attributes', object: questions_facade.question
+
+- content_for :head_title, questions_facade.question.seo_title
+
+- cache_desktop questions_facade.question do
+  = render 'front/questions/show_question', question: questions_facade.question
+
+- if questions_facade.question.best_answer
+  - cache_desktop questions_facade.question.best_answer do
+    = render 'front/answers/best_answer', answer: questions_facade.question.best_answer
+
+.question-common__up-title#answers class=('_hidden' if questions_facade.question.hide_more_answers?)
+  span>
+    = questions_facade.question.best_answer ? 'еще ответы' : 'ответы'
+  span.js-quantity-answers
+
+.all-answers.js-all-answers
+  - options = { collection: questions_facade.question.without_best_answer, as: :answer, cached: desktop_collection_proc }
+  = render partial: 'front/answers/answer', **options
+
+= render 'front/answers/your_answer'
+
+- cache_desktop [questions_facade.question, :similar_tags], expires_in: 1.minute do
+  - if questions_facade.similar_tags.any?
+    .question-common__up-title
+      span похожие темы
+    .tag
+      - options = { collection: questions_facade.similar_tags, as: :tag, cached: desktop_collection_proc }
+      = render partial: 'front/tags/tag', **options
+
+- cache_desktop [:front, :ads, :similar_questions, questions_facade.question], expires_in: 1.minute do
+  - if questions_facade.similar_questions.size > 0
+    .question-common__up-title
+      span> похожие вопросы
+      span = questions_facade.similar_questions.size
+    .questions
+      - options = { collection: questions_facade.similar_questions, as: :question, locals: { ads: '' } }
+      = render partial: 'front/questions/question_with_ad', **options

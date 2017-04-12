@@ -1,0 +1,154 @@
+.search-page
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  font-size 1px // фикс для цветной линии у тегов
+
+  &__title
+    font-size 18px
+    font-weight 600
+    color #000
+    margin-bottom 20px
+
+  &__subtitle
+    display inline-block
+    font-size 14px
+    font-weight 500
+    margin-right 20px
+    color #000
+
+  &__subtitle--active
+  &__subtitle:hover
+    color #315efb
+
+    .search-page__subtitle-text
+      position relative
+      &:after
+        content ""
+        display inline-block
+        position absolute
+        left 0
+        bottom -3px
+        width 100%
+        height 2px
+        background-color #315efb
+  
+  &__counter
+    width 42px
+    height 16px
+    font-size 14px
+    color #a2a2a2
+    margin-left 2px
+
+  &__item
+    overflow hidden
+    display block
+    // display none
+    width 100%
+    background-color #fff
+    color #000
+    padding 20px 22px 22px 18px
+    position relative // for absolute share
+    box-sizing border-box
+    &:after
+      content ""
+      display block
+      width calc(100% - 40px)
+      height 1px
+      background-color #d8d8d8
+      position absolute
+      bottom 0
+      margin auto
+
+  // block with page title
+  &__item:first-child
+    display block
+    margin-bottom 16px
+    padding-top 26px
+    padding-bottom 27px
+  
+  &__null-result
+    margin-top 23px
+  
+  &__null-result-image
+    display block
+    margin auto
+      
+  &__null-result-text
+    margin-top 16px
+    font-size 18px
+    font-weight bold
+    color #315efb
+    text-align center
+  
+  &__item:first-child
+  &__item:last-of-type
+    &:after
+      display none
+  
+  // отспут для пагинации
+  &__item:last-child
+    margin-bottom 20px
+  
+  &__item-title
+    display block
+    color #000
+    font-size 15px
+    font-weight 600
+    line-height 1.33
+    margin-bottom 10px
+    word-wrap break-word
+    @extend ._hover-reference-blue
+
+  &__item-title b
+  & .tag__title b
+      background-color #fff57f
+      font-weight inherit
+      display inline-block
+
+  &__text
+    width 540px
+    height 60px
+    font-size 14px
+    line-height 1.43
+    margin-bottom 5px
+    overflow hidden
+    
+    // фикс верстки приходящей от поиска, удалить перед релизом
+    *
+      margin 0 !important
+      display inline !important
+      font-size inherit !important
+      font-family inherit !important
+      color inherit !important
+    
+  &__answer
+    font-size 13px
+    color #a2a2a2
+    @extend ._hover-reference-blue
+  
+  &__image
+    width 72px
+    height 72px
+    margin-bottom 20px
+
+
+  &__item--theme
+    display inline-block
+    width calc(50% - 10px)
+    margin-bottom 20px
+    &:after
+      display none
+    
+    & ^[0]__answer
+    & ^[0]__question
+      color #262626
+      font-size 13px
+      margin-right 20px
+      @extend ._hover-reference-blue
+    
+    .question-common__social
+      position absolute
+      top 20px
+      right 22px
+      z-index 2

@@ -1,0 +1,25 @@
+.nav.navbar.navbar-default
+  = search_form_for [:admin, @q], class: 'navbar-form navbar-left' do |f|
+
+    .form-group
+      = f.collection_select :whodunnit_eq, employees, :id, :name, { include_blank: t('label.choose_employee') }, class: 'form-control'
+
+    .form-group
+      = f.collection_select :event_in, events, :id, :name, { include_blank: true }, class: 'form-control chosen-select', multiple: true, data: { placeholder: t('label.choose_events') }
+
+    .form-group
+      = f.collection_select :item_type_in, blocks, :id, :name, { include_blank: true }, class: 'form-control chosen-select', multiple: true, data: { placeholder: t('label.choose_blocks') }
+
+    .form-group
+      - placeholder = f.object.klass.human_attribute_name(:id)
+      = f.search_field :item_id_eq, class: 'form-control ids', placeholder: placeholder, title: placeholder
+
+    .form-group
+      - placeholder = f.object.klass.human_attribute_name(:from_at)
+      = f.search_field :created_at_gteq, class: 'form-control datepicker', placeholder: placeholder, title: placeholder, value: admin_datepicker_format(f.object.created_at_gteq)
+
+    .form-group
+      - placeholder = f.object.klass.human_attribute_name(:to_at)
+      = f.search_field :created_at_lteq, class: 'form-control datepicker', placeholder: placeholder, title: placeholder, value: admin_datepicker_format(f.object.created_at_lteq)
+
+    = f.submit t('label.search'), class: 'btn btn-default'

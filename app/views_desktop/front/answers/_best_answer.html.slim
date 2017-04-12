@@ -1,0 +1,22 @@
+.question-common__up-title#best-answer
+  span Лучший ответ
+.best-answer.js-answer-share id="answers-#{answer.id}" data-answer-id=answer.id data-complainable="true" data-complainable-id=answer.id data-complainable-type="Answer"
+  .question-common__header
+    .question-common__user
+      img.question-common__avatar src=answer.user.avatar_url
+      .question-common__name = answer.user_full_name
+      - if answer.user.is_sentry
+        .question-common__is-sentry дежурный
+    = render 'front/questions/ellipsis'
+
+  .question-common__content
+    .question-common__text.js-answer-share-text
+      p == break_too_long_words(sanitize(answer.body))
+
+    .question-common__data
+      .question-common__data-icon
+        = svg name: 'ico_time', klass: 'question-common__data-icon-svg'
+      span.js-data-published data-published-at=answer.iso8601
+
+  .question-common__footer
+    = render 'front/questions/question_social'

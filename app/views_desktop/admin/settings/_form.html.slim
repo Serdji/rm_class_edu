@@ -1,0 +1,11 @@
+= form_tag(admin_settings_update_path, method: :post, class: 'form-horizontal' ) do |f|
+
+  - @settings.each do |key, value|
+    .form-group
+      = label_tag key, t("settings.#{key}"), class: 'col-sm-3 control-label'
+      .col-sm-5
+        = text_field_tag key, value, class: 'form-control'
+
+  .form-group
+    .col-sm-offset-3.col-sm-5
+      = submit_tag t("label.#{action_name}"), class: 'btn btn-primary'

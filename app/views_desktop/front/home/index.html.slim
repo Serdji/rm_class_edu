@@ -1,0 +1,21 @@
+.js-page-root
+= render 'common/seo_attributes', object: questions_facade.metapage
+- content_for :head_title, questions_facade.metapage.seo_title
+
+- if questions_facade.questions.size > 0
+  .questions
+    = render partial: 'front/questions/question_with_ad', collection: questions_facade.questions, as: :question, locals: { ads: 'home' }
+
+- content_for :relation_links, relation_links(questions_facade.questions)
+
+.pagination-wrapper = pagination(questions_facade.questions.object)
+
+- cache_desktop [:today_discussing_tags], expires_in: 1.minute do
+  - if application_facade.today_discussing_tags.any?
+    .question-common__up-title
+      span сегодня обсуждают
+    .tag
+      - options = { collection: application_facade.today_discussing_tags, cached: desktop_collection_proc }
+      = render partial: 'front/tags/tag', **options
+
+.js-root-ban-direct

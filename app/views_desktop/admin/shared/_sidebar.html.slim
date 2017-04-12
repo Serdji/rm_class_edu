@@ -1,0 +1,59 @@
+ul.nav.nav-sidebar
+  - if can? Metapage.name
+    li class=('active' if controller_name == 'metapages')
+      a href=admin_metapages_path
+        i.fa.fa-sticky-note>
+        = Metapage.model_name.human
+
+ul.nav.nav-sidebar
+  - if can? Qa::Question.name
+    li class=('active' if controller_name == 'questions')
+      a href=admin_questions_path
+        i.fa.fa-comment>
+        = t('activemodel.models.question')
+  - if can? Qa::Answer.name
+    li class=('active' if controller_name == 'answers')
+      a href=admin_answers_path
+        i.fa.fa-comment>
+        = t('activemodel.models.answer')
+  - if can? Qa::Tag.name
+    li class=('active' if controller_name == 'tags')
+      a href=admin_tags_path
+        i.fa.fa-hashtag>
+        = t('activemodel.models.tag')
+  - if can? SeoLink.name
+    li class=('active' if controller_name == 'seo_links')
+      a href=admin_seo_links_path
+        i.fa.fa-sticky-note>
+        = SeoLink.model_name.human
+
+ul.nav.nav-sidebar
+  - if can? Qa::User.name
+    li class=('active' if controller_name == 'users')
+      a href=admin_users_path
+        i.fa.fa-user>
+        = t('activemodel.models.user')
+  - if can? Qa::Complaint.name
+    li class=('active' if controller_name == 'complaints')
+      a href=admin_complaints_path
+        i.fa.fa-child>
+        = t('activemodel.models.complaint')
+
+ul.nav.nav-sidebar
+  - if can? Employee.name
+    li class=('active' if controller_name == 'employees')
+      a href=admin_employees_path
+        i.fa.fa-pencil>
+        = Employee.model_name.human
+  - if can? Version.name
+    li class=('active' if controller_name == 'versions')
+      a href=admin_versions_path
+        i.fa.fa-archive>
+        = Version.model_name.human
+
+ul.nav.nav-sidebar
+  - if has_role?(:superuser)
+    li
+      a href=admin_queues_path
+        i.fa.fa-stack-overflow>
+        | Очереди

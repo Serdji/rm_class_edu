@@ -1,0 +1,62 @@
+= form_for [:admin, @tag], as: :tag, namespace: :qa, html: { class: 'form-horizontal' } do |f|
+  .row
+    h4 Данные темы
+
+  .row
+    .form-group
+      = f.label :name, class: 'col-sm-2 control-label required'
+      .col-sm-5
+        = f.text_field :name, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @tag, field: :name
+      .col-sm-5
+        = f.check_box :is_published, class: 'control-label'
+        = f.label :is_published, class: 'control-label label-inline'
+
+    .form-group
+      = f.label :slug, class: 'col-sm-2 control-label'
+      .col-sm-5
+        = f.text_field :slug, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @tag, field: :slug
+
+    .form-group
+      = f.label :weight, class: 'col-sm-2 control-label'
+      .col-sm-5
+        = f.text_field :weight, class: 'form-control', data: { validate: 'number' }
+        span.bottom-placeholder От 1 до 1000
+        = render 'admin/shared/field_errors', object: @tag, field: :weight
+
+    .form-group
+      = f.label :linked_tag_ids, class: 'col-sm-2 control-label'
+      .col-sm-5
+        - html_opts = { class: 'js-select-ize', multiple: true }
+        - html_opts.merge!(data: { placeholder: t('label.choose_tags'), url: search_admin_tags_path(search: '') })
+
+        = f.select :linked_tag_ids, Qa::Tag.tags_for_select(@tag.linked_tags), {include_blank: true}, html_opts
+        = render 'admin/shared/field_errors', object: @tag, field: :linked_tag_ids
+
+  .row
+    h4 Изображение
+
+    .form-group
+      = f.fields_for :image, (@tag.image || @tag.build_image) do |ff|
+        = ff.hidden_field :id
+
+        .col-sm-2.text-right
+          = ff.label :image, class: 'control-label required'
+
+        .col-sm-5
+          - if @tag.image.respond_to? :url
+            img width=300 src=@tag.image.url
+
+          = ff.file_field :image, data: { extensions: ImageUploader::EXTS }
+          span.bottom-placeholder Можно загружать изображения в формате png, jpg, jpeg и gif не более 10 мб
+          = render 'admin/shared/field_errors', object: @tag, field: :image
+
+  .row
+    h4 SEO
+
+    = render 'admin/shared/seo_fields', f: f
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button t("label.#{action_name}"), class: 'btn btn-primary'

@@ -1,0 +1,13 @@
+.popular-themes__short-stripe: img src=tag.image.short_stripe_url
+.popular-themes__theme
+  a.popular-themes__title._hover-reference-blue data-title=tag.seo_title data-image=tag.image.url href=tag_path(slug: tag.slug)
+    = tag.name
+  .popular-themes__question
+    .popular-themes__icon
+      = svg name: 'ico_question_gray', klass: 'popular-themes__icon-svg'
+    span.popular-themes__counter._question>
+      = tag.human_questions_counter
+    .popular-themes__icon
+      = svg name: 'ico_message', klass: 'popular-themes__icon-svg'
+    span.popular-themes__counter>
+      = tag.human_answers_counter

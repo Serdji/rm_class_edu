@@ -1,0 +1,33 @@
+.questions__block.js-questions-share.js-questions-ads data-complainable="true" data-complainable-id=question.id data-complainable-type="Question"
+  .question-common__header
+    .question-common__user
+      img.question-common__avatar src=question.user.avatar_url
+      .question-common__name = question.user.full_name
+      - if question.user.is_sentry
+        .question-common__is-sentry дежурный
+    = render 'front/questions/ellipsis'
+
+  .question-common__content.js-biog
+    a.question-common__title._hover-reference-blue.js-questions-share-title data-title=question.seo_title href=question.path
+      = break_too_long_words(question.title)
+    .question-common__text.js-question-share-text.js-questions-share-text
+      p == question.safe_body(length: 190, link: true, strip_tags: true)
+    .question-common__data
+      .question-common__data-icon
+        = svg name: 'ico_time', klass: 'question-common__data-icon-svg'
+      span.js-data-published data-published-at=question.iso8601
+
+    .question-common__hash._hide.js-hash-tags
+      - question.tags.each do |tag|
+        a.question-common__point.js-point-tags href=tag_path(slug: tag.slug)
+          span = tag.name
+
+  .question-common__footer
+    a.question-common__answer._hover-reference-blue href=question.path(question.anchor)
+      .question-common__answer-icon
+        = svg name: 'ico_message', klass: 'question-common__answer-icon-svg'
+      - if question.answers_counter > 0
+        = question.human_answers_counter
+      - else
+        | Ответить
+    = render 'front/questions/question_social'

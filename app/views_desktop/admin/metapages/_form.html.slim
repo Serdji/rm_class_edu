@@ -1,0 +1,64 @@
+= form_for [:admin, @metapage], html: { class: 'form-horizontal', multipart: true } do |f|
+  .row
+    h4 Основные данные (не отображается на странице)
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :label, class: 'control-label required'
+      .col-sm-8
+        = f.text_field :label, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @metapage, field: :label
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = label_tag :page_id, t('label.url_label'), class: 'control-label required'
+      .col-sm-8
+        = f.collection_select :id, metapages, :id, :select_name, {}, { class: 'form-control js-grade-subject' }
+
+  .row
+    h4 SEO контент (отображается в HTML-коде)
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :title, class: 'control-label required'
+      .col-sm-8
+        = f.text_field :title, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @metapage, field: :title
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = f.label :description, class: 'control-label'
+      .col-sm-8
+        = f.text_area :description, class: 'form-control simplemde'
+        = render 'admin/shared/field_errors', object: @metapage, field: :description
+
+  = f.fields_for :seo, (f.object.seo || f.object.build_seo) do |ff|
+    .row
+      .form-group
+        .col-sm-2.text-right
+          = ff.label :title, class: 'control-label'
+        .col-sm-8
+          = ff.text_area :title, class: 'form-control'
+
+    .row
+      .form-group
+        .col-sm-2.text-right
+          = ff.label :description, class: 'control-label'
+        .col-sm-8
+          = ff.text_area :description, class: 'form-control'
+
+    .row
+      .form-group
+        .col-sm-2.text-right
+          = ff.label :keywords, class: 'control-label'
+        .col-sm-8
+          = ff.text_area :keywords, class: 'form-control'
+
+  .row
+    .form-group
+      .col-sm-offset-2.col-sm-5
+        = f.submit t("label.#{action_name}"), class: 'btn btn-primary'

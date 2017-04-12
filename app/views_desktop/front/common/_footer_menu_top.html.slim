@@ -1,0 +1,32 @@
+.footer__box._top
+  .footer__logo
+    a.footer__rambler data-cerber-logo=" logo_footer_class" href="https://www.rambler.ru/?utm_source=class&utm_content=head&utm_medium=logo_footer&utm_campaign=self_promo"
+    a.footer__class href=(DomainFactory.url + '/') data-cerber-logo='logo_footer_class'
+    = svg name: 'footer_logo', klass: 'footer__logo-svg'
+  .footer__menu._top-menu
+    ul
+      li
+        a._hover-reference-gray class=menu_service.library_class href=otvety_path Ответы
+      li
+        a._hover-reference-gray class=menu_service.library_class href=temy_path Темы
+  / .footer__social
+    .footer__social-vk
+      a href='#'
+        = svg name: 'vk', klass: 'footer__social-svg'
+        = svg name: 'vk-hover', klass: 'footer__social-svg _active'
+    .footer__social-fb
+      a href='#'
+        = svg name: 'fb', klass: 'footer__social-svg'
+        = svg name: 'fb-hover', klass: 'footer__social-svg _active'
+    .footer__social-ok
+      a href='#'
+        = svg name: 'ok', klass: 'footer__social-svg'
+        = svg name: 'ok-hover', klass: 'footer__social-svg _active'
+    .footer__social-tw
+      a href='#'
+        = svg name: 'tw', klass: 'footer__social-svg'
+        = svg name: 'tw-hover', klass: 'footer__social-svg _active'
+    .footer__social-lj
+      a href='#'
+        = svg name: 'lj', klass: 'footer__social-svg'
+        = svg name: 'lj-hover', klass: 'footer__social-svg _active'

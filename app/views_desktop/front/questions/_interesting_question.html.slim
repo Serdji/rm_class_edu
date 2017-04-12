@@ -1,0 +1,11 @@
+.popular-questions__block
+  .popular-questions__title = question.main_tag_name
+  .popular-questions__theme
+    a._hover-reference-blue> href=question.path
+      = break_too_long_words(question.title)
+    .popular-questions__wrapper
+      .popular-questions__box
+        .popular-questions__icon
+          = svg name: 'ico_message_blue', klass: 'popular-questions__icon-svg'
+        span.popular-questions__counter>
+          = question.answers_counter

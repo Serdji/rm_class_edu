@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="14px" viewBox="0 0 23 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,3.99310226 C0,1.78777278 1.79171562,0 3.9947834,0 L18,0 L23,7 L18,14 L3.9947834,14 C1.78852545,14 0,12.2126701 0,10.0068977 L0,3.99310226 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="23" height="14" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="11" y="4" width="6" height="6" rx="3"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="06-Search-results-B-themes-tab" transform="translate(-676.000000, -359.000000)" stroke="#315EFB" stroke-width="3">
+            <g id="HEADER" transform="translate(0.000000, 250.000000)">
+                <g id="SUB-NAVI" transform="translate(0.000000, 89.000000)">
+                    <g id="Links" transform="translate(533.000000, 12.000000)">
+                        <g id="Themes" transform="translate(143.000000, 6.000000)">
+                            <g id="ICON" transform="translate(0.000000, 2.000000)">
+                                <use id="Rectangle-12" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                                <use id="Rectangle-14" mask="url(#mask-4)" xlink:href="#path-3"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

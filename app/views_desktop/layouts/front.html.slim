@@ -1,0 +1,123 @@
+doctype html
+html lang="en"
+  head
+    script src=javascript_path('ramblertopline', app: 'ramblertopline')
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=980" name="viewport" /
+
+    = render 'common/seo_open_graph'
+
+    = front_include_favicons
+
+    = csrf_meta_tags
+
+    link rel="stylesheet" media="all" href=stylesheet_path('vendors', app: 'front')
+    link rel="stylesheet" media="all" href=stylesheet_path('application', app: 'front')
+
+    link rel="canonical" href=canonical /
+
+    = content_for :relation_links
+
+    title = content_for(:head_title) || 'Рамблер/класс'
+  body
+    = embedded_svg :front
+
+
+
+    - cache_desktop [:front, :ads, :billboard] do
+      #billboard'
+
+    header
+      - cache_desktop [:front, :top_line] do
+        = render 'front/common/top_line'
+
+      - cache_desktop [:front, :common, :menu] do
+        = render 'front/common/menu'
+
+      - name = %w(questions home).include?(controller_name) ? :answers : :tags
+      - cache_desktop [:front, :common, :question_menu, name] do
+        = render 'front/common/question_menu'
+
+    main
+      .wrapper.js-float-wrapper
+        .main__left-sidebar.js-float-left-sidebar
+          .js-float-left-start-stop
+          .main__left-sidebar-media
+            ._sticky-baner.js-left-float-ad
+              - cache_desktop [:most_discussing_questions], expires_in: 1.minute do
+                - questions = @discussing_questions || application_facade.most_discussing_questions
+                - if questions.any?
+                  .question-common__up-title
+                    span Обсуждаемые вопросы
+                  .recently-questions
+                    - options = { collection: questions, as: :question, cached: desktop_collection_proc }
+                    = render partial: 'front/questions/discussing_question', **options
+
+              - cache_desktop [:most_discussing_tags], expires_in: 1.minute do
+                - if application_facade.most_discussing_tags.any?
+                  .question-common__up-title
+                    span Обсуждаемые темы
+                  .popular-themes
+                    - options = { collection: application_facade.most_discussing_tags, as: :tag, cached: desktop_collection_proc }
+                    = render partial: 'front/tags/discussing_tag', **options
+
+        .main__sidebar.js-float-sidebar
+          .baner.js-baner-sidebar._base-layer_240x400
+            - cache_desktop [:front, :ads, 'ban_240x400'] do
+              #ban_240x400'
+
+          .baner.js-baner-sidebar._base-layer_240x200
+            - cache_desktop [:fornt, :ads, '240x200'] do
+              #Context_240x200
+
+          - cache_desktop [:interesting_questions], expires_in: 1.minute do
+            - if application_facade.interesting_questions.any?
+              .question-common__up-title
+                span Интересные вопросы
+              .popular-questions
+                - options = { collection: application_facade.interesting_questions, as: :question, cached: desktop_collection_proc }
+                = render partial: 'front/questions/interesting_question', **options
+
+          .baner.js-baner-sidebar._native
+            #native2
+
+          .js-float-start-stop
+
+          ._sticky-baner.js-float-ad
+            .baner.js-baner-sidebar._base-layer_240x400_2nd
+              - cache_desktop [:front, :ads, '240x400_2nd'] do
+                #ban240х400_2nd
+            - if application_facade.seo_links.exists?
+              = render 'front/common/seo_block', seo_links: application_facade.seo_links
+
+        .main__content.js-float-content
+          = yield
+        .clear
+
+    footer
+      .footer._top
+        .wrapper
+          - cache_desktop [:front, :footer_menu_top] do
+            = render 'front/common/footer_menu_top'
+
+      .footer
+        .wrapper
+          - cache_desktop [:front, :footer_menu_bottom] do
+            = render 'front/common/footer_menu_bottom'
+
+      script src="//cdn.tinymce.com/4/tinymce.min.js"
+      script src="//ssp.rambler.ru/lpdid.js"
+      script src="//ssp.rambler.ru/capirs.js"
+      script src=javascript_path('vendors', app: 'front')
+      script src=javascript_path('application', app: 'front')
+
+      - cache_desktop [:front, :ads, :google_tag] do
+        = render 'common/ads/google_tag'
+
+      - cache_desktop [:front, :ads, :fullscreen] do
+        #fullscreen'
+
+      - if Rails.env.production?
+        - cache_desktop [:front, :common, :counters, :counters_app] do
+          = render 'common/counters/counters_app'

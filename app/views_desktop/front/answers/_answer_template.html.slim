@@ -1,0 +1,18 @@
+script type="text/template" class="js-answer-template"
+  - id = "answers-<%= answer.id %>".html_safe
+  .all-answers__block.js-block-answers.js-answer-share id=id data-complainable="true" data-complainable-id=id data-complainable-type="Answer"
+    .question-common__header
+      .question-common__user
+        img.question-common__avatar src=("<%= answer.user_avatar_url %>".html_safe)
+        .question-common__name <%= answer.username %>
+
+    .question-common__content
+      .question-common__text.js-answer-share-text
+        p <%= answer.body %>
+      .question-common__data
+        .question-common__data-icon
+          = svg name: 'ico_time', klass: 'question-common__data-icon-svg'
+        <%= answer.created_at %>
+
+    .question-common__footer
+      = render 'front/questions/question_social'

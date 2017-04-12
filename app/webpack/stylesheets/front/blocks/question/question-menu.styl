@@ -1,0 +1,49 @@
+.question-menu
+  background blockBack
+
+  &__points,
+  &__point
+    centerBlock()
+
+  &__points
+    justify-content center
+    height 54px
+
+  &__point
+    margin-right 44px
+    cursor pointer
+    height 100%
+    font-family CorsicaRamblerLX-Medium
+    &:hover
+      margin-bottom -2px
+      border-bottom 2px solid #315efb
+      color #315efb
+      span
+        color #315efb
+
+    &._activ
+      margin-bottom -2px
+      border-bottom 2px solid #315efb
+      color #315efb
+      span
+        color #315efb
+
+    span
+      padding 4px 0 2px 0
+      border-bottom 2px solid rgba(255,255,255,0)
+      transition transAll
+      font-size 14px
+      color #262626
+
+  &__icon
+    margin-right 10px
+    width 17px
+    height 17px
+
+
+    &-svg
+      width 100%
+      height 100%
+
+      &._theme-svg
+        width 23px

@@ -1,0 +1,4 @@
+webdav: true
+async:  true
+host: 'https://staging.class.rambler.ru'
+webdav_host: "https://staging.class.rambler.ru"

@@ -1,0 +1,27 @@
+.questions.js-questions-share
+  .questions__header
+    .questions__user
+      .questions__avatar
+        img src=question.user.avatar_url
+      .questions__name = question.user.full_name
+  .questions__content.js-biog
+    a.questions__title.js-questions-share-title data-title=question.seo_title href=question.path
+      = question.title
+    .questions__text.js-questions-share-text
+      == question.safe_body(length: 190, link: true, strip_tags: true)
+    .questions__data
+      .questions__data-icon
+        = svg name: 'ico_time', klass: 'questions__data-icon-svg'
+      span.js-data-published data-published-at=question.iso8601
+
+    .questions__hash._hide.js-hash-tags
+      - question.tags.each do |tag|
+        a.questions__point.js-point-tags href=tag_path(slug: tag.slug)
+          span = tag.name
+
+  .questions__footer
+    a.questions__answer href=question.path('answers')
+      .questions__answer-icon
+        = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
+      = question.human_answers_counter
+    = render 'front/common/social'

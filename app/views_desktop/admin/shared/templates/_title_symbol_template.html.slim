@@ -1,0 +1,10 @@
+script type="text/template" id="title-symbols-template"
+  .title-symbols
+    div.text-right
+      a.close-button href="#"
+        i.fa.fa-times
+
+    .symbols
+      <% _.each(data, function(symbol) { %>
+        .symbol: a.add-symbol href="#" <%= symbol %>
+      <% }) %>

@@ -1,0 +1,172 @@
+.question-common
+
+  &__up-title
+    textTransUp()
+    font-size 12px
+    line-height 4.0
+    letter-spacing 0.8px
+    color #262626
+    margin-top -6px
+    font-family Roboto-Medium
+    span
+      &:nth-child(2)
+        opacity 0.6
+        font-size 12px
+        line-height 4.0
+        color #4a4a4a
+
+    &._hidden
+      display none
+
+  &__header
+    margin-bottom 18px
+    padding 20px 20px 0 20px
+
+    &._question
+      align-content flex-start
+      flex-wrap wrap
+      .ellipsis
+        align-self flex-start
+
+
+  &__content,
+  &__footer
+    padding 0 20px
+
+  &__content
+    img
+      margin 15px 0
+
+  &__header,
+  &__user,
+  &__data,
+  &__footer,
+  &__answer
+    centerBlock()
+
+  &__avatar
+    overflow hidden
+    width 24px
+    height 24px
+    border-radius 50%
+    margin-right 8px
+
+  &__name,
+  &__title,
+  &__data
+    color #262626
+
+  &__name
+    font-size 13px
+    font-family Roboto-Medium
+    min-width 50px
+
+  &__is-sentry
+    font-size 13px
+    padding-left 4px
+    color #bbb
+
+  &__title
+    font-size 18px
+    margin-bottom 15px
+    font-family CorsicaRamblerLX-SemiBold
+    word-wrap break-word
+
+  &__text
+    font-family Georgia
+    word-wrap break-word
+    p
+      font-size 15px
+      color #262626
+      line-height 1.47
+    img
+      max-width 100%
+      height 100%
+
+  &__data
+    opacity 0.5
+    font-size 13px
+    margin-bottom 15px
+
+    &-icon
+      display inline-block
+      width 13px
+      height 13px
+      margin-right 6px
+
+      &-svg
+        width 100%
+        height 100%
+
+  &__hash
+    margin-bottom 5px
+    font-size 1px
+    width 460px
+
+    &._hide
+      height 40px
+      overflow hidden
+
+  &__point
+    border-radius 100px
+    background #eef2f4
+    display inline-block
+    padding 5px 15px
+    margin-right 8px
+    margin-bottom 10px
+    transition transAll
+    span
+      transition transAll
+      line-height 1.54
+      font-size 13px
+      color #343b4c
+    &:hover
+      background #315efb
+      span
+        color #ffffff
+
+    &._button-tag
+      position absolute
+
+  &__footer
+    background #ffffff
+    height 56px
+    border-top 1px solid rgba(141, 150, 178, 0.2)
+
+  &__answer
+    font-size 13px
+    color #262626
+
+    &-icon
+      display inline-block
+      width 14px
+      height 14px
+      margin-right 6px
+
+      &-svg
+        width 100%
+        height 100%
+
+  &__social
+    position relative
+    margin-left auto
+    overflow hidden
+    width 98px
+    height 36px
+    transition transAll
+
+    &-icon
+      position absolute
+      top 5px
+      right 0
+      width 26px
+      height 26px
+      display inline-block
+      cursor pointer
+
+      &-svg
+        width 100%
+        height 100%
+
+    &._activ
+      width 170px

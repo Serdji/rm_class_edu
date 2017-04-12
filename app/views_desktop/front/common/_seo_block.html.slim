@@ -1,0 +1,7 @@
+.reference-block
+  .reference-block__title Часто ищут
+  .reference-block__icon
+    = svg name: 'reference', klass: 'reference-block__icon-svg'
+  .reference-block__reference
+    - seo_links.each do |seo_link|
+      a._hover-reference-blue href=seo_link.url = seo_link.title

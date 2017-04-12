@@ -1,0 +1,23 @@
+$offset: 15px
+$levels: 10
+
+ul.sidebar-list-menu
+  list-style-type: none
+  padding: 0px
+
+  li
+    padding-bottom: 5px
+
+    a.active
+      text-decoration: underline
+
+  @for $i from 0 through $levels
+    .level-#{$i}
+      margin-left: $i * $offset
+
+.add-section
+  border-top: 1px dashed grey
+  margin-top: 20px
+  padding-top: 25px
+  text-align: center
+

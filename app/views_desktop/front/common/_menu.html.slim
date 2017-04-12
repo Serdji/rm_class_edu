@@ -1,0 +1,8 @@
+nav.menu
+  .wrapper
+    .menu__box
+      .menu__logo
+        a.menu__rambler data-cerber-logo="logo_rambler" href="https://www.rambler.ru?utm_source=class&utm_content=head&utm_medium=logo&utm_campaign=self_promo"
+        a.menu__class href=(DomainFactory.url + '/') data-cerber-logo='logo_class'
+        = svg name: 'logo', klass: 'menu__logo-svg'
+      = render 'front/questions/search'

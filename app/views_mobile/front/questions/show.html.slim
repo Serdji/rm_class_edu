@@ -1,0 +1,45 @@
+= render 'common/seo_attributes', object: questions_facade.question
+
+- content_for :head_title, questions_facade.question.seo_title
+
+- cache_mobile questions_facade.question do
+  = render 'front/questions/show_question', question: questions_facade.question
+
+- best_answer = questions_facade.question.best_answer
+- answers_count = questions_facade.question.answers_counter
+- answers_count -= 1 if best_answer
+
+- if best_answer
+  - cache_mobile best_answer do
+    .title Лучший ответ
+    = render 'front/answers/answer', answer: best_answer
+
+  .baner
+    = render 'front/ads/ban_content'
+
+- unless questions_facade.question.hide_more_answers?
+  .title
+    span>
+      = questions_facade.question.best_answer ? 'еще ответы' : 'ответы'
+    span.title__counter#answers = "#{answers_count}"
+  = render partial: 'front/answers/answer_with_ad', collection: questions_facade.question.without_best_answer, as: :answer
+
+- if questions_facade.question.answers_counter.zero? || answers_count % 2 != 0
+  .baner
+    = render 'front/ads/ban_content'
+
+- cache_mobile [questions_facade.question, :similar_questions], expires_in: 1.minute do
+  - if questions_facade.similar_questions.any?
+    .title похожие вопросы
+    - options = { collection: questions_facade.similar_questions, cached: mobile_collection_proc }
+    = render partial: 'front/questions/question', **options
+
+- if questions_facade.similar_questions.any? && questions_facade.similar_tags.any?
+  .baner
+    = render 'front/ads/ban_content'
+
+- cache_mobile [questions_facade.question, :similar_tags], expires_in: 1.minute do
+  - if questions_facade.similar_tags.any?
+    .title похожие темы
+    - options = { collection: questions_facade.similar_tags, cached: mobile_collection_proc }
+    = render partial: 'front/tags/tag', **options

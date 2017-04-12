@@ -1,0 +1,67 @@
+#billboard,
+#fullscreen,
+#Native2
+  div[id^="AdFox_banner"],
+  div[id^="begun_block"],
+  iframe[id^="AdFox_iframe"],
+  div[id^="begun_block"] > iframe
+    margin-bottom 0
+    margin-top 0
+
+div
+  &._sticky-baner
+    margin-bottom 20px !important
+  &._sticky
+    position fixed
+    top 0
+    right 0
+    width 300px
+  &._sticky-footer
+    position absolute
+    width 300px
+
+
+.baner
+  width 100%
+  box-sizing border-box
+  &._topic-ads
+    margin-bottom -10px
+  &._native
+    padding 30px
+    background white
+    margin-bottom 20px
+  &._hidden
+    margin-bottom 0 !important
+    padding 0 !important
+    height 0 !important
+  &._base-layer_240x400,
+  &._base-layer_240x400_2nd,
+  &._base-layer_240x200
+    background #ffffff
+    margin-bottom space
+    display table
+    div
+      margin auto
+  &._base-layer_240x400,
+  &._base-layer_240x400_2nd
+    padding 20px 0
+  &._base-layer_240x200
+    height 255px
+
+
+#ban_240x400_2nd,
+#ban_240x400,
+#ban_240x200,
+#Context_240x200
+  display table-cell
+  text-align center
+  vertical-align middle
+
+
+div[id^="AdFox_banner"],
+div[id^="begun_block"],
+iframe[id^="AdFox_iframe"],
+div[id^="begun_block"] > iframe
+  display block
+  margin 0 auto
+  margin-bottom space

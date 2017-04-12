@@ -1,0 +1,92 @@
+body
+  font-family Roboto, sans-serif
+  background #eef2f4
+
+ul,
+ol
+  margin 0
+  padding 0
+
+ol
+  list-style inside decimal
+
+a
+  text-decoration none
+
+.wrapper
+  width 1280px
+  position relative
+  margin 0 auto
+  box-sizing border-box
+  padding 0 40px
+
+  &._pad-l-none
+    padding-left 0
+
+main
+  padding-top 20px
+
+footer
+  background #343b4c
+
+.main
+
+  &__left-sidebar
+    float left
+    width 280px
+
+  &__sidebar
+    float right
+    width 300px
+    margin-bottom space
+
+  &__content
+    width 580px
+    margin-left 300px
+
+
+.clear
+  clear both
+
+._off-scroll
+  overflow hidden
+  position fixed
+  width 100%
+
+.absorption
+  margin-bottom -40px
+
+._editor-focus
+  border 1px solid #315efb !important
+  transition transAll
+
+._editor-error
+  border 1px solid #ff6058 !important
+  transition transAll
+
+._editor-ok
+  border 1px solid #44c654 !important
+  transition transAll
+
+// Форма добавление картинки в текстовое поле, убераем лишние поля
+
+.mce-container
+  .mce-formitem:not(.mce-first):not(.mce-last)
+    display none
+
+.mce-in
+  input:nth-child(1)
+    pointer-events none
+
+.mce-tinymce
+  overflow hidden
+
+
+div.mce-edit-area
+  padding-bottom 1px
+
+.topline-wrapper
+  height 38px
+  background blockBack
+
+

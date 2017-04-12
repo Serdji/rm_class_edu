@@ -1,0 +1,22 @@
+.footer
+  .footer__top
+    .footer__logo
+      a.footer__rambler data-cerber-logo="logo_footer_rambler" href="https://www.rambler.ru/?utm_source=mclass&utm_content=mhead&utm_medium=logo_footer&utm_campaign=self_promo"
+      a.footer__class href=(DomainFactory.url + '/')
+      = svg name: 'footer_logo', klass: 'footer__logo-svg'
+  .footer__bottom
+    ul.footer__menu
+      li
+        a._hover-reference-blue rel="nofollow" href=toggle_path
+          | Полная версия
+      li
+        a._hover-reference-blue target="_blank" rel="nofollow" href="http://help.rambler.ru/feedback/class/form/142/" Обратная связь
+      li
+        a._hover-reference-blue target="_blank" rel="nofollow" href="http://help.rambler.ru/class/class-legal/1552/" Пользовательское соглашение
+
+    .footer__сopyright
+      span.footer__сopyright-title
+        | &copy; Рамблер,
+        span.js-date<
+      .footer__сopyright-age-limit
+        span 6+

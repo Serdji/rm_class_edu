@@ -1,0 +1,21 @@
+= f.fields_for :seo, (f.object.seo || f.object.build_seo) do |ff|
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = ff.label :title, class: 'control-label'
+      .col-sm-8
+        = ff.text_area :title, class: 'form-control'
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = ff.label :description, class: 'control-label'
+      .col-sm-8
+        = ff.text_area :description, class: 'form-control'
+
+  .row
+    .form-group
+      .col-sm-2.text-right
+        = ff.label :keywords, class: 'control-label'
+      .col-sm-8
+        = ff.text_area :keywords, class: 'form-control'

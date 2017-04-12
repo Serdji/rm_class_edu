@@ -1,0 +1,14 @@
+.container
+  = form_for resource, as: resource_name, url: admin_login_path, html: { class: 'form-signin' } do |f|
+    h2.form-signin-heading Вход
+
+    = f.text_field :email, placeholder: 'Электронная почта', class: 'form-control'
+    = f.password_field :password, placeholder: 'Пароль', class: 'form-control'
+
+    - if devise_mapping.rememberable?
+      .checkbox
+        = f.label :remember_me, class: 'checkbox' do
+          = f.check_box :remember_me
+          ' Запомнить меня
+
+    = f.submit 'Войти', class: 'btn btn-lg btn-primary btn-block'

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="14px" viewBox="0 0 23 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_theme</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="ICON" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-65.000000, -55.000000)" fill="#315EFB">
+            <g id="theme" transform="translate(64.000000, 50.000000)">
+                <g id="ICON" transform="translate(1.000000, 5.000000)">
+                    <path d="M20.5421928,7 L16.9707642,2 L3.9947834,2 C2.89474821,2 2,2.89387859 2,3.99310226 L2,10.0068977 C2,11.1077248 2.89271921,12 3.9947834,12 L16.9707642,12 L20.5421928,7 Z M0,3.99310226 C0,1.78777278 1.79171562,0 3.9947834,0 L18,0 L23,7 L18,14 L3.9947834,14 C1.78852545,14 0,12.2126701 0,10.0068977 L0,3.99310226 Z" id="Rectangle-12" fill-rule="nonzero"></path>
+                    <path d="M12,7 C12,5.8954305 12.8877296,5 14,5 C15.1045695,5 16,5.88772964 16,7 C16,8.1045695 15.1122704,9 14,9 C12.8954305,9 12,8.11227036 12,7 Z" id="Rectangle-14" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

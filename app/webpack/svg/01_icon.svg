@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>01 icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="8.5" cy="8.5" r="8.5"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="17" height="17" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Страница-вопроса" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="EDU-551-Страница-вопроса-MVP" transform="translate(-339.000000, -108.000000)">
+            <g id="HEADER">
+                <g id="SUB-NAVI" transform="translate(0.000000, 89.000000)">
+                    <g id="Links" transform="translate(339.000000, 15.000000)">
+                        <g id="01" transform="translate(0.000000, 4.000000)">
+                            <g id="01-icon">
+                                <use id="Oval" stroke="#315EFB" mask="url(#mask-2)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-1"></use>
+                                <text id="?" font-family="Roboto-Black, Roboto" font-size="11" font-weight="700" fill="#315EFB">
+                                    <tspan x="6" y="12">?</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

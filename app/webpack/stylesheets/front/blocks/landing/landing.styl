@@ -1,0 +1,76 @@
+.landing
+  display flex
+  margin 60px
+  min-height calc(100vh - 370px)
+
+  &__box
+    display flex
+    justify-content center
+    margin auto
+
+  &__logo
+    width 250px
+    height 215px
+    &-svg
+      width 100%
+      height 100%
+
+  &__content
+    width 500px
+    margin-left 37px
+
+    &-title
+      font-size 24px
+      color #343b4c
+      margin-bottom 28px
+      font-family CorsicaRamblerLX-SemiBold
+
+    &-text
+
+      span,
+      li
+        font-size 15px
+        color #343b4c
+
+      span
+        margin-bottom 20px
+        display inline-block
+
+      li
+        list-style-type none
+        margin-bottom 15px
+
+    &-footer
+      margin-top 40px
+
+    &-rambler-logo,
+    &-connection,
+    &-copy
+      margin-bottom 5px
+
+    &-rambler-logo
+      width 143px
+      height 22px
+
+      &-svg
+        width 100%
+        height 100%
+
+    &-connection,
+    &-copy
+      color #343b4c
+      font-size 13px
+
+    &-connection
+
+      a
+        color #2541fa
+        text-decoration underline
+
+body
+  &._modifier-lading
+    .search,
+    ._top-menu
+      display none
+    main
+      padding-top 0

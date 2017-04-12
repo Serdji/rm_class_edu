@@ -1,0 +1,9 @@
+- cache question do
+  = render 'front/questions/question', question: question
+
+- i = question_iteration.index
+- show_ban = local_assigns[:with_first_two] ? (i % 3 == 1) : ((i + 1) % 3 == 0)
+- if show_ban
+  / Реклама #2. Место размещения: во втором и ниже экранах, повторяющиеся  через 1 экран (2, 4, 6 и тд)
+  .baner
+    = render 'front/ads/ban_listing'

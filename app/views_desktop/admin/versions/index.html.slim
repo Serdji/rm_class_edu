@@ -1,0 +1,29 @@
+= render 'admin/shared/head', title: t('label.version_log')
+= render 'filter'
+
+table.table.table-hover
+  thead
+    tr
+      th ID
+      th Операция
+      th Раздел
+      th id
+      th Элемент
+      th Сотрудник
+      th Дата создания
+
+  tbody
+    - versions.each do |version|
+      tr
+        td.ids = version.id
+        td = version.human_event
+        td = version.human_block
+        td.ids
+          = link_to version.item_id, admin_version_path(version.id)
+        td
+          = link_to version.human_item || '', admin_version_path(version.id)
+        td = version.human_employee
+        td.date.text-center = version.human_created_at
+
+.text-center
+  = will_paginate(@versions, renderer: BootstrapPagination::Rails)

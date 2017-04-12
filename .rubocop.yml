@@ -1,0 +1,17 @@
+inherit_from:
+  - .rubocop_rds.yml
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/**/*'
+    - 'db/migrate/**/*'
+    - 'db/seeds/**/*'
+    - 'db/schema.rb'
+    - 'config/**/*'
+
+Style/StructInheritance:
+  Enabled: false
+
+Style/PredicateName:
+  Enabled: false

@@ -1,0 +1,96 @@
+.native
+  margin-bottom space
+  background blockBack
+  padding 27px 30px
+
+  &__title,
+  &__content,
+  &__block
+    margin-bottom 25px
+
+  &__title
+    textTransUp()
+    font-size 12px
+    color #868686
+
+  &__desc,
+  &__book-img,
+  &__one-img,
+  &__two-img,
+  &__row
+    display inline-block
+
+  &__block
+    &:nth-last-child(1)
+      margin-bottom 0
+
+  &__book-img
+    width 70px
+    height 100px
+    margin-right 9px
+    vertical-align bottom
+
+  &__book
+    &-icon
+      margin auto
+      width 25px
+    &._default
+      width 70px
+      height 100px
+      display inline-block
+      margin-bottom 10px
+      margin-right 10px
+      div
+        display flex
+        width 70px
+        height 100px
+
+  &__desc
+    width 160px
+    vertical-align top
+
+    &-title
+      margin-bottom 4px
+      display inline-block
+      font-size 15px
+      font-weight bold
+      line-height 1.4
+      color #000000
+
+    &-publ
+      margin-bottom 8px
+      font-size 13px
+      line-height 1.3
+      color #4a4a4a
+
+    &-botton
+      width 120px
+      height 35px
+
+  &__footer
+    .native__title
+      margin-bottom 15px
+
+    .native__book-img,
+    .native__desc
+      vertical-align middle
+
+  &__adv
+    .native__desc-title
+      font-size 13px
+      line-height 1.2
+
+    .native__desc-publ
+      margin-bottom 0
+
+  &__two-img
+    .native__book-img
+      height 50px
+
+    .native__desc-title
+      margin-bottom 0
+
+  &__row
+    margin-bottom 10px
+    &:nth-last-child(1)
+      margin-bottom 0

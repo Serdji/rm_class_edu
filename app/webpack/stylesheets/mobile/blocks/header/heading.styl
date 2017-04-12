@@ -1,0 +1,48 @@
+.heading
+  position fixed
+  top 0
+  z-index 3
+  width 100%
+  display flex
+  justify-content space-between
+  background blockBack
+  border-bottom 1px solid rgba(52, 59, 76, 0.1)
+  height 50px
+
+  &__box
+    centerBlock()
+    justify-content center
+    width 15%
+    &._center
+      width 50%
+
+  &__logo
+    position relative
+    height 26px
+    width 100%
+    margin-top 2px
+
+  &__rambler,
+  &__class
+    position absolute
+    height 50px
+    top -14px
+
+  &__rambler
+    left 0
+    width 60%
+
+  &__class
+    right 0
+    width 40%
+
+  &__icon
+    width 100%
+    height 100%
+  &__button
+    width 20px
+    height 19px
+
+    &._burger
+      width 15px
+      height 14px

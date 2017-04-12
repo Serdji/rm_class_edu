@@ -1,0 +1,12 @@
+development:
+  domain: 'http://localhost:3001/api/'
+test:
+  domain: 'http://localhost:3001/api/'
+staging:
+  domain: 'http://api.stage.class.rambler.ru:8088/api/'
+staging2:
+  domain: 'http://api2.stage.class.rambler.ru:8088/api/'
+preprod:
+  domain: <%= ENV['QA_API_URL'] %>
+production:
+  domain: <%= ENV['QA_API_URL'] %>

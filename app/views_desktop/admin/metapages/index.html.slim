@@ -1,0 +1,28 @@
+= render 'admin/shared/head'
+
+.nav.navbar.navbar-default
+  = search_form_for [:admin, @q], class: 'navbar-form navbar-left unvisible' do |f|
+    .form-group
+      - opts = { class: 'js-select-ize', data: { placeholder: 'Раздел сайта' } }
+      = f.collection_select :metapages_type_id_eq, MetapagesType.all, :id, :name, { include_blank: true }, **opts
+
+    = f.submit t('label.search'), class: 'btn btn-default'
+
+table.table.table-hover
+  thead
+    tr
+      th = sort_link(@q, :id, 'ID')
+      th = sort_link(@q, :label)
+      th = 'URL'
+
+  tbody.middle-vertical-align
+
+    - metapages.each do |page|
+      tr
+        td.ids = page.id
+        td
+          - if can? controller_name, 'edit'
+            = link_to page.label, edit_admin_metapage_path(page)
+          - else
+            = page.label
+        td = page.url

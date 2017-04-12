@@ -1,0 +1,18 @@
+  meta name="description" content=content_for(:description) /
+  meta name="keywords" content=content_for(:keywords) /
+
+  meta property="og:site_name" content="Рамблер/класс" /
+  meta property="og:type" content="article" /
+  meta property="og:title" content=content_for(:title) /
+  meta property="og:description" content=content_for(:description) /
+  - if content_for?(:og_image)
+    meta property="og:image" content=content_for(:og_image) /
+    meta property="twitter:image" content=content_for(:og_image) /
+  - else
+    meta property="og:image" content=front_default_opengraph /
+    meta property="twitter:image" content=front_default_opengraph /
+
+  meta property="twitter:description" content=content_for(:description) /
+  meta name="twitter:card" content="summary" /
+  meta property="twitter:title" content=content_for(:title) /
+  meta property="twitter:url" content=canonical /

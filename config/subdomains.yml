@@ -1,0 +1,14 @@
+development:
+test:
+staging:
+  admin: staging.admin.class
+  front: staging.class
+staging2:
+  admin: staging2.admin.class
+  front: staging2.class
+preprod:
+  admin: preprod.admin.class
+  front: preprod.class
+production:
+  admin: admin.class
+  front: class

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_share_more</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="ICON" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-20.000000, -210.000000)" fill="#315EFB">
+            <g id="ico_share_more" transform="translate(20.000000, 210.000000)">
+                <g id="ico_more">
+                    <path d="M0.75,12 C0.75,18.2141433 5.78627917,23.25 12,23.25 C18.2141433,23.25 23.25,18.2137208 23.25,12 C23.25,5.78585673 18.2137208,0.75 12,0.75 C5.78585673,0.75 0.75,5.78627917 0.75,12 Z M0,12 C0,5.372583 5.37112582,0 12,0 C18.627417,0 24,5.37112582 24,12 C24,18.627417 18.6288742,24 12,24 C5.372583,24 0,18.6288742 0,12 Z" id="Rectangle-3" fill-rule="nonzero"></path>
+                    <rect id="Rectangle-3" x="7" y="11" width="2" height="2" rx="1"></rect>
+                    <rect id="Rectangle-3" x="11" y="11" width="2" height="2" rx="1"></rect>
+                    <rect id="Rectangle-3" x="15" y="11" width="2" height="2" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

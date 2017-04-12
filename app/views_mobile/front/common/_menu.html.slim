@@ -1,0 +1,20 @@
+.menu.js-menu._hidden
+  .menu__curtain.js-menu-curtain
+    .menu__close
+      = svg name: "mobile-close", klass: "menu__close-svg"
+  .menu__block
+    .menu__header
+      .menu__logo
+        = svg name: "mobile-logo-menu", klass: "menu__logo-svg"
+    - klass = %w(questions home).include?(controller_name) ? '_activ' : ''
+    a.menu__point class=klass href=otvety_path
+      .menu__icon
+        = svg name: "mobile-answers", klass: "menu__icon-svg"
+      .menu__title Ответы
+      /.menu__counter 21 093
+    - klass = %w(tags).include?(controller_name) ? '_activ' : ''
+    a.menu__point class=klass href=temy_path
+      .menu__icon._theme
+        = svg name: "mobile-theme", klass: "menu__icon-svg"
+      .menu__title Темы
+      /.menu__counter 258

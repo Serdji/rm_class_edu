@@ -1,0 +1,47 @@
+script type="text/template" class="js-search-suggest-template"
+  <% if (questions.length > 0) { %>
+    <% questions.forEach(function(question) { %>
+      - url = "<%= question.url %>".html_safe
+      a.search-result__item href=url data-search-suggest="klass::search::element_question" onclick="yaCounter38595795.reachGoal('click_element_question');"
+        span.search-result__text <%= question.title %>
+    <% }) %>
+  <% } %>
+
+  <% if (tags.length > 0) { %>
+    <% tags.forEach(function(tag) { %>
+      - url = "<%= tag.url %>".html_safe
+      - image_url = "<%= tag.image_url %>".html_safe
+      a.search-result__item href=url data-search-suggest="klass::search::element_theme" onclick="yaCounter38595795.reachGoal('click_element_tag');"
+        img.search-result__tag-image src=image_url
+        span.search-result__text <%= tag.name %>
+    <% }) %>
+  <% } %>
+
+  - url = "<%= novaGlobalUrl %>".html_safe
+  a.search-result__item.search-result__global-search target="_blank" href=url data-search-suggest="klass::search::global_search" onclick="yaCounter38595795.reachGoal('click_global_search');"
+    = svg name: "search-mobile", klass: "search-result__tag-image"
+    span.search-result__text Искать в интернете
+  a.search-result__all-result._button-dark-blue.js-search-linck data-search-suggest="klass::search::all_results" onclick="yaCounter38595795.reachGoal('click_link_all_results');" data-href=search_serp_path(query: '', :_openstat => 'Ui1rbGFzczs7Ow') Все результаты
+
+.heading.js-scroll-heading
+  .heading__box.js-button-menu
+    .heading__button._burger
+      = svg name: "mobile-menu", klass: "heading__icon"
+  .heading__box._center
+    .heading__logo
+      a.heading__rambler data-cerber-logo="logo_rambler" href="https://www.rambler.ru/?utm_source=mclass&utm_content=mhead&utm_medium=logo&utm_campaign=self_promo"
+      a.heading__class href=(DomainFactory.url + '/')
+      = svg name: "logo", klass: "heading__icon"
+
+  .heading__box._right.js-search-button
+    .heading__button
+      = svg name: "search-mobile", klass: "heading__icon"
+
+    .search.search_hidden
+      .search__hide.js-search-close
+        = svg name: "arrow-filter", klass: ""
+      input.search__input.js-search-input type="text" name="search"
+      span.search__clear data-search-suggest="klass::search::cross_button" onclick="yaCounter38595795.reachGoal('click_krest');"
+        = svg name: 'close', klass: "js-clear-input"
+
+      .search-result

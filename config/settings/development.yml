@@ -1,0 +1,5 @@
+webdav: <%= ENV['WEBDAV'] %>
+async:  <%= ENV['ASYNC'] %>
+host: 'http://localhost'
+webdav_mock: '/admin/webdav_mock'
+favicon_hash: 'icons'

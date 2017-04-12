@@ -1,0 +1,150 @@
+@import bootstrap-sprockets
+@import bootstrap
+@import font-awesome
+@import chosen
+@import bootstrap-datetimepicker
+@import simplemde.min
+
+@import admin/answers/edit
+@import admin/answers/complaints
+@import admin/dashboard
+@import admin/selectize-default
+@import admin/signin
+@import admin/complaints/index
+@import admin/employees/index
+@import admin/grades/index
+@import admin/subjects/index
+@import admin/versions/show
+@import admin/textbooks/textbooks
+@import admin/forms
+@import admin/simplemde
+@import admin/sidebar
+
+.handlers
+  width: 110px
+
+.ids
+  width: 50px
+
+.date
+  width: 170px
+
+.head
+  margin-bottom: 20px
+
+.text-center
+  text-align: center
+
+.table
+  tbody, thead, tr
+    &.middle-vertical-align
+      td, th
+        vertical-align: middle
+
+    &.text-center
+      td, th
+        @extend .text-center
+
+.breadcrumb.breadcrumb-admin
+  margin-bottom: 0
+  margin-top: 7px
+  background: #f8f8f8
+
+h2
+  margin-top: 0
+
+.navbar-left
+  .form-group
+    margin-right: 10px
+    label
+      margin-right: 5px
+
+.btn-group
+  a
+    display: inline-block
+
+.label
+  &.label-purple
+    background-color: purple
+
+.head h3
+  margin-top: 5px
+
+.nowrap
+  white-space: nowrap
+
+.flash-messages-container
+  position: fixed
+  float: right
+  width: 400px
+  z-index: 9999
+  top: 60px
+  right: 15px
+  text-align: right
+
+  .flash-message
+    color: white
+    border-radius: 5px
+    opacity: 0
+    padding: 10px
+    padding-right: 35px
+    margin-bottom: 10px
+    cursor: pointer
+    position: relative
+    left: 25%
+    text-align: left
+
+    p
+      margin: 10px
+
+    &-notice
+      background-color: #777
+
+    &-default
+      background-color: #777
+
+    &-primary
+      background-color: #337ab7
+
+    &-success
+      background-color: #5cb85c
+
+    &-info
+      background-color: #5bc0de
+
+    &-warning
+      background-color: #f0ad4e
+
+    &-danger
+      background-color: #d9534f
+
+.color
+  &-red
+    color: red
+
+  &-green
+    color: green
+
+  &-light-grey
+    color: #ccc
+
+.navbar-form
+  transition: opacity 0.5s ease-out
+
+  &.unvisible
+    opacity: 0
+
+    select
+      display: none
+
+.search-filter
+  label
+    padding-right: 10px
+
+.red
+  color: red
+
+ul.nav-tabs
+  li.active
+    a
+      background-color: #eee

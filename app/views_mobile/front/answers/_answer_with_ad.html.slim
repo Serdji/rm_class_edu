@@ -1,0 +1,8 @@
+- cache_mobile answer do
+  = render 'front/answers/answer', answer: answer
+
+- i = answer_iteration.index
+- if i % 2 == 1
+  / Реклама #3. Место размещения: во втором экране, повторять через каждые 1,5 экрана (те во 2, 5, 7, 10)
+  .baner
+    = render 'front/ads/ban_content'

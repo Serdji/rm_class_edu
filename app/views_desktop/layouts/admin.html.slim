@@ -1,0 +1,63 @@
+doctype html
+html lang="en"
+  head
+    script src="https://cdn.polyfill.io/v2/polyfill.min.js"
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="" name="description" /
+    meta content="" name="author" /
+
+    = include_favicons('admin')
+
+    = csrf_meta_tags
+
+    link rel="stylesheet" media="all" href=stylesheet_path('admin/application')
+
+    title= content_for?(:title) ? (yield :title) : Settings.site_name
+  body id="#{controller_name}-#{action_name}"
+    - if flash.present?
+      div.flash-messages
+        - flash.each do |type, text|
+          div.message data-type=type data-text=text
+
+    = render 'admin/shared/templates/flash_message_template'
+    .flash-messages-container
+
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=admin_root_path
+            = Settings.site_name
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              = link_to current_employee.name, '#'
+            li
+              = link_to t('label.logout'), admin_logout_path, method: :delete
+
+    .container-fluid
+      .row
+        .col-sm-2.col-md-2.sidebar
+          = render 'admin/shared/sidebar'
+        .col-sm-10.col-sm-offset-2.col-md-10.col-md-offset-2.main
+          div
+            = render 'admin/shared/breadcrumbs'
+            = yield
+
+    javascript:
+      var Education = (function() {
+        var education = {};
+
+        education.config = #{(Settings.to_hash || {}).to_json.html_safe};
+        education.config.env = "#{Rails.env}";
+
+        return education;
+      })();
+
+    script src=javascript_path('admin/application')

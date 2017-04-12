@@ -1,0 +1,11 @@
+.interesting_question__block
+  .interesting_question__block-title = question.main_tag_name
+  .interesting_question__theme
+    a._hover-reference-blue> href=question.path
+      = question.title
+    .interesting_question__wrapper
+      .interesting_question__box
+        .interesting_question__icon
+          = svg name: 'ico_message_blue', klass: 'interesting_question__icon-svg'
+        span.interesting_question__counter>
+          = question.answers_counter

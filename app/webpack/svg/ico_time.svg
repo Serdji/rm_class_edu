@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>ico_time</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="ICON" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-22.000000, -131.000000)" fill="#262626">
+            <g id="ico_time" transform="translate(20.000000, 130.000000)">
+                <g transform="translate(2.000000, 1.000000)">
+                    <path d="M1,6.5 C1,9.53295794 3.46512851,12 6.5,12 C9.53295794,12 12,9.53487149 12,6.5 C12,3.46704206 9.53487149,1 6.5,1 C3.46704206,1 1,3.46512851 1,6.5 Z M0,6.5 C0,2.91014913 2.91745375,0 6.5,0 C10.0898509,0 13,2.91745375 13,6.5 C13,10.0898509 10.0825462,13 6.5,13 C2.91014913,13 0,10.0825462 0,6.5 Z" id="Rectangle-11" fill-rule="nonzero"></path>
+                    <path d="M7,6 L7,2.49769878 C7,2.21484375 6.77614237,2 6.5,2 C6.23193359,2 6,2.22282734 6,2.49769878 L6,6.50230122 C6,6.64210324 6.05468535,6.76529105 6.14334046,6.85413617 C6.23310416,6.94234104 6.35541607,7 6.49047852,7 L9.50952148,7 C9.78494263,7 10,6.77614237 10,6.5 C10,6.23193359 9.78040529,6 9.50952148,6 L7,6 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

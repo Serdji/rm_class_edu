@@ -1,0 +1,24 @@
+.question.js-question-share data-complainable="true" data-complainable-id=question.id data-complainable-type="Question"
+  .questions__header
+    .questions__hash._hide.js-hash-tags
+      - question.tags.each do |tag|
+        a.questions__point.js-point-tags href=tag_path(slug: tag.slug)
+          span = tag.name
+  .questions__content
+    .questions__user
+      .questions__avatar
+        img src=question.user.avatar_url
+      .questions__name = question.user.full_name
+    h1.questions__title.js-questions-share-title = question.title
+    .question__social.js-question-social.rambler-share
+    .questions__text == question.safe_body
+    .questions__data
+      .questions__data-icon
+        = svg name: 'ico_time', klass: 'questions__data-icon-svg'
+      span.js-data-published data-published-at=question.iso8601
+  .questions__footer
+      /a.questions__answer href="#"
+      /  .questions__answer-icon
+      /    = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
+      /  | Ответить
+      = render 'front/common/social'

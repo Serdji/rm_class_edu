@@ -1,0 +1,32 @@
+script type="text/template" id="image-form-template"
+  .image-form.col-md-12
+    div.text-right
+      a.close-button href="#"
+        i.fa.fa-times
+
+    form.col-md-12 role="form" enctype="multipart/form-data" method="post"
+      .row
+        .form-group
+          .col-md-12.text-right
+            = hidden_field_tag :id
+            = file_field_tag :image, name: nil, class: 'webdav-file', data: { extensions: ImageUploader::EXTS }
+            = hidden_field_tag :temp_image_url, nil, class: 'webdav-temp'
+      / .row
+      /   .form-group
+      /     .col-md-12.text-right
+      /       = text_field_tag :title, nil, class: 'form-control', placeholder: 'Заголовок изображения'
+
+      .row
+        .form-group
+          .col-md-12.text-right
+            = text_field_tag :alt, nil, class: 'form-control', placeholder: 'Альтернативный текст (ALT)'
+      .row
+        .form-group
+          .col-md-6.text-right
+            = text_field_tag :width, nil, class: 'form-control js-img-sizes', placeholder: 'Ширина'
+          .col-md-6.text-right
+            = text_field_tag :height, nil, class: 'form-control js-img-sizes', placeholder: 'Высота'
+      .row
+        .form-group
+          .col-md-12.text-right
+            input.btn.btn-primary type="button" id="uploaded_file_insert" value="Вставить"

@@ -1,0 +1,46 @@
+= render 'admin/shared/head', title: t('activemodel.models.answer')
+
+.nav.navbar.navbar-default
+  = form_tag [:admin, :answers], method: :get, class: 'navbar-form navbar-left unvisible'
+    = fields_for :filter do |f|
+      .form-group
+        - attributes = { class: 'js-select-ize _textbooks-class', multiple: true, data: { placeholder: 'Выберите статус' } }
+        - options = options_for_select(Qa::Answer.states_for_select, params.dig(:filter, :state))
+        = f.select :state, options, { include_blank: true }, attributes
+
+      .form-group
+        - attributes = { class: 'js-select-ize _textbooks-class', data: { placeholder: 'Выберите вопрос' } }
+        - question_id = params.dig(:filter, :question_id)
+        - options = options_for_select(Qa::Question.options_for_select(question_id), question_id)
+        = f.select :question_id, options, { include_blank: true }, attributes
+
+      = f.submit t('label.search'), class: 'btn btn-default'
+
+table.table.table-hover
+  thead.text-center
+    tr
+      th.nowrap = qa_sort_link(:id)
+      th.nowrap = Qa::Answer.human_attribute_name(:body)
+      th.nowrap = qa_sort_link(:best_answer)
+      th.nowrap = qa_sort_link(:state)
+      th.nowrap = qa_sort_link(:updated_at)
+      th.nowrap = qa_sort_link(:created_at)
+
+  tbody.middle-vertical-align
+    - answers.each do |answer|
+      tr
+        td.ids.text-center = answer.id
+        td = link_to answer.safe_title, edit_admin_answer_path(answer)
+        td.text-center
+          - if answer.best_answer?
+            i.color-green class="fa fa-check" aria-hidden="true"
+          - else
+            i.color-red class="fa fa-times" aria-hidden="true"
+        td.text-center
+          - klass = answer.state.fresh? ? 'purple' : 'default'
+          label.label class="label-#{klass}" = answer.human_state_name
+        td.nowrap.date.text-center = answer.human_updated_at
+        td.nowrap.date.text-center = answer.human_created_at
+
+.text-center
+  = will_paginate(@answers, renderer: BootstrapPagination::Rails, param_name: 'page[number]')

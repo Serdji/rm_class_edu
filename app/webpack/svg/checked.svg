@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="8px" viewBox="0 0 10 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_tick</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI-KIT-—-02-Controls" transform="translate(-403.000000, -1130.000000)" fill="#315EFB">
+            <g id="CHECKBOX" transform="translate(70.000000, 997.000000)">
+                <g transform="translate(329.880952, 129.000000)" id="checkbox">
+                    <g>
+                        <polygon id="icon_tick" points="4.53765578 6.87255859 3.07142857 8.36260128 6.60884467 11.6863868 6.67144907 11.6900951 12.4614316 5.47314453 10.922093 4 6.56031037 8.81703798"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

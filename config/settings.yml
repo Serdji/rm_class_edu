@@ -1,0 +1,4 @@
+site_name:    'Рамблер/Класс'
+webdav_host:  'http://webdav01.park.rambler.ru/class_stage'
+el_per_page:  15
+favicon_hash: '8f56f789'

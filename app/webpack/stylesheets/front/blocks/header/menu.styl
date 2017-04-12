@@ -1,0 +1,58 @@
+.menu
+  background blockBack
+  border-bottom 1px solid #e8e8e8
+
+  &__rambler,
+  &__class
+    position absolute
+    top 50%
+    height 26px
+    margin-top -13px
+
+  &__rambler
+    left 0
+    width 68%
+
+  &__class
+    right 0
+    width 30%
+
+  &__point,
+  ul
+    display inline-block
+
+  &__box,
+  &__logo
+    centerBlock()
+
+  &__box
+    height menuHeight
+
+  &__logo
+    position relative
+    width 163px
+    height 55px
+    margin-right 20px
+
+    &-svg
+      width 100%
+      height 100%
+
+  &__point
+    margin-right 28px
+
+    a
+      font-size 14px
+      color #262626
+
+      &._activ
+        font-weight bold
+
+  &__search
+    width 19px
+    height 19px
+    margin-right 7px
+
+    &-svg
+      width 100%
+      height 100%

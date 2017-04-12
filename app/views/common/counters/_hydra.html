@@ -1,0 +1,28 @@
+<!-- Hydra (Cerber) Counter -->
+<script src="//cntcerber.rambler.ru/counter.js"></script>
+<script type="text/javascript">
+  var settings = {
+    // Обязательные параметры
+    project: 4439402, // ID проекта
+    // Опциональные параметры
+    splits: [ // Список активных сплитов
+      'splitname'
+    ],
+    chapters: [ // Chapters страницы
+      'project', 'chapter'
+    ],
+    attributes_dataset: [ // Атрибуты отслеживаемые Usability
+      'cerber-event',
+      'cerber-topline'
+    ]
+  };
+  try {
+    window.cerberCounter = new CerberCounter(settings);
+  } catch (err) {
+  }
+  ;
+</script>
+<noscript>
+  <img src="//cntcerber.rambler.ru/cnt/noscript/rambler.project?.sp.splitname=1&.ch=project::chapter"/>
+</noscript>
+<!--/ Hydra (Cerber) Counter -->

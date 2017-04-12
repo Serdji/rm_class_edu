@@ -1,0 +1,12 @@
+- title = local_assigns[:title] || controller_name.classify.constantize.model_name.human
+- content_for :title, title
+
+.head.clearfix
+  - unless local_assigns[:title] == false
+    .pull-left
+      h3 = title
+
+  - if can? controller_name, 'new'
+    - if buttons = content_for(:head_buttons)
+      .pull-right
+        div = buttons

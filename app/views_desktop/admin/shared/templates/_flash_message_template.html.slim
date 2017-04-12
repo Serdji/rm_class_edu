@@ -1,0 +1,4 @@
+script type="text/template" id="flash-message-template"
+  - klass = "flash-message-<%= data.type %>".html_safe
+  div.flash-message class=klass
+    p <%= data.message %>

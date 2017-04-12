@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>02 Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M13.1066017,8.10660172 L13.1066017,8.10138452 C13.1066017,5.35225328 10.8680255,3.10660172 8.10660172,3.10660172 C5.35079691,3.10660172 3.10660172,5.34284215 3.10660172,8.10138452 L3.10660172,13.1066017 L3.10660172,18.1066017 L13.1118189,18.1066017 C15.8609502,18.1066017 18.1066017,15.8680255 18.1066017,13.1066017 C18.1066017,10.3507969 15.8703613,8.10660172 13.1118189,8.10660172 L13.1066017,8.10660172 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="15" height="15" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Страница-вопроса" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="EDU-551-Страница-вопроса-MVP" transform="translate(-490.000000, -109.000000)" stroke-width="4" stroke="#315EFB" fill="#FFFFFF">
+            <g id="HEADER">
+                <g id="SUB-NAVI" transform="translate(0.000000, 89.000000)">
+                    <g id="Links" transform="translate(339.000000, 15.000000)">
+                        <g id="02" transform="translate(149.000000, 0.000000)">
+                            <use id="02-Icon" mask="url(#mask-2)" transform="translate(10.606602, 10.606602) rotate(-45.000000) translate(-10.606602, -10.606602) " xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,41 @@
+.pop-up.pop-up-question.js-pop-up-question
+  .pop-up__block
+    .pop-up-question__title Задать вопрос
+    .pop-up__close.js-close-pop-up-ques
+      = svg name: 'close', klass: 'pop-up__close-svg'
+      = svg name: 'close-hover', klass: 'pop-up__close-svg _activ'
+
+    - question = Qa::Question.new(tags: [], title: '', body: '')
+    = form_for question, html: { class: 'pop-up-question__form js-question-form' } do |f|
+      .input-select._mb
+        label
+          | Ваш вопрос
+          = f.text_field :title, class: 'js-max-length-input'
+          .pop-up-question__quantity-symbols
+            span.js-max-length-counter>
+
+      .pop-up-question__select._mb
+        .pop-up-question__label Подробное описание
+        = f.text_area :body, class: 'js-editor-quantity', id: 'ditor-quantity'
+        .pop-up-question__quantity-symbols
+          span.js-max-length-counter-editor Можно ввести 4000 cимволов
+
+      .input-select._mb
+        label
+          | Темы
+          - options = { class: 'js-select-tag', multiple: true, data: { placeholder: t('label.choose_tags') } }
+          = f.select :tag_ids, [], { include_blank: true }, options
+
+          .pop-up-question__quantity-symbols
+            span.js-max-length-counter-select
+
+      .pop-up-question__box.js-answer-ui._disabled-user
+        .pop-up-question__button._button-dark-blue.js-send-question отправить
+        .pop-up-question__login
+          img.pop-up-question__avatar.js-answer-ui-avatar
+          .pop-up-question__name.js-answer-ui-avatarname
+          .question-common__is-sentry.js-answer-ui-sentry дежурный
+
+    .pop-up-question__agreement
+      span> Нажимая кнопку «отправить», вы принимаете условия
+      a._hover-reference-blue href="http://help.rambler.ru/class/class-legal/1552/" target="_blank" пользовательского соглашения

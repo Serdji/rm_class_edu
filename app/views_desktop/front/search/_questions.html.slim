@@ -1,0 +1,18 @@
+- @search_result.each_with_index do |question, i|
+  a.search-page__item href=question.url
+    .search-page__item-title
+      == break_too_long_words(question.title)
+
+    - if question.answers_count > 0
+      .search-page__text
+        b> = "#{question.answers.first.user.first_name}:"
+        == sanitize(question.answers.first.body, tags: %i(p b))
+
+      - if question.answers_count == 1
+        .search-page__answer 1 ответ
+
+      - if question.answers_count > 1
+        - count = question.answers_count - 1
+        .search-page__answer = "Еще #{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
+    - else
+      .search-page__answer Ответить

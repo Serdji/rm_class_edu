@@ -1,0 +1,27 @@
+= render 'common/seo_attributes', object: questions_facade.metapage
+- content_for :head_title, questions_facade.metapage.seo_title
+
+- if questions_facade.questions.size > 0
+  .title._first-place Все ответы
+  = render partial: 'front/questions/question_with_ad', collection: questions_facade.questions, as: :question
+
+- content_for :relation_links, relation_links(questions_facade.questions)
+
+.pagination-wrapper = pagination(questions_facade.questions.object, mobile: true)
+
+- cache_mobile [:interesting_questions], expires_in: 1.minute do
+  - if application_facade.interesting_questions.any?
+    .title интересные вопросы
+    .interesting_question
+      - options = { collection: application_facade.interesting_questions, as: :question, cached: mobile_collection_proc }
+      = render partial: 'front/questions/interesting_question', **options
+
+- if application_facade.interesting_questions.any?
+  .baner
+    = render 'front/ads/ban_listing'
+
+- cache_mobile [:most_discussing_tags], expires_in: 1.minute do
+  - if application_facade.most_discussing_tags.any?
+    .title сегодня обсуждают
+    - options = { collection: application_facade.most_discussing_tags, cached: mobile_collection_proc }
+    = render partial: 'front/tags/tag', **options
