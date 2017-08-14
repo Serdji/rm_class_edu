@@ -24,10 +24,22 @@ module.exports = (nodes) => {
     onChange(arrVal) {
       selectLengthCounter(nodes, arrVal, maxTag);
       $selectTag.attr('value', arrVal);
-      $selectTag
-        .next()
-        .children('.has-items')
-        .removeClass('_editor-error _editor-ok');
+
+      let element = $selectTag.next().children('.selectize-input');
+
+      if (arrVal.length > 0) {
+        if (element.hasClass('_editor-error')) {
+          element.removeClass('_editor-error');
+          element.addClass('_editor-ok');
+          nodes.tagIdsError.classList.add('_hidden');
+          nodes.maxLengthCounterSelect.classList.remove('_hidden');
+        }
+      } else {
+        element.removeClass('_editor-ok');
+        element.addClass('_editor-error');
+        nodes.tagIdsError.classList.remove('_hidden');
+        nodes.maxLengthCounterSelect.classList.add('_hidden');
+      }
     },
     render: {
       option(tags) {

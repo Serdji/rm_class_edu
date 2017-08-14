@@ -6,6 +6,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   before :cache, :save_original_filename
 
   class << self
+    def thumb_version(width, height)
+      name = 'thumb_%{w}x%{h}' % { w: width, h: height }
+
+      version name do
+        process resize_to_fill: [width * 2, height * 2]
+      end
+    end
+
     def file_storage?
       storage == CarrierWave::Storage::File
     end
@@ -46,6 +54,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   private
+
+  def full_filename(file)
+    [version_name, CGI.escape(file)].compact.join('_')
+  end
 
   def save_original_filename(file)
     return unless file.respond_to?(:original_filename)

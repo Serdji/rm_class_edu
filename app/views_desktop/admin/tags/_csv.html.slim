@@ -1,0 +1,10 @@
+.nav.navbar.navbar-default
+  = form_for :report, url: report_admin_tags_path(format: :csv), method: :get, html: { class: 'navbar-form navbar-left unvisible' } do |f|
+    .form-group
+      = f.label t('label.year')
+      = f.select :year, years_options, {selected: Time.zone.now.year}, class: 'form-control'
+    .form-group
+      = f.label t('label.month')
+      = f.select :month, monthes_options, {selected: Time.zone.now.month}, class: 'form-control'
+
+    = f.submit t('label.report'), class: 'btn btn-default'

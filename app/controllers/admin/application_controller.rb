@@ -10,7 +10,7 @@ class Admin::ApplicationController < ApplicationController
   helper_method :can?
 
   before_action :authenticate_employee!
-  before_action :set_paper_trail_whodunnit
+  before_action :set_current_employee
   before_action :check_controllers_credentials
 
   add_breadcrumb :dashboard, path: proc { admin_root_path }
@@ -23,14 +23,10 @@ class Admin::ApplicationController < ApplicationController
     Admin::EmployeeDecorator.decorate(super) if super.present?
   end
 
-  def user_for_paper_trail
-    current_employee ? current_employee.id : nil
-  end
-
   def can?(controller_name, action_name = 'index')
     # Deny only registered controllers and actions
-    credentials = current_employee.role.credentials['controllers']
-    credentials.fetch(controller_name.tableize, {}).fetch(action_name, true)
+    @credentials ||= current_employee.role.credentials['controllers']
+    @credentials.fetch(controller_name.tableize, {}).fetch(action_name, true)
   end
 
   def page_size_params
@@ -40,6 +36,10 @@ class Admin::ApplicationController < ApplicationController
   end
 
   private
+
+  def set_current_employee
+    RequestStore.store[:current_employee] = current_employee
+  end
 
   def redirect_to_success(path)
     redirect_to path, success: t("flashes.#{action_name}.success")

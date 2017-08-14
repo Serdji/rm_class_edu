@@ -1,11 +1,12 @@
 .tag__theme.js-tag-share.js-tag-ads
-  .tag__short-stripe: img src=tag.image.short_stripe_url
+  .tag__short-stripe: img src=tag.image_short_stripe_url
   .tag__content
     .tag__cover
-      img src=tag.image.thumb_shadow_url
+      a href=tag_path(slug: tag.slug)
+        img src=tag.image_thumb_with_shadow_url
     = render 'front/questions/question_social'
-    a.tag__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image.url href=tag_path(slug: tag.slug)
-      = break_too_long_words(tag.name, 15).truncate(35)
+    a.tag__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-search-suggest="card_topic" data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
+      = tag.name.truncate(35)
 
   .tag__footer
     .tag__question

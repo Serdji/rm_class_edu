@@ -23,8 +23,12 @@ module Concerns::Mobile
   end
 
   def setup_view_path
-    view_path = mobile_version? ? MOBILE_VIEWS : DESKTOP_VIEWS
-    prepend_view_path view_path
+    cookie_switch(mobile_version? ? MOBILE_VERSION : DESKTOP_VERSION)
+    prepend_view_path(mobile_version? ? MOBILE_VIEWS : DESKTOP_VIEWS)
+  end
+
+  def cookie_switch(value)
+    cookies[MOBILE_KEY] = { value: value, expires: 1.year.from_now }
   end
 
   included do

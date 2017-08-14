@@ -4,13 +4,14 @@
 
 - if questions_facade.questions.size > 0
   .questions
-    = render partial: 'front/questions/question_with_ad', collection: questions_facade.questions, as: :question, locals: { ads: 'home' }
+    - options = { collection: questions_facade.questions, as: :question, cached: desktop_collection_proc }
+    = render partial: 'front/questions/question', **options
 
 - content_for :relation_links, relation_links(questions_facade.questions)
 
 .pagination-wrapper = pagination(questions_facade.questions.object)
 
-- cache_desktop [:today_discussing_tags], expires_in: 1.minute do
+- cache_desktop [:today_discussing_tags], expires_in: 5.minutes do
   - if application_facade.today_discussing_tags.any?
     .question-common__up-title
       span сегодня обсуждают

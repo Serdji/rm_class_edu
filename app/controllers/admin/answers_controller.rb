@@ -7,7 +7,10 @@ class Admin::AnswersController < Admin::ApplicationController
   add_breadcrumb :answers, path: proc { admin_answers_path }
 
   def index
-    @answers = Qa::Answer.order(created_at: :desc).where(prepare_filtering_params)
+    relation = Qa::Answer.order('answers.created_at' => :desc).where(page_size_params.to_h)
+
+    @search = AnswerFilter.new(params[:answer_filter])
+    @answers = @search.apply(relation)
   end
 
   def edit
@@ -23,22 +26,10 @@ class Admin::AnswersController < Admin::ApplicationController
 
   private
 
-  # TODO: move this logic from controller
-  def prepare_filtering_params
-    filtering = page_size_params
-
-    if filtering.key?(:filter)
-      filtering[:filter].each do |name, value|
-        filtering[:filter][name] = value.reject!(&:empty?) if value.is_a? Array
-      end
-    end
-
-    filtering.permit!.to_h
-  end
-
   def find_answer
-    @answer = Qa::Answer.find(params[:id], include: 'complaints')
+    @answer ||= Qa::Answer.find(params[:id], include: 'complaints')
     raise Admin::NotFoundError unless @answer
+    @answer
   end
 
   def answer_params

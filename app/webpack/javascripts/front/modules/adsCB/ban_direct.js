@@ -1,9 +1,9 @@
 const configAds = require('./configAds');
 
-module.exports = (el, iter) => {
+module.exports = (el, index) => {
   let html = `<div class="baner">
-                <div id="ban_direct_${iter}"></div>
+                <div id="ban_direct_${index}"></div>
               </div>`;
   el.insertAdjacentHTML('afterEnd', html);
-  Adf.banner.sspScroll(`ban_direct_${iter}`, configAds.ban_direct.p, configAds.ban_direct.id);
+  Adf.banner.sspScroll(`ban_direct_${index}`, configAds.ban_direct.p, configAds.ban_direct.id);
 };

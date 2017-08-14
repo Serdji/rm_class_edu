@@ -1,18 +1,33 @@
 ._button-blue,
 ._button-dark-blue,
 ._button-opacity,
-._button-tab
+._button-tab,
+._button-grey
   centerBlock()
   textTransUp()
   transition transAll
   justify-content center
-  font-weight 100
-  font-size 12px
+  font-weight 500
+  font-size 11px
   cursor pointer
-  letter-spacing 1.3px
-  padding 0 20px
+  letter-spacing 1px
   min-width 100px
   height 35px
+  border 1px solid rgba(0, 0, 0, 0);
+  line-height: 11px;
+  box-sizing: border-box;
+  font-family: Roboto;
+  -webkit-font-smoothing antialiased
+
+  &-icon
+    width 6px
+    height 9px
+    display inline-block
+    margin-left 5.5px
+
+    &-svg
+      width 100%
+      height 100%
 
 
 ._button-blue
@@ -27,6 +42,7 @@
     background #eaefff
     color #a0b5fd
 
+
 ._button-dark-blue
   background #315efb
   color #ffffff
@@ -38,6 +54,40 @@
     pointer-events none
     background #315efb
     color #839efc
+    ._button-dark-blue
+      &-icon
+        &-svg
+          fill #839efc
+
+  &-icon
+    &-svg
+      transition transAll
+      fill #fff
+
+._button-grey
+  color #262626
+  box-sizing border-box
+  background rgba(238, 242, 244, 0.6)
+  font-family: Roboto-Medium;
+  &:hover
+    color #315efb
+    background rgba(238, 242, 244, 0.8)
+  &:active
+    color #274bc8
+    background rgba(238, 242, 244, 1)
+    ._button-grey
+      &-icon
+        &-svg
+          fill #274bc8
+  &[disabled="disabled"]
+    pointer-events none
+    background #f4f7f8
+    color #8d96b2
+
+  &-icon
+    &-svg
+      transition transAll
+      fill #315efb
 
 ._button-opacity
   color #000000

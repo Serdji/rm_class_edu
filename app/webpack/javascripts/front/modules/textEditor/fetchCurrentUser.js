@@ -48,7 +48,7 @@ module.exports = nodes => {
         each(answerUi, el => {
           // Показываем поле с аватаркой и именем пользователя, добавляем аватарку и имя пользователя полученые с сервера
           el.classList.remove('_disabled-user');
-          el.querySelector('.js-answer-ui-avatar').setAttribute('src', avatarUrl);
+          el.querySelector('.js-answer-ui-avatar').style.cssText = `background-image: url(${avatarUrl})`;
           // Если у пользователя нет имени и фамилии пишем Ученик с id ананима
           el.querySelector('.js-answer-ui-avatarname').innerText = firstName || lastName ? `${firstName} ${lastName}` : `Ученик ${anonymousId}`;
 

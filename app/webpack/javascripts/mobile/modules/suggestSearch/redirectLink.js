@@ -2,7 +2,7 @@ const { qs } = require('utils');
 
 module.exports = () => {
   // qs('.js-search-linck')
-  document.body.addEventListener('touchend', redirect, true);
+  document.body.addEventListener('click', redirect, false);
 
   function redirect(e) {
     let searchLinck = e.target.closest('.js-search-linck');

@@ -1,14 +1,13 @@
-.questions.js-questions-share
+.questions.js-questions-share.js-questions-ads
   .questions__header
     .questions__user
-      .questions__avatar
-        img src=question.user.avatar_url
+      .questions__avatar style=question.user_avatar_style
       .questions__name = question.user.full_name
   .questions__content.js-biog
     a.questions__title.js-questions-share-title data-title=question.seo_title href=question.path
       = question.title
     .questions__text.js-questions-share-text
-      == question.safe_body(length: 190, link: true, strip_tags: true)
+      == question.safe_body(length: 135, link: true, strip_tags: true)
     .questions__data
       .questions__data-icon
         = svg name: 'ico_time', klass: 'questions__data-icon-svg'
@@ -20,8 +19,11 @@
           span = tag.name
 
   .questions__footer
-    a.questions__answer href=question.path('answers')
+    a.questions__answer href=question.mobile_path
       .questions__answer-icon
         = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
-      = question.human_answers_counter
+      - if question.answers_counter > 0
+        = question.human_answers_counter
+      - else
+        | Ответить
     = render 'front/common/social'

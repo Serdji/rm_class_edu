@@ -1,4 +1,4 @@
-lock '3.5.0'
+lock '3.8.1'
 set :application, 'class_rambler_ru'
 set :rails_env, fetch(:stage)
 
@@ -45,6 +45,8 @@ set :default_env, rails_env: fetch(:stage)
 
 set :webdav_favicon, '8f56f789' # Settings.favicon_hash
 
+set :webdav_headers, { host: 'webdav.park.rambler.ru' }
+
 set :webdav_paths_backend, [
   'assets/admin/**/*.*',
   'assets/bootstrap/**/*.*',
@@ -62,3 +64,27 @@ set :webdav_paths_front, [
   'assets/.sprockets-manifest-*',
   '*.*'
 ]
+
+task :upload_bundle_config do
+  on roles(fetch(:bundle_roles)) do
+    within shared_path do
+      config = File.expand_path('../../.bundle_config', __FILE__)
+
+      execute(:mkdir, '-p', '.bundle')
+      upload!(config, shared_path.join('.bundle/config'))
+    end
+  end
+end
+
+task :copy_bundle_config do
+  on roles(fetch(:bundle_roles)) do
+    within shared_path do
+      destination = release_path.join('.bundle')
+
+      execute(:mkdir, '-p', destination)
+      execute(:cp, '.bundle/config', destination.join('config'))
+    end
+  end
+end
+
+before 'bundler:install', 'copy_bundle_config'

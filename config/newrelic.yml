@@ -1,8 +1,9 @@
-common: &default_settings
+default_settings: &default_settings
   # Required license key associated with your New Relic account.
   license_key: <%= ENV['NEWRELIC_LICENSE_KEY'] %>
   monitor_mode: false
   log_level: info
+  error_collector.ignore_errors: "ActionController::RoutingError,ActiveRecord::RecordNotFound,ActionController::InvalidAuthenticityToken"
 
 development:
   <<: *default_settings

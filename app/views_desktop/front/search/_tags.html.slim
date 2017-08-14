@@ -5,7 +5,7 @@
       .tag__cover
         img.js-tag-share-img src=tag.thumb_with_shadow_url
       = render 'front/questions/question_social'
-      a.tag__title._hover-reference-blue.js-tag-share-title href=tag.url
+      a.tag__title._hover-reference-blue.js-tag-share-title data-search-suggest="card_topic" href=tag.url
         == tag.name.truncate(35)
     .tag__footer
       .tag__question

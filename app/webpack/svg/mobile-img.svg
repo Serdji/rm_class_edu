@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>add-img</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="30" width="320" height="100"></rect>
+        <rect id="path-2" x="0" y="0" width="300" height="50"></rect>
+        <filter x="-0.2%" y="-3.0%" width="100.3%" height="104.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0.909803922   0 0 0 0 0.917647059   0 0 0 0 0.941176471  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="WORK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Создание-вопроса-и-написание-ответа" transform="translate(-163.000000, -456.000000)">
+            <g id="Комменты" transform="translate(150.000000, 66.000000)"></g>
+        </g>
+        <g id="09.01-Пишем-вопрос-—-Первый-экран" transform="translate(-13.000000, -356.000000)">
+            <g id="Введите-ваш-ответ" transform="translate(0.000000, 263.000000)">
+                <g id="back">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#E8EAF0" stroke-width="1" x="-0.5" y="29.5" width="321" height="101"></rect>
+                </g>
+                <g id="Добавить-изображение" transform="translate(10.000000, 80.000000)">
+                    <g id="back">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="add-img" transform="translate(3.000000, 13.000000)" fill-rule="nonzero" fill="#315EFB">
+                        <path d="M2,19 L22,19 L22,5 L2,5 L2,19 Z M1,4 L23,4 L23,20 L1,20 L1,4 Z" id="scale"></path>
+                        <path d="M1,20.080789 L7.0070061,14.0737829 L10.04254,17.1093168 L16.2564322,10.8954246 L23,17.6389924 L23,16.2247789 L16.2564322,9.48121105 L10.04254,15.6951032 L7.0070061,12.6595693 L1,18.6665754 L1,20.080789 Z" id="Combined-Shape"></path>
+                        <path d="M6,8.81635631 C6,9.3730852 6.4444532,9.81635631 7,9.81635631 C7.55672889,9.81635631 8,9.37190311 8,8.81635631 C8,8.25962742 7.5555468,7.81635631 7,7.81635631 C6.44327111,7.81635631 6,8.26080951 6,8.81635631 Z M5,8.81635631 C5,7.71178681 5.88772964,6.81635631 7,6.81635631 C8.1045695,6.81635631 9,7.70408596 9,8.81635631 C9,9.92092581 8.11227036,10.8163563 7,10.8163563 C5.8954305,10.8163563 5,9.92862667 5,8.81635631 Z" id="Rectangle-3"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

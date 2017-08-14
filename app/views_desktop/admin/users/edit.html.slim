@@ -11,7 +11,7 @@
       .col-sm-8
         div.user
           - if url = @user.avatar_url
-            img.user__avatar> src=url
+            .user__avatar> style='background-image: url(#{url})'
           span.user__full-name> = @user.full_name
 
     .form-group
@@ -31,6 +31,19 @@
         = f.label :is_sentry
       .col-sm-5
         = f.check_box :is_sentry, disabled: !can?(controller_name, 'is_sentry')
+
+    - if current_employee.has_role?(:superuser)
+      .form-group
+        .col-sm-2.text-right
+          = f.label :is_fake
+        .col-sm-5
+          = f.check_box :is_fake
+
+      .form-group
+        .col-sm-2.text-right
+          = f.label :emails
+        .col-sm-5
+          = f.object.emails.join(', ')
 
   .row
     .form-group

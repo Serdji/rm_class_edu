@@ -2,6 +2,8 @@ require 'hashie'
 
 class SearchService
   class Result
+    attr_reader :result
+
     delegate :total_found, :questions_found, :tags_found, to: :@result
 
     def initialize(result, pagination = {})

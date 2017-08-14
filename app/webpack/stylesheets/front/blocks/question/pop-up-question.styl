@@ -10,6 +10,9 @@
   overflow scroll
   padding 20px
 
+  input
+    margin-bottom 0
+
   &._activ
     display flex
 
@@ -72,10 +75,21 @@
     color #262626
 
   &__quantity-symbols
+    margin-top 8px
     opacity 0.4
     font-size 13px
     line-height 1.54
     color #262626
+
+  &__title-error
+    @extend .pop-up-question__quantity-symbols
+    opacity 1
+    color red
+
+  &__tag-ids-error
+    @extend .pop-up-question__quantity-symbols
+    opacity 1
+    color red
 
   &__box
     margin-top 25px
@@ -91,13 +105,15 @@
 
   &__button
     margin-right 20px
+    width 168px
 
   &__avatar
     width 24px
     height 24px
     border-radius 50%
-    overflow hidden
     margin-right 8px
+    background-size cover
+    background-position 50%
 
   &__name
     font-size 13px
@@ -115,3 +131,6 @@
 
 ._mb
   margin-bottom 10px
+
+._hidden
+  display none

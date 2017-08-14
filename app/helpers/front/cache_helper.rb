@@ -20,4 +20,23 @@ module Front::CacheHelper
 
     cache(name, options, &block)
   end
+
+  def most_discussing_questions_key
+    key = [:most_discussing_questions]
+
+    if controller_name == 'tags' && action_name == 'show'
+      key << 'tags'
+      key << params[:slug]
+    end
+
+    key
+  end
+
+  def most_discussing_questions
+    if controller_name == 'tags' && action_name == 'show'
+      tags_facade.discussing_questions
+    else
+      application_facade.most_discussing_questions
+    end
+  end
 end

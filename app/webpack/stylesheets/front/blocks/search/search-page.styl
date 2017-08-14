@@ -32,7 +32,7 @@
         width 100%
         height 2px
         background-color #315efb
-  
+
   &__counter
     width 42px
     height 16px
@@ -50,6 +50,7 @@
     padding 20px 22px 22px 18px
     position relative // for absolute share
     box-sizing border-box
+    word-wrap break-word
     &:after
       content ""
       display block
@@ -66,30 +67,30 @@
     margin-bottom 16px
     padding-top 26px
     padding-bottom 27px
-  
+
   &__null-result
     margin-top 23px
-  
+
   &__null-result-image
     display block
     margin auto
-      
+
   &__null-result-text
     margin-top 16px
     font-size 18px
     font-weight bold
     color #315efb
     text-align center
-  
+
   &__item:first-child
   &__item:last-of-type
     &:after
       display none
-  
+
   // отспут для пагинации
   &__item:last-child
     margin-bottom 20px
-  
+
   &__item-title
     display block
     color #000
@@ -113,7 +114,7 @@
     line-height 1.43
     margin-bottom 5px
     overflow hidden
-    
+
     // фикс верстки приходящей от поиска, удалить перед релизом
     *
       margin 0 !important
@@ -121,12 +122,12 @@
       font-size inherit !important
       font-family inherit !important
       color inherit !important
-    
+
   &__answer
     font-size 13px
     color #a2a2a2
     @extend ._hover-reference-blue
-  
+
   &__image
     width 72px
     height 72px
@@ -139,14 +140,14 @@
     margin-bottom 20px
     &:after
       display none
-    
+
     & ^[0]__answer
     & ^[0]__question
       color #262626
       font-size 13px
       margin-right 20px
       @extend ._hover-reference-blue
-    
+
     .question-common__social
       position absolute
       top 20px

@@ -1,19 +1,27 @@
-common: &default_settings
-  host: webdav.park.rambler.ru
+default_settings: &default_settings
+  header: webdav.park.rambler.ru
   domain: http://webdav01.park.rambler.ru
+
 development:
-  domain: 'http://localhost'
-  path: '/admin/webdav_mock'
+  <<: *default_settings
+  path: class_stage2
+
 test:
+  <<: *default_settings
+  path: class_stage2
+
 staging:
   <<: *default_settings
   path: class_stage
+
 staging2:
   <<: *default_settings
   path: class_stage2
+
 preprod:
   <<: *default_settings
   path: class_preprod
+
 production:
   <<: *default_settings
   path: class_prod

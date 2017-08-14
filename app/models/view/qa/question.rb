@@ -1,9 +1,16 @@
 class View::Qa::Question
   include Virtus.model
 
+  PUBLIC_STATES = %w(fresh with_complaints without_complaints).freeze
+
   class << self
     def get(path, params = {})
       Qa::Client.call(path, self, params)
+    end
+
+    def published(params = {})
+      params = params.deep_merge(filter: { state: PUBLIC_STATES })
+      get('questions', params)
     end
 
     def find(id, options = {})
@@ -29,7 +36,6 @@ class View::Qa::Question
   attribute :created_at, DateTime
 
   attribute :tags, Array[View::Qa::Tag]
-  attribute :taggings, Array[View::Qa::Tagging]
 
   attribute :user, View::Qa::User
   attribute :best_answer, View::Qa::Answer
@@ -46,7 +52,17 @@ class View::Qa::Question
 
   delegate :title, :keywords, :description, to: :seo, prefix: true, allow_nil: true
 
+  attr_writer :seo
+
   def seo
     @seo ||= Seo.find_by(seoable_type: 'Qa::Question', seoable_id: id)
+  end
+
+  def images
+    @images ||= Image.where(imageable_type: 'Qa::Question', imageable_id: id)
+  end
+
+  def redirect
+    @redirect = Redirect.find_by(entity_type: 'Qa::Question', entity_id: id)
   end
 end

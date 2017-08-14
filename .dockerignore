@@ -1,0 +1,13 @@
+.git
+.dockerignore
+
+node_modules
+
+public
+coverage
+
+app/assets
+app/webpack
+
+log/*
+tmp/*

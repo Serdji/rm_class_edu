@@ -4,11 +4,13 @@
 html
 
   head
-    script src="//ssp.rambler.ru/lpdid.js"
-    script src="//ssp.rambler.ru/capirs.js"
+    = render 'common/ads/criteo'
+    script src=javascript_path('ramblertopline', app: 'ramblertopline')
     meta charset="utf-8" /
     meta content="IE=edge" http-equiv="X-UA-Compatible" /
-    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"  /
+    meta name = "format-detection" content = "telephone=no"
+
 
     = render 'common/seo_open_graph'
 
@@ -17,7 +19,7 @@ html
 
     = front_include_favicons
 
-    link rel="canonical" href=canonical /
+    link rel="canonical" href=(content_for?(:canonical) ? yield(:canonical) : canonical) /
 
     = content_for :relation_links
 
@@ -25,38 +27,39 @@ html
   body
     = embedded_svg :mobile
 
-    - cache_mobile [:front, :ads, :google_tag] do
-      = render 'common/ads/google_tag'
 
-    - cache_mobile [:front, :ads, :fullscreen] do
-      = render 'front/ads/fullscreen'
+    #fullscreen
 
-    - cache_mobile [:front, :ads, :rich_format] do
-      = render 'front/ads/rich_format'
+    #ban-rich
 
     header
+      - cache_desktop [:front, :top_line] do
+        = render 'front/common/top_line'
       - cache_mobile [:front, :common, :heading] do
         = render 'front/common/heading'
 
-      - type = %w(questions home).include?(controller_name) ? :questions : :tags
-      - cache_mobile [:front, :common, :menu, type] do
+      - cache_mobile [:front, :common, :menu, controller_name, application_facade.tag_menu] do
         = render 'front/common/menu'
 
     main
-      - cache_mobile [:front, :ads, :top_banner] do
-        .baner
-          = render 'front/ads/top_banner'
+      .baner
+        #top-banner
       .main__content
         = yield
 
     - unless @hide_ban_footer
       .ban_footer
-        #ban_footer
+        #ban-footer
 
     footer
       - cache_mobile [:front, :common, :footer] do
         = render 'front/common/footer'
 
+      - cache_mobile [:front, :ads, :google_tag] do
+        = render 'common/ads/google_tag'
+
+      script src="//ssp.rambler.ru/lpdid.js"
+      script src="//ssp.rambler.ru/capirs.js"
       script src=javascript_path('vendors', app: 'mobile')
       script src=javascript_path('application', app: 'mobile')
 

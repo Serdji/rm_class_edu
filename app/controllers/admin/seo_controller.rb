@@ -30,6 +30,6 @@ class Admin::SeoController < Admin::ApplicationController
   end
 
   def find_seo
-    @seo = Seo.find(params[:id])
+    @seo ||= Seo.find(params[:id])
   end
 end

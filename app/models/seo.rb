@@ -2,10 +2,14 @@ class Seo < ActiveRecord::Base
   TITLE_MAX_LENGTH = 250
   DESCRIPTION_MAX_LENGTH = 200
 
+  include Loggable
+
   belongs_to :seoable, polymorphic: true
 
   before_save :cut_fields
   before_save :fill_fields, unless: -> { filled? }
+
+  loggable :all
 
   def filled?
     title.presence && keywords.presence && description.presence

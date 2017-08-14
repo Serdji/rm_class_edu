@@ -12,6 +12,7 @@ Rails.application.configure do
 
     config.action_controller.perform_caching = false
     config.cache_store = :null_store
+    config.http_cache_store = ActiveSupport::Cache::NullStore.new
   end
 
   config.action_mailer.raise_delivery_errors = false

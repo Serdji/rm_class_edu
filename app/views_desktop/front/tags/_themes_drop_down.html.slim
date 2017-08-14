@@ -1,0 +1,25 @@
+.themes-drop-down.js-themes-drop-down
+  .themes-drop-down__menu.js-menu-themes-drop-down
+    .themes-drop-down__column
+      .themes-drop-down__head Популярные темы
+      - application_facade.tag_menu.left_side.each do |tag|
+        a.themes-drop-down__card href=tag['url']
+          .themes-drop-down__img: img src=tag['image_url']
+          .themes-drop-down__content
+            .themes-drop-down__title = tag['name']
+            .themes-drop-down__counter
+              - count = tag['answers_count']
+              span> = count
+              span = I18n.t('activemodel.models.qa/answer', count: count)
+
+    .themes-drop-down__column
+      - application_facade.tag_menu.right_side.each do |main_tag|
+        .themes-drop-down__tags
+          .themes-drop-down__head._right-column: a href=main_tag['url'] = main_tag['name']
+          .themes-drop-down__tag
+            - main_tag['tags'].each_with_index do |tag, index|
+              - name = tag['name']
+              - name << ',' if main_tag['tags'].count != (index + 1)
+              a._hover-reference-blue> href=tag['url'] = name
+
+      a.themes-drop-down__button._button-dark-blue rel="nofollow" href=temy_path Показать все

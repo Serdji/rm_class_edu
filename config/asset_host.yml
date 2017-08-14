@@ -1,0 +1,17 @@
+development:
+  domain: https://staging2.class.rambler.ru
+
+staging:
+  domain: https://staging.class.rambler.ru
+
+staging2:
+  domain: https://staging2.class.rambler.ru
+
+test:
+  domain: https://host.com
+
+preprod:
+  domain: https://preprod.class.rambler.ru
+
+production:
+  domain: https://class.rambler.ru

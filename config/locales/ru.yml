@@ -1,7 +1,22 @@
 ru:
+  csv_stats:
+    found_emails: Найдено email
+    not_found_emails: Не найдено email
+    not_found_emails_list: Список не найденных email
+    new_fakers: Новых отличников
+
   qa:
     errors:
       invalid_size: имеет неверный размер
+      models:
+        question:
+          attributes:
+            tag_ids:
+              presence: Темы обязательны для заполнения
+              too_big: Можно добавить не больше 10 тем
+
+            title:
+              too_few_chars: Вопрос должен состоять из %{count} и более символов (не считая знаков препинания)
 
   placeholders:
     subject:
@@ -36,20 +51,20 @@ ru:
     - Чт
     - Пт
     - Сб
-    abbr_month_names:
+    canonical_month_names:
     -
-    - янв.
-    - февр.
-    - марта
-    - апр.
-    - мая
-    - июня
-    - июля
-    - авг.
-    - сент.
-    - окт.
-    - нояб.
-    - дек.
+    - январь
+    - февраль
+    - март
+    - апрель
+    - май
+    - июнь
+    - июль
+    - август
+    - сентябрь
+    - октябрь
+    - ноябрь
+    - декабрь
     day_names:
     - воскресенье
     - понедельник
@@ -123,17 +138,20 @@ ru:
     edit:              Сохранить
     handlers:          Действия
     logout:            Выход
+    month:             Месяц
     new:               Создать
     new_catalog:       Новый раздел
     root_catalog:      Содержание
     new_paragraph:     Новый параграф
     published:         Опубликовано
+    report:            Отчет
     reset:             Сбросить
     search:            Поиск
     update:            Сохранить
     show:              Детальная страница
     version_log:       Лог действий
     url_label:         URL страницы на сайте
+    year:              Год
     books_title:       Учебники, которые пригодятся на уроке
 
   events:
@@ -157,60 +175,89 @@ ru:
   activemodel:
     attributes:
       defaults: &defaults
-        title:           Заголовок
-        body:            Содержимое
-        slug:            Чпу
-        created_at:      Дата создания
-        updated_at:      Дата обновления
-        id:              ID
+        title:               Заголовок
+        body:                Содержимое
+        slug:                Чпу
+        created_at:          Дата создания
+        updated_at:          Дата обновления
+        id:                  ID
+      answer_filter:
+        with_complaints:     С жалобами
+        without_best_answer: Без лучшего ответа
       question_filter:
         without_answers:     Без ответов
         without_best_answer: Без лучшего ответа
+        only_interesting_questions: Интересные вопросы
+        with_complaints:     С жалобами
         title:               Заголовок
+      tag_filter:
+        name:                Заголовок
       user_filter:
-        first_name:      Имя
-        last_name:       Фамилия
+        first_name:          Имя
+        last_name:           Фамилия
       complaint_filter:
-        body:            Содержимое
+        body:                Содержимое
       section_form:
-        name:            Название
-        catalog_id:      Укажите вложение раздела в оглавлении
-        section_type:    Тип раздела
+        name:                Название
+        catalog_id:          Укажите вложение раздела в оглавлении
+        section_type:        Тип раздела
       qa/complaint:
         <<: *defaults
-        user:            Пользователь
-        comment:         Решение по жалобе
+        user:                Пользователь
+        comment:             Решение по жалобе
+      qa/complaint/complaints:
+        <<: *defaults
       qa/complaint/users:
-        first_name:      Пользователь
+        first_name:          Пользователь
       qa/image:
-        image:           Изображение
+        image:               Изображение
       qa/question:
         <<: *defaults
-        is_interesting:  Интересный вопрос
-        state:           Статус
-        tag_ids:         Темы
+        is_interesting:      Интересный вопрос
+        state:               Статус
+        tag_ids:             Темы
+      qa/question/questions:
+        <<: *defaults
       qa/tag:
         <<: *defaults
-        name:            Название
-        weight:          Сортировка
-        linked_tag_ids:  Связанные темы
-        is_published:    При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
+        name:                Название
+        weight:              Сортировка
+        linked_tag_ids:      Связанные темы
+        is_published:        При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
+      admin/tag_form:
+        <<: *defaults
+        name:                Название
+        weight:              Сортировка
+        linked_tag_ids:      Связанные темы
+        is_published:        При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
       qa/answer:
         <<: *defaults
-        state:       Статус
-        best_answer: Лучший ответ
+        state:               Статус
+        best_answer:         Лучший ответ
+      qa/answer/answers:
+        <<: *defaults
       qa/user:
-        is_sentry:       Дежурный
-        answers_count:   Кол-во ответов
-        questions_count: Кол-во вопросов
-        state:           Статус
-        best_answer:     Лучший ответ
+        is_sentry:           Дежурный
+        is_fake:             Отличник
+        answers_count:       Кол-во ответов
+        questions_count:     Кол-во вопросов
+        state:               Статус
+        best_answer:         Лучший ответ
     models:
       question:       Вопросы
       tag:            Темы
       user:           Пользователи
       answer:         Ответы
       complaint:      Жалобы
+      qa/complaint:
+        one:          жалоба
+        few:          жаболы
+        many:         жалоб
+        other:        жалобы
+        accusative:   жалобы
+        genitive:     жалоба
+        dative:       жалобе
+        zero:         жалоб
       qa/question:
         one:          вопрос
         few:          вопроса
@@ -238,6 +285,15 @@ ru:
         genitive:     тема
         dative:       теме
         zero:         тем
+      qa/user:
+        one:          пользователь
+        few:          пользователя
+        many:         пользователей
+        other:        пользователи
+        accusative:   пользователя
+        genitive:     пользователь
+        dative:       пользователю
+        zero:         пользователей
   activerecord:
     errors:
       messages:
@@ -257,10 +313,11 @@ ru:
       metapage:    SEO-информация
       page:        Страницы
       publishing:  Издательства
+      redirect:    Редирект
       role:        Роли
       subject:     Предметы
       seo:         SEO
-      seo_link:   SEO-блок
+      seo_link:    SEO-блок
       section:     Решения к учебнику
       paragraph:   Решения к учебнику
       question:    Вопросы
@@ -271,6 +328,7 @@ ru:
       setting:     Настройки
       settings:    Настройки
       version:     Лог действий
+      images/tag:  Обложка темы
 
     attributes:
       defaults: &defaults
@@ -377,20 +435,20 @@ ru:
         <<: *defaults
         is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
 
-      image:
-        alt_text: Алтернативный текст
-
-      images/cover:
-        image: Обложка
-        _destroy: Удалить
-
       seo:
         title:       Title-заголовок
         description: Описание
         keywords:    Ключевые слова
+
+      image:
+        image: Изображение
 
       version:
         <<: *defaults
         id:      ID
         from_at: Начиная с даты
         to_at:   Заканчивая датой
+
+      redirect:
+        redirect_type: Тип
+        redirect_id:   ID

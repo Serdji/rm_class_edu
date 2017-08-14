@@ -12,7 +12,7 @@
       .col-sm-8
         div.user.form-control-text
           - if url = complaint.user.avatar_url
-            img.user__avatar> src=url
+            .user__avatar> style='background-image: url(#{url})'
           span.user__full-name> = complaint.user.full_name
 
     .form-group
@@ -21,7 +21,7 @@
 
     .form-group
       .col-sm-2.text-right Описание:
-      .col-sm-5== sanitize(complaint.body, tags: %w(a), attributes: %w(href target))
+      .col-sm-5== complaint.body_with_links
 
     .form-group
       .col-sm-2.text-right Email для обратной связи:

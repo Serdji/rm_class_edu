@@ -7,10 +7,13 @@
     - path = question_answers_path(question_id: question.id)
     = form_for Qa::Answer.new(question_id: question.id, body: nil), url: path, html: { class: 'your-answer__form js-form' } do |f|
       = f.text_area :body, class: 'your-answer__ditor js-editor-your-answer', placeholder: 'Введите ваш ответ...'
+      .pop-up-question__quantity-symbols
+        span.js-max-length-counter-editor-answer Можно ввести 4000 cимволов
+      .js-captcha-answer
       .your-answer__box.js-answer-ui._disabled-user
         .your-answer__button._button-none._button-dark-blue.js-form-button отправить
         .question-common__user
-          img.question-common__avatar.js-answer-ui-avatar
+          .question-common__avatar.js-answer-ui-avatar
           .question-common__name.js-answer-ui-avatarname
           .question-common__is-sentry.js-answer-ui-sentry дежурный
       .pop-up-question__agreement

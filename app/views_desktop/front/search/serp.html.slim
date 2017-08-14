@@ -5,11 +5,11 @@
       = "Результаты поиска по запросу «#{params[:query]}»"
 
     - active = 'search-page__subtitle--active'
-    a.search-page__subtitle class=(active if questions_active?) href=search_serp_path(type: 'questions', query: params[:query])
+    a.search-page__subtitle data-search-suggest=(@search_result.empty? ? "search_result_questions_blank" : "search_result_questions") class=(active if questions_active?) href=search_serp_path(type: 'questions', query: params[:query])
       span.search-page__subtitle-text Вопросы
       span.search-page__counter = "(#{@search_result.questions_found})"
 
-    a.search-page__subtitle class=(active if tags_active?) href=search_serp_path(type: 'tags', query: params[:query])
+    a.search-page__subtitle data-search-suggest=(@search_result.empty? ? "search_result_topics_blank" : "search_result_topics") class=(active if tags_active?) href=search_serp_path(type: 'tags', query: params[:query])
       span.search-page__subtitle-text Темы
       span.search-page__counter = "(#{@search_result.tags_found})"
 
@@ -26,8 +26,8 @@
           .question-common__up-title
             span> Новые вопросы
           .questions
-            - options = { collection: search_facade.fresh_questions, as: :question, locals: { ads: 'home' } }
-            = render partial: 'front/questions/question_with_ad', **options
+            - options = { collection: search_facade.fresh_questions, as: :question, cached: desktop_collection_proc }
+            = render partial: 'front/questions/question', **options
     - else
       - cache_desktop [:serp, :most_answered_tags], expires_in: 1.minute do
         .question-common__up-title

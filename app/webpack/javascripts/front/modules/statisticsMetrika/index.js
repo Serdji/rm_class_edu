@@ -1,9 +1,12 @@
 const { qs } = require('utils');
+const statisticsMetrika = require('./statisticsMetrika');
 
-if (qs('.js-search')) {
-  let nodes = {
-    search: qs('.js-search')
-  };
-  require('./statisticsMetrika')(nodes);
-}
+setTimeout(() => {
+  if (window.yaCounter43407474 && qs('.js-search')) {
+    let nodes = {
+      search: qs('.js-search')
+    };
 
+    statisticsMetrika(nodes);
+  }
+}, 1000);

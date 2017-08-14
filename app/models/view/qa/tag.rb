@@ -1,9 +1,15 @@
 class View::Qa::Tag
   include Virtus.model
+  include ::Qa::Imageable
 
   class << self
     def get(path, params = {})
       Qa::Client.call(path, self, params)
+    end
+
+    def published(params = {})
+      params = params.deep_merge(filter: { is_published: true })
+      get('tags', params)
     end
 
     def find(id, options = {})
@@ -24,8 +30,6 @@ class View::Qa::Tag
   attribute :created_at, DateTime
   attribute :updated_at, DateTime
 
-  attribute :image, View::Qa::TagImage
-
   alias read_attribute_for_serialization send
 
   def cache_key
@@ -34,7 +38,13 @@ class View::Qa::Tag
 
   delegate :title, :keywords, :description, to: :seo, prefix: true, allow_nil: true
 
+  attr_writer :seo, :image
+
   def seo
     @seo ||= Seo.find_by(seoable_type: 'Qa::Tag', seoable_id: id)
+  end
+
+  def image
+    @image ||= Image.find_by(imageable_type: 'Qa::Tag', imageable_id: id)
   end
 end

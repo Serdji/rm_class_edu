@@ -4,7 +4,12 @@
   p.complaint
     = link_to 'Жалоба', edit_admin_complaint_path(complaint)
     span<> от
-    span= l(complaint.created_at, format: :complaint)
+    span>= l(complaint.created_at, format: :complaint)
+    - if complaint.updated_at != complaint.created_at
+      span
+        '(обновлено
+        = l(complaint.updated_at, format: :complaint)
+        ')
 
   = form_for [:admin, complaint], as: :complaint, remote: true, html: { class: 'form-horizontal complaint-form-js' } do |f|
     .form-group

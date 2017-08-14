@@ -1,0 +1,29 @@
+.menu-themes._hidden.js-popular-themes
+  .menu-themes__header.js-close-popular-themes
+    .menu-themes__border
+      .menu__popular-arrow
+        = svg name: "popular-arrow", klass: "menu__popular-arrow-svg"
+      span Назад
+  .menu-themes__menu
+    .menu-themes__themes
+      - application_facade.tag_menu.left_side.each do |tag|
+        a.menu-themes__theme href=tag['url']
+          .menu-themes__img: img src=tag['image_url']
+          .menu-themes__block
+            .menu-themes__title = tag['name']
+            .menu-themes__counter
+              - count = tag['answers_count']
+              span> = count
+              = I18n.t('activemodel.models.qa/answer', count: count)
+
+    .menu-themes__sub-theme
+      - application_facade.tag_menu.right_side.each do |main_tag|
+        .menu-themes__sub-theme
+          .menu-themes__sub-theme-title: a href=main_tag['url'] = main_tag['name']
+          .menu-themes__sub-theme-block
+            - main_tag['tags'].each_with_index do |tag, index|
+              - name = tag['name']
+              - name << ',' if main_tag['tags'].count != (index + 1)
+              a.menu-themes__sub-theme-point> href=tag['url'] = name
+
+    a.menu-themes__button._button-dark-blue rel="nofollow" href=temy_path Показать все

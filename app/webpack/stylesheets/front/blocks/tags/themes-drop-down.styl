@@ -1,0 +1,95 @@
+.themes-drop-down
+  position absolute
+  z-index 2
+  top 0
+  right 0
+  bottom 0
+  left 0
+  background rgba(0,0,0,0.8)
+  clip rect(0,0,0,0)
+  &._active
+    clip auto
+
+  &__menu
+    border-top 2px solid rgba(141, 150, 178, 0.2)
+    border-radius 1px
+    background blockBack
+    margin 0 auto
+    width 780px
+    padding 40px 30px
+    box-sizing border-box
+
+  &__column
+    vertical-align top
+    display inline-block
+
+  &__head
+    font-size 16px
+    font-weight 600
+    line-height 1.88
+    color #262626
+    margin-bottom 12px
+    font-family CorsicaRamblerLX-SemiBold
+    &._right-column
+      margin-bottom 3px
+    a
+      color black
+      cursor pointer
+      &:hover
+        color #315efb
+
+  &__card
+    centerBlock()
+    width 320px
+    height 55px
+    border-top 1px solid rgba(52, 59, 76, 0.1)
+    margin-right 40px
+    cursor pointer
+
+  &__card:hover &__title
+      color #315efb
+
+  &__img
+    width 30px
+    height 30px
+    margin-right 15px
+
+    img
+        width 100%
+
+  &__content
+    margin-bottom -2px
+    overflow hidden
+
+  &__title
+    textEllipsis()
+    font-family Roboto
+    font-size 14px
+    line-height 1.43
+    color #262626
+
+  &__counter
+    font-size 13px
+    opacity 0.4
+    font-family Roboto
+    line-height 1.54
+    color #262626
+
+  &__tags
+    width 320px
+    margin-bottom 13px
+
+  &__tag
+    font-size 14px
+    a
+      display inline-block
+      font-family Roboto
+      line-height 1.71
+      color #262626
+
+
+  &__button
+    width 145px
+    height 35px
+    margin-top 20px
+

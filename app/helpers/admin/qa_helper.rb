@@ -65,8 +65,8 @@ module Admin::QaHelper
 
   def qa_tags_for_select(additional_tags = nil)
     current = additional_tags ? additional_tags : []
-    current = current.collect { |t| [t.name, t.id] }
+    current = current.map { |t| [t.name, t.id] }
 
-    (current + Qa::Tag.published.collect { |t| [t.name, t.id] }).uniq
+    (current + Qa::Tag.published.map { |t| [t.name, t.id] }).uniq
   end
 end

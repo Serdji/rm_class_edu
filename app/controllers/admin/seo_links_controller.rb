@@ -11,12 +11,21 @@ class Admin::SeoLinksController < Admin::ApplicationController
   end
 
   def update
-    save
+    save(:update)
+  end
+
+  def collection
+    params['seo_links'].each do |id, seo_link|
+      item = SeoLink.find(id)
+      item.assign_attributes(seo_link.permit(:title, :url))
+      item.save
+    end
+    redirect_to admin_seo_links_path
   end
 
   def create
     @seo_link = SeoLink.new
-    save
+    save(:create)
   end
 
   def destroy
@@ -30,7 +39,7 @@ class Admin::SeoLinksController < Admin::ApplicationController
     params.require(:seo_link).permit(:id, :title, :url)
   end
 
-  def save
+  def save(_event = :create)
     @seo_link.assign_attributes(seo_link_params)
 
     if @seo_link.save
@@ -42,7 +51,7 @@ class Admin::SeoLinksController < Admin::ApplicationController
   end
 
   def find_seo_link
-    @seo_link = SeoLink.find(params[:id])
+    @seo_link ||= SeoLink.find(params[:id])
   end
 
   def build_ransack

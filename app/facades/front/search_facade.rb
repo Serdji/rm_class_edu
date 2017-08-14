@@ -4,20 +4,24 @@ class Front::SearchFacade
 
   def fresh_questions
     @fresh_questions ||= begin
-      questions = Qa::Question.where(
-        filter: { has_best_answer: true, state: Qa::Question::PUBLIC_STATES },
-        include: 'tags,taggings,user'
-      ).order(created_at: :desc).limit(QUESTIONS_LIMIT)
+      options = {
+        filter: { has_best_answer: true, state: ::Qa::Question::PUBLIC_STATES },
+        include: 'tags,user', sort: '-questions.created_at',
+        page: { size: QUESTIONS_LIMIT }
+      }
 
+      questions = View::Qa::Question.get('questions', options)
       Front::QuestionDecorator.decorate_collection(questions)
     end
   end
 
   def most_answered_tags
     @most_answered_tags ||= begin
-      tags = Qa::Tag.has_questions.where(include: 'image')
-                    .order(answers_counter: :desc).limit(TAGS_LIMIT)
-
+      options = {
+        has_questions: true,
+        sort: '-answers_counter', page: { size: TAGS_LIMIT }
+      }
+      tags = View::Qa::Tag.get('tags', options)
       Front::TagDecorator.decorate_collection(tags)
     end
   end

@@ -15,7 +15,7 @@ server 'front-app02.class.rambler.ru', roles: %w(front)
 
 server 'back01.class.rambler.ru',  roles: %w(backend db), primary: true
 server 'back02.class.rambler.ru',  roles: %w(backend)
-server 'queue01.class.rambler.ru', roles: %w(queue)
+server 'queue01.class.rambler.ru', roles: %w(queue reindex)
 server 'queue02.class.rambler.ru', roles: %w(queue)
 
 set :ssh_options, user: 'class'

@@ -1,0 +1,24 @@
+.js-contact-form-answer
+.contact-form__title Вопрос
+
+.contact-form__question
+  = question.title
+
+.contact-form__title Ваш ответ
+
+- path = question_answers_path(question_id: question.id)
+= form_for Qa::Answer.new(question_id: question.id, body: nil), url: path, html: { class: 'js-form' } do |f|
+  .contact-form__description.js-block-description
+    .contact-form__description-text.js-text-description contenteditable="true"
+    .contact-form__description-picture
+      label.js-input-label
+        input.js-input-picture accept="image/*" name="image-file-upload" type="file"
+        .contact-form__description-icon
+          /= svg name: "mobile-img", klass: "contact-form__description-icon-svg"
+          = render 'front/svg/svg_mobile_img'
+        .contact-form__placeholder Добавить изображение
+  .contact-form__symbols.js-text-symbols-description._grey
+    span.js-output-counter-description
+
+  .contact-form__button.js-send-button._button-dark-blue data-back-url=question.path onclick="yaCounter43407619.reachGoal('otvet_na_vopros');"
+    | ответить

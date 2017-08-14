@@ -6,12 +6,12 @@ class Admin::VersionsController < Admin::ApplicationController
   def index
     @q = Version.ransack(params[:q])
     @versions = @q.result
-                  .includes(:employee, :item)
+                  .includes(:employee)
                   .order(created_at: :desc)
                   .paginate(per_page: Settings.el_per_page, page: params[:page] || 1)
   end
 
   def show
-    @version = PaperTrail::Version.find(params[:id])
+    @version = Version.find(params[:id])
   end
 end

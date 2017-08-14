@@ -1,6 +1,10 @@
 body
-  font-family Roboto, sans-serif
   background #eef2f4
+  font-family Roboto
+  -webkit-font-smoothing subpixel-antialiased !important
+  -webkit-backface-visibility hidden
+  -moz-backface-visibility    hidden
+  -ms-backface-visibility     hidden
 
 ul,
 ol
@@ -24,6 +28,7 @@ a
     padding-left 0
 
 main
+  position relative
   padding-top 20px
 
 footer
@@ -76,7 +81,34 @@ footer
 
 .mce-in
   input:nth-child(1)
+    display none
     pointer-events none
+
+.mce-combobox
+  width 250px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+
+  .mce-btn,
+  ._ok,
+  ._error
+    vertical-align middle
+
+  .mce-btn
+    border 1px solid #c5c5c5 !important
+
+  ._ok,
+  ._error
+    vertical-align middle
+    margin-left 10px
+    font-size 11px
+
+  ._ok
+    color #2fc505
+
+  ._error
+    color red
 
 .mce-tinymce
   overflow hidden

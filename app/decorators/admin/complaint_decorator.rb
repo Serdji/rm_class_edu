@@ -1,5 +1,6 @@
 class Admin::ComplaintDecorator < Draper::Decorator
   include HumanDates
+  LINK_REGEXP = %r{(http[s]?://|www\.)[^\s]+}
 
   delegate_all
 
@@ -13,6 +14,13 @@ class Admin::ComplaintDecorator < Draper::Decorator
     end
   end
 
+  def body_with_links
+    result = body.gsub(LINK_REGEXP) do |link|
+      "<a href='#{link}' target='_blank'>#{link}</a>"
+    end
+    h.sanitize(result, tags: %w(a), attributes: %w(href target))
+  end
+
   def complain_from(format_str = 'Поступила жалоба с %s')
     format_str % (answer? ? 'ответа' : 'вопроса')
   end
@@ -24,12 +32,12 @@ class Admin::ComplaintDecorator < Draper::Decorator
   def front_url
     q = complaint_object
     anchor = answer? ? "answers-#{answer.id}" : ''
-    h.question_url(
+    DomainFactory.url + h.question_path(
       q,
       tag_slug: q.tags.first.slug,
       slug: q.slug,
       anchor: anchor
-    ).gsub('.admin.', '.')
+    )
   end
 
   def admin_url

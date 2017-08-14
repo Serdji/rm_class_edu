@@ -6,4 +6,12 @@ class Front::UserDecorator < Draper::Decorator
     name = [first_name, last_name].compact.join(' ')
     name.blank? ? "Ученик #{anonymous_id}" : name
   end
+
+  def avatar?
+    avatar_url
+  end
+
+  def avatar_style
+    avatar? ? "background-image: url(#{avatar_url})" : ''
+  end
 end

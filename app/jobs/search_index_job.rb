@@ -26,10 +26,10 @@ class SearchIndexBuilder
 
     case @type
       when :questions
-        object = klass.find(@id, include: 'tags,taggings,user')
+        object = klass.find(@id, include: 'tags,user')
         Front::QuestionDecorator.decorate(object)
       when :tags
-        klass.find(@id, include: 'image')
+        klass.find(@id)
     end
   end
 end
@@ -39,8 +39,16 @@ class SearchIndexJob < ActiveJob::Base
 
   def perform(id, options = {})
     @id = id
-    @event = options.delete(:event)
-    @type = options.delete(:type)
+
+    options.symbolize_keys!
+
+    event = options.delete(:event)
+    type = options.delete(:type)
+
+    raise ArgumentError, 'event and type must exists' unless event && type
+
+    @event = event.to_sym
+    @type = type.to_sym
 
     SearchService.index(build_attributes)
   end

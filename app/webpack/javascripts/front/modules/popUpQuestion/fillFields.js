@@ -1,18 +1,17 @@
-const { fetchAutToken, qs } = require('utils');
+const { qs } = require('utils');
 
 module.exports = nodes => {
   let selectTag = qs('.js-select-tag');
 
-  // Гет запрос, на получение сохраненных данных ссервера которорые вводил пользователь перед переходон на регистрацию
-  fetchAutToken({})
-    .then( (params) => fetch('/users/question', params))
-    .then( response => {
-      return response.json();
-    }).then(json => {
-      if (!json) return;
-      let { body, title } = json;
+  // Проверяем стор на наличие данных, если они есть, выводим их в форму
+  if(localStorage.formQuestion) {
+    setTimeout(()=> {
+      let formQuestion = JSON.parse(localStorage.getItem('formQuestion'));
+      let { body, title, tags } = formQuestion;
       tinymce.get('ditor-quantity').setContent(body);
-      selectTag.selectize.setValue(json.tag_ids);
+      selectTag.selectize.setValue((tags || '').split(','));
       nodes.input.value = title;
-    });
+    }, 0);
+  }
+
 };

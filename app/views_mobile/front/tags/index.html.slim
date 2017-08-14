@@ -4,6 +4,8 @@
 - content_for :relation_links, relation_links(tags_facade.tags)
 
 .title._first-place Все темы
-= render partial: 'front/tags/tag_with_ad', collection: tags_facade.tags, as: :tag
 
-.pagination-wrapper = pagination(tags_facade.tags.object, mobile: true)
+- options = { collection: tags_facade.tags, as: :tag, cached: mobile_collection_proc }
+= render partial: 'front/tags/tag', **options
+
+.pagination-wrapper.js-pag-tags-ads = pagination(tags_facade.tags.object, mobile: true)

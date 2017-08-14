@@ -5,14 +5,12 @@ FactoryGirl.define do
     last_name          { Faker::Name.name }
     password           { Faker::Internet.password }
     encrypted_password { Employee.new(password: password).encrypted_password }
-
-    after(:create) do |employee, _evaluator|
-      employee.roles = [create(:role)]
-    end
+    role
 
     factory :editor do
       after(:create) do |employee, _evaluator|
-        employee.roles = [create(:editor_role)]
+        employee.role = create(:editor_role)
+        employee.save
       end
     end
   end

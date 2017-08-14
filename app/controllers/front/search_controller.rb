@@ -5,7 +5,7 @@ class Front::SearchController < Front::ApplicationController
   before_action :check_query, only: :serp
 
   def suggest
-    result = SearchService.raw_search(params[:query], is_published: true, type: '')
+    result = SearchService.suggest(params[:query])
     render json: result
   end
 

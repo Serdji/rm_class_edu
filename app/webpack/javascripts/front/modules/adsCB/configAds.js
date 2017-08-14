@@ -4,6 +4,8 @@ module.exports = {
       'p1': 'bvnpy',
       'p2': 'emhk',
       'pct': 'a',
+      'node': 'ban_240x400',
+      'ssp': 'ssp'
     },
     id: {
       'begun-auto-pad': '434637240',
@@ -14,7 +16,9 @@ module.exports = {
     p: {
       'p1': 'bvnpz',
       'p2': 'ewqs',
-      'pct': 'a'
+      'pct': 'a',
+      'node': 'ban240x400_2nd',
+      'ssp': 'sspScroll'
     },
     id: {
       'begun-auto-pad': '434637240',
@@ -48,7 +52,9 @@ module.exports = {
     p: {
       'p1': 'bwqmn',
       'p2': 'ewzd',
-      'pct': 'a'
+      'pct': 'a',
+      'node': 'Context_240x200',
+      'ssp': 'sspScroll'
     },
     id: {
       'begun-auto-pad': '434637240',
@@ -59,7 +65,9 @@ module.exports = {
     p: {
       'p1': 'bvnqe',
       'p2': 'fhzs',
-      'pct': 'a'
+      'pct': 'a',
+      'node': 'native2',
+      'ssp': 'sspScroll'
     },
     id: {
       'begun-auto-pad': '434637240',
@@ -70,7 +78,9 @@ module.exports = {
     p: {
       'p1': 'bvkuo',
       'p2': 'y',
-      'pct': 'a'
+      'pct': 'a',
+      'node': 'billboard',
+      'ssp': 'ssp'
     },
     id: {
       'begun-auto-pad': '434637240',
@@ -81,7 +91,9 @@ module.exports = {
     p: {
       'p1': 'bvnqh',
       'p2': 'emiu',
-      'pct': 'a'
+      'pct': 'a',
+      'node': 'fullscreen',
+      'ssp': 'ssp'
     },
     id: {
       'begun-auto-pad': '434637240',

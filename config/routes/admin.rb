@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   get :authenticity_token, to: 'application#authenticity_token'
-  post :upload_image, to: 'application#upload_image'
+  post :upload_image, to: 'images#upload_image'
 
   constraints Routing::Admin do
     root to: redirect('/admin/login') if Routing::Admin.present?
@@ -69,11 +69,16 @@ Rails.application.routes.draw do
         o.resources :tags, except: :destroy do
           collection do
             get 'search/:search', action: :search, as: :search
+            get 'report', action: :report, as: :report
           end
         end
 
         o.resources :complaints, only: [:index, :edit, :update]
-        o.resources :users, only: [:index, :edit, :update]
+        o.resources :users, only: [:index, :edit, :update] do
+          collection do
+            post :upload_csv
+          end
+        end
       end
 
       root to: 'questions#index', as: :root
@@ -87,7 +92,14 @@ Rails.application.routes.draw do
       end
 
       resources :seo, only: [:create, :update, :destroy]
-      resources :seo_links, except: [:new, :show, :edit]
+      resources :seo_links, except: [:new, :show, :edit] do
+        collection do
+          post 'collection', action: :collection
+        end
+      end
+
+      get 'menu', to: 'menu#index'
+      put 'save', to: 'menu#save', as: :menu_save
 
       if Rails.env.development?
         match 'webdav_mock', to: 'webdav_mock#create', via: :put

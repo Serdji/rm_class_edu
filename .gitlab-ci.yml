@@ -1,5 +1,10 @@
 image: registry.art.rambler.ru/ruby/centos-base-ruby-nodejs-imagemagick:2.3.1-6x
 
+.shared_tags: &shared_tags
+  tags:
+    - ci-official
+    - docker
+
 services:
   - postgres:9.5.3
 
@@ -11,24 +16,24 @@ stages:
   - test
 
 before_script:
-  - bundle install -j4 --path vendor/ruby
+  - bundle install -j$(nproc) --path vendor/ruby
 
 rubocop:
+  <<: *shared_tags
+
   script:
     - bundle exec rubocop
 
 rspec:
+  <<: *shared_tags
+
   stage: test
 
   variables:
-    PGUSER: postgres
+    RAILS_ENV: test
+    DATABASE_URL: postgres://postgres@postgres
 
   script:
-    - export DATABASE_URL="postgres://$POSTGRES_PORT_5432_TCP_ADDR:$POSTGRES_PORT_5432_TCP_PORT"
-    - export RAILS_ENV=test
-    - echo $DATABASE_URL
-    - echo $POSTGRES_PORT_5432_TCP_ADDR
-    - echo $POSTGRES_PORT_5432_TCP_PORT
     - bundle exec rake db:create
     - bundle exec rake db:schema:load
-    - bundle exec rspec
+    - bundle exec rspec --tag ~integration

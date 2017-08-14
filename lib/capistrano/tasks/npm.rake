@@ -6,8 +6,8 @@ namespace :deploy do
           with fetch(:npm_env_variables, {}) do
             unless ENV['ASSETS'] == 'false'
               execute :npm, 'install', fetch(:npm_flags)
-              execute :npm, 'run clean'
-              execute :npm, 'run build'
+              execute :npm, 'run clean &> /dev/null'
+              execute :npm, 'run build &> /dev/null'
             end
           end
         end

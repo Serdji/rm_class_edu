@@ -1,13 +1,13 @@
 class Admin::ComplaintsController < Admin::ApplicationController
   decorates_assigned :complaints, :complaint, with: Admin::ComplaintDecorator
-  before_action :find_complaint, only: [:update, :edit]
+  before_action :find_object, only: [:update, :edit]
 
   add_breadcrumb :complaints, path: proc { admin_complaints_path }
 
   def index
     @search = ComplaintFilter.new(params[:complaint_filter])
     # TODO: Fix N + 1
-    @complaints = @search.apply(Qa::Complaint.order(created_at: :desc)
+    @complaints = @search.apply(Qa::Complaint.order('complaints.created_at' => :desc)
                                .where(page_size_params.to_h)
                                .where(include: 'user'))
   end
@@ -23,9 +23,10 @@ class Admin::ComplaintsController < Admin::ApplicationController
 
   private
 
-  def find_complaint
-    @complaint = Qa::Complaint.find(params[:id], include: 'user,complainable')
+  def find_object
+    @complaint ||= Qa::Complaint.find(params[:id], include: 'user,complainable')
     raise Admin::NotFoundError unless @complaint
+    @complaint
   end
 
   def complaint_params
@@ -36,7 +37,7 @@ class Admin::ComplaintsController < Admin::ApplicationController
     @complaint.assign_attributes(complaint_params.to_h)
 
     respond_to do |format|
-      if @complaint.valid? && @complaint.save
+      if @complaint.valid?(:admin) && @complaint.save
         back_link = edit_admin_complaint_path(@complaint)
         success_save format, back_link, human_notice('success')
       else

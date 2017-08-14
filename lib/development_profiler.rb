@@ -1,4 +1,4 @@
-require 'ruby-prof' if Rails.env.development?
+require 'ruby-prof' if Rails.env.development? && ENV['PROFILE']
 
 class DevelopmentProfiler
   def self.prof(file_name)

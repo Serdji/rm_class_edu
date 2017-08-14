@@ -24,13 +24,10 @@ module.exports = class SuggestSearch {
 
   run() {
     let debounced = _.debounce(this._onType.bind(this), SuggestSearch.waitTime);
+    this._clearShowHidn();
     this.input.addEventListener('keyup', debounced);
     this.input.addEventListener('keyup', () => {
-      if (this.input.value.length >= 1) {
-        this.clear.classList.remove('clear-input_hidden');
-      } else {
-        this.clear.classList.add('clear-input_hidden');
-      }
+      this._clearShowHidn();
     });
   }
 
@@ -50,6 +47,14 @@ module.exports = class SuggestSearch {
     this.main.removeEventListener('click', this.mainCallback);
   }
 
+  _clearShowHidn() {
+    if (this.input.value.length >= 1) {
+      this.clear.classList.remove('_hidden');
+    } else {
+      this.clear.classList.add('_hidden');
+    }
+  }
+
   _setupCallbacks() {
     let popupQuestion = qs('.js-open-pop-up-ques');
     let questionForm = qs('.js-question-form');
@@ -64,7 +69,7 @@ module.exports = class SuggestSearch {
     this.clear.addEventListener('click', () => {
       this.hide();
       this.input.value = '';
-      this.clear.classList.add('clear-input_hidden');
+      this.clear.classList.add('_hidden');
     });
 
     this.input.addEventListener('keydown', (event) => {
@@ -108,7 +113,7 @@ module.exports = class SuggestSearch {
     data.tags = tags;
     data.questions = questions;
     data.totalFound = data.total_found;
-    data.inputText = this.input.value;
+    data.inputText = this.input.value.length < 30 ? this.input.value : this.input.value.slice(0, 30) + '...';
 
     let encodedQuery = encodeURIComponent(this.input.value);
     data.novaGlobalUrl = `${SuggestSearch.novaUrl}&query=${encodedQuery}`;
@@ -121,7 +126,6 @@ module.exports = class SuggestSearch {
 
   _initializeInput() {
     let params = window.location.search.slice(1).split('&');
-
     params.forEach((param) => {
       let name = param.split('=')[0];
       let value = param.split('=')[1];

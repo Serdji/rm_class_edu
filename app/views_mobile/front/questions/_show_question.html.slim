@@ -1,4 +1,4 @@
-.question.js-question-share data-complainable="true" data-complainable-id=question.id data-complainable-type="Question"
+.question.js-question-share.js-sticking-button-start data-complainable="true" data-complainable-id=question.id data-complainable-type="Question"
   .questions__header
     .questions__hash._hide.js-hash-tags
       - question.tags.each do |tag|
@@ -6,8 +6,7 @@
           span = tag.name
   .questions__content
     .questions__user
-      .questions__avatar
-        img src=question.user.avatar_url
+      .questions__avatar style=question.user_avatar_style
       .questions__name = question.user.full_name
     h1.questions__title.js-questions-share-title = question.title
     .question__social.js-question-social.rambler-share
@@ -17,8 +16,12 @@
         = svg name: 'ico_time', klass: 'questions__data-icon-svg'
       span.js-data-published data-published-at=question.iso8601
   .questions__footer
-      /a.questions__answer href="#"
-      /  .questions__answer-icon
-      /    = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
-      /  | Ответить
-      = render 'front/common/social'
+    a.questions__answer href=question.mobile_path
+      .questions__answer-icon
+        = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
+      - if question.answers_counter > 0
+        = question.human_answers_counter
+      - else
+        | Ответить
+    = render 'front/common/social'
+.js-none-answer-ads

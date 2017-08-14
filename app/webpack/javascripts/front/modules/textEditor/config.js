@@ -13,6 +13,7 @@ module.exports = (editor, nodes) => {
     paste_as_text: true,
     autoresize_bottom_margin: 0,
     autoresize_max_height: 400,
+    skin_url: '/assets/tinymce/skins/lightgray',
     // Подключаем нужные нам плагины
     plugins: 'paste placeholder link image autoresize',
     // Выставляем нужные нам элементы и в нужном нам порядке
@@ -50,15 +51,17 @@ module.exports = (editor, nodes) => {
       if ( nodes.EDITOR_TYPE_ANSWER ) {
         nodes.formButton.addEventListener('click', () => sendFormYourAnswer(nodes));
         ed.on('keyup', () => buttonDisabled(nodes, ed));
+        ed.on('keypress', () => editorMaxLength(nodes.counterEditorAnswer, ed));
+        ed.on('keydown', e => {if (e.keyCode === 8) editorMaxLength(nodes.counterEditorAnswer, ed);});
       }
 
       if ( nodes.EDITOR_TYPE_QUANTITY ) {
         nodes.sendQuestion.addEventListener('click', () => sendFormQuestion(nodes, ed));
         nodes.closeQuestion.addEventListener('click', () => closeFormQuestion(nodes, ed));
+        ed.on('keypress', () => editorMaxLength(nodes.counterEditorQues, ed));
+        ed.on('keydown', e => {if (e.keyCode === 8) editorMaxLength(nodes.counterEditorQues, ed);});
       }
 
-      ed.on('keypress', () => editorMaxLength(nodes, ed));
-      ed.on('keydown', e => {if (e.keyCode === 8) editorMaxLength(nodes, ed);});
       ed.on('focus', () => ed.editorContainer.classList.add('_editor-focus'));
       ed.on('blur', () => ed.editorContainer.classList.remove('_editor-focus'));
     },

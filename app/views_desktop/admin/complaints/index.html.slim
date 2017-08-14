@@ -21,8 +21,8 @@ table.table.table-hover
       th = qa_sort_link(:id)
       th Название
       th = qa_sort_link('users.first_name')
-      th.nowrap = qa_sort_link(:updated_at)
-      th.nowrap = qa_sort_link(:created_at)
+      th.nowrap = qa_sort_link('complaints.updated_at')
+      th.nowrap = qa_sort_link('complaints.created_at')
 
   tbody.middle-vertical-align
     - complaints.each do |complaint|

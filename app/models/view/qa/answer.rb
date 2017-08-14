@@ -5,6 +5,10 @@ class View::Qa::Answer
     def get(path, params = {})
       Qa::Client.call(path, self, params)
     end
+
+    def find(id, options = {})
+      get("answers/#{id}", options)
+    end
   end
 
   attribute :id, Integer
@@ -31,5 +35,9 @@ class View::Qa::Answer
 
   def cache_key
     "answers/#{id}-#{updated_at.utc.to_s(:number)}"
+  end
+
+  def images
+    @images ||= Image.where(imageable_type: 'Qa::Answer', imageable_id: id)
   end
 end

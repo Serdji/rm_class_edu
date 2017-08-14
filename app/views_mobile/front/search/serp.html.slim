@@ -1,5 +1,5 @@
+.js-two-ads
 .search-page
-
   .search-page__item
     .search-page__title = "Результаты поиска по запросу «#{params[:query]}»"
 
@@ -20,54 +20,55 @@
   - if @search_result.any?
     - if questions_active?
       - @search_result.each_with_index do |question, i|
-        a.search-page__item href=question.url
-          .search-page__item-title
-            == sanitize(question.title)
+        .search-page__item
+          a.search-page__item-title href=question.url == sanitize(question.title)
 
-          - if question.answers_count > 0
+          - enqueue_if_invalid(question)
+
+          - if question.answers_count > 0 && question.answers.count > 0
+            - answer = question.answers.first
             .search-page__text
-              b> = "#{question.answers.first.user.first_name}:"
-              == sanitize(question.answers.first.body, tags: %i(p img))
+              a href="#{question.url}#answers-#{answer.id}"
+                b> = "#{answer.user.first_name}:"
+                == sanitize(answer.body, tags: %i(p img))
 
             - if question.answers_count == 1
-              .search-page__answer 1 ответ
+              - anchor = answer.is_best? ? "#best-answer" : "#answers"
+              a.search-page__answer href="#{question.url}#{anchor}" 1 ответ
 
             - if question.answers_count > 1
               - count = question.answers_count - 1
-              .search-page__answer = "Еще #{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
+              - has_best_answer = question.answers.find(&:is_best?)
+              - anchor = has_best_answer ? "#best-answer" : "#answers"
+              a.search-page__answer href="#{question.url}#{anchor}" = "Еще #{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
           - else
-            .search-page__answer 0 ответов
+            a.search-page__answer href=new_question_answer_path(question.id) Ответить
 
-        /- if i % 3 == 0
-        /  / Реклама #3. Место размещения: во втором экране, повторять через каждые 1,5 экрана (те во 2, 5, 7, 10)
-        /  .baner
-        /    = render 'front/ads/ban_content', index: i + 1
+  - if @search_result.any?
+    - if tags_active?
+      - @search_result.each do |tag|
+        .theme.js-tag-share
+          .theme__short-stripe
+            img src=tag.wide_stripe_url
+          .theme__content
+            .theme__cover
+              img src=tag.thumb_with_shadow_url
+            = render 'front/common/social'
+            a.theme__title.js-tag-share-title href=tag.url
+              == tag.name.truncate(35)
 
-- if @search_result.any?
-  - if tags_active?
-    - @search_result.each do |tag|
-      .theme.js-tag-share
-        .theme__short-stripe
-          img src=tag.wide_stripe_url
-        .theme__content
-          .theme__cover
-            img src=tag.thumb_with_shadow_url
-          = render 'front/common/social'
-          a.theme__title.js-tag-share-title href=tag.url
-            == tag.name.truncate(35)
-
-        .theme__footer
-          .theme__question
-            .theme__icon
-              = svg name: 'ico_question_gray', klass: 'theme__icon-svg'
-            span.theme__counter._question>
-              - count = tag.questions_count
-              = "#{count} #{I18n.t('activemodel.models.qa/question', count: count)}"
-            .theme__icon
-              = svg name: 'ico_message', klass: 'theme__icon-svg'
-            span.theme__counter>
-              - count = tag.answers_count
-              = "#{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
+          .theme__footer
+            .theme__question
+              .theme__icon
+                = svg name: 'ico_question_gray', klass: 'theme__icon-svg'
+              span.theme__counter._question>
+                - count = tag.questions_count
+                = "#{count} #{I18n.t('activemodel.models.qa/question', count: count)}"
+              .theme__icon
+                = svg name: 'ico_message', klass: 'theme__icon-svg'
+              span.theme__counter>
+                - count = tag.answers_count
+                = "#{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
 
 - if @search_result.any?
   .pagination-wrapper = pagination(@search_result, mobile: true)
@@ -76,12 +77,13 @@
 - if @search_result.empty?
   - if questions_active?
     - cache_mobile [:fresh_questions], expires_in: 1.minute do
+      .js-question-search-ads
       .title Новые вопросы
-      - options = { collection: search_facade.fresh_questions, as: :question, locals: { with_first_two: true } }
-      = render partial: 'front/questions/question_with_ad', **options
+      - options = { collection: search_facade.fresh_questions, as: :question, cached: mobile_collection_proc }
+      = render partial: 'front/questions/question', **options
 
   - if tags_active?
     - cache_mobile [:most_answered_tags], expires_in: 1.minute do
       .title Популярные темы
-      - options = { collection: search_facade.most_answered_tags, as: :tag, locals: { with_first_two: true } }
-      = render partial: 'front/tags/tag_with_ad', **options
+      - options = { collection: search_facade.most_answered_tags, as: :tag, cached: mobile_collection_proc }
+      = render partial: 'front/tags/tag', **options

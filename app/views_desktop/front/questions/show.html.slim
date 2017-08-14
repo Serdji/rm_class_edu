@@ -5,6 +5,7 @@
 = render 'common/seo_attributes', object: questions_facade.question
 
 - content_for :head_title, questions_facade.question.seo_title
+- content_for :canonical, [Settings.host, questions_facade.question.path].join
 
 - cache_desktop questions_facade.question do
   = render 'front/questions/show_question', question: questions_facade.question
@@ -31,12 +32,13 @@
     .tag
       - options = { collection: questions_facade.similar_tags, as: :tag, cached: desktop_collection_proc }
       = render partial: 'front/tags/tag', **options
+    .js-similar-themes-ads
 
-- cache_desktop [:front, :ads, :similar_questions, questions_facade.question], expires_in: 1.minute do
+- cache_desktop [questions_facade.question, :similar_questions], expires_in: 1.minute do
   - if questions_facade.similar_questions.size > 0
     .question-common__up-title
       span> похожие вопросы
       span = questions_facade.similar_questions.size
     .questions
-      - options = { collection: questions_facade.similar_questions, as: :question, locals: { ads: '' } }
-      = render partial: 'front/questions/question_with_ad', **options
+      - options = { collection: questions_facade.similar_questions, as: :question }
+      = render partial: 'front/questions/question', **options

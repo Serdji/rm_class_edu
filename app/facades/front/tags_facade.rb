@@ -12,10 +12,10 @@ class Front::TagsFacade
   def tags
     @tags ||= begin
       options = {
-        include: 'image', has_questions: true, sort: '-weight',
+        has_questions: true, sort: '-weight',
         page: { number: params[:page], size: PER_PAGE_TAGS_LIMIT }
       }
-      collection = View::Qa::Tag.get('tags', options)
+      collection = View::Qa::Tag.get('tags', options).includes(:seo, :image)
       Front::TagDecorator.decorate_collection(collection)
     end
   end
@@ -26,8 +26,9 @@ class Front::TagsFacade
 
   def discussing_questions
     @discussing_questions ||= begin
-      options = { include: 'tags,taggings,user', page: { size: 4 } }
+      options = { include: 'tags,user', page: { size: 4 } }
       collection = View::Qa::Question.get("tags/#{tag.id}/discussing_questions", options)
+                                     .includes(:seo)
       Front::QuestionDecorator.decorate_collection(collection)
     end
   end
@@ -36,25 +37,25 @@ class Front::TagsFacade
     @tag_questions ||= begin
       options = {
         page: { size: PER_PAGE_QUESTIONS_LIMIT, number: params[:page] },
-        include: 'tags,taggings,user', sort: '-questions.created_at',
+        include: 'tags,user', sort: '-questions.created_at',
         filter: { state: Qa::Question::PUBLIC_STATES }
       }
-      collection = View::Qa::Question.get("tags/#{tag.id}/questions", options)
+      collection = View::Qa::Question.get("tags/#{tag.id}/questions", options).includes(:seo)
       Front::QuestionDecorator.decorate_collection(collection)
     end
   end
 
   def similar_tags
     @similar_tags ||= begin
-      options = { page: { size: SIMILAR_TAGS_LIMIT }, include: 'image', has_questions: true }
-      collection = View::Qa::Tag.get("tags/#{tag.id}/similar_tags", options)
+      options = { page: { size: SIMILAR_TAGS_LIMIT }, has_questions: true }
+      collection = View::Qa::Tag.get("tags/#{tag.id}/similar_tags", options).includes(:seo, :image)
       Front::TagDecorator.decorate_collection(collection)
     end
   end
 
   def tag
     @tag ||= begin
-      tag = View::Qa::Tag.get("tags/slug/#{params[:slug]}", include: 'image')
+      tag = View::Qa::Tag.get("tags/slug/#{params[:slug]}")
       Front::TagDecorator.decorate(tag) if tag
     end
   end

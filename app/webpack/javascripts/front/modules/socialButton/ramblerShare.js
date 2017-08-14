@@ -1,4 +1,5 @@
 const {each, qs} = require('utils');
+const OG_DEFAULT_PNG = 'https://class.rambler.ru/8f56f789/front/opengraph.png';
 
 module.exports = (nodes) => {
   // Общий конфиг для шарилок
@@ -17,7 +18,20 @@ module.exports = (nodes) => {
       'odnoklassniki',
       'twitter'
     ],
-    'twitter': {
+    vkontakte: {
+      utm: 'utm_source=vksharing&utm_medium=social'
+    },
+    facebook: {
+      utm: 'utm_source=fbsharing&utm_medium=social'
+    },
+    odnoklassniki: {
+      utm: 'utm_source=oksharing&utm_medium=social'
+    },
+    livejournal: {
+      utm: 'utm_source=ljsharing&utm_medium=social'
+    },
+    twitter: {
+      utm: 'utm_source=twsharing&utm_medium=social',
       'description': ' '
     }
   };
@@ -84,7 +98,8 @@ module.exports = (nodes) => {
             Object.assign(commonSocialOptions, {
               title: questionsParentIsClass.querySelector('.js-questions-share-title').dataset.title,
               description: questionsParentIsClass.querySelector('.js-questions-share-text').innerText.slice(0, maxLengthText) + '...',
-              url: `${window.location.origin}${questionsParentIsClass.querySelector('.js-questions-share-title').getAttribute('href')}`
+              url: `${window.location.origin}${questionsParentIsClass.querySelector('.js-questions-share-title').getAttribute('href')}`,
+              image: OG_DEFAULT_PNG
             })
           );
         }

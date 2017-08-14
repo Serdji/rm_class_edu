@@ -9,7 +9,9 @@ if (qs('.js-open-pop-up-ques')) {
     maxLengthCounter: qs('.js-max-length-counter'),
     maxLengthCounterSelect: qs('.js-max-length-counter-select'),
     input: qs('.js-max-length-input'),
-    select: qs('.js-select-tag')
+    select: qs('.js-select-tag'),
+    titleError: qs('.pop-up-question__title-error'),
+    tagIdsError: qs('.pop-up-question__tag-ids-error')
   };
   require('./openPopUp')(nodes);
   require('./closePopUp')(nodes);

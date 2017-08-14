@@ -4,7 +4,8 @@ if (qs('.js-menu')) {
     buttonMenu: qs('.js-button-menu'),
     menu: qs('.js-menu'),
     menuCurtain: qs('.js-menu-curtain'),
-    swPoints: qsa('.js-sw-points')
+    swPoints: qsa('.js-sw-points'),
+    popularThemes: qs('.js-popular-themes')
 
   };
   require('./openMenu')(nodes);

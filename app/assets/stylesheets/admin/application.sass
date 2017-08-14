@@ -12,13 +12,11 @@
 @import admin/signin
 @import admin/complaints/index
 @import admin/employees/index
-@import admin/grades/index
-@import admin/subjects/index
 @import admin/versions/show
-@import admin/textbooks/textbooks
 @import admin/forms
 @import admin/simplemde
 @import admin/sidebar
+@import admin/menu
 
 .handlers
   width: 110px
@@ -45,10 +43,14 @@
       td, th
         @extend .text-center
 
+td
+  word-break: break-all
+
 .breadcrumb.breadcrumb-admin
   margin-bottom: 0
   margin-top: 7px
   background: #f8f8f8
+  word-break: break-all
 
 h2
   margin-top: 0
@@ -137,6 +139,11 @@ h2
     select
       display: none
 
+.navbar-default
+  .form-group
+    label
+      padding-right: 10px
+
 .search-filter
   label
     padding-right: 10px
@@ -148,3 +155,6 @@ ul.nav-tabs
   li.active
     a
       background-color: #eee
+
+.form-control-text
+  word-break: break-all

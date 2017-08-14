@@ -1,20 +1,42 @@
-.menu.js-menu._hidden
-  .menu__curtain.js-menu-curtain
-    .menu__close
-      = svg name: "mobile-close", klass: "menu__close-svg"
+.menu._hidden.js-menu
   .menu__block
+    = render 'front/common/menu_themes'
     .menu__header
-      .menu__logo
-        = svg name: "mobile-logo-menu", klass: "menu__logo-svg"
+      .menu__border._header
+        .menu__logo
+          = svg name: "mobile-logo-menu", klass: "menu__logo-svg"
+        .menu__close.js-menu-curtain
+          = svg name: "mobile-close", klass: "menu__close-svg"
     - klass = %w(questions home).include?(controller_name) ? '_activ' : ''
     a.menu__point class=klass href=otvety_path
-      .menu__icon
-        = svg name: "mobile-answers", klass: "menu__icon-svg"
-      .menu__title Ответы
-      /.menu__counter 21 093
+      .menu__border
+        .menu__icon
+          = svg name: "mobile-answers", klass: "menu__icon-svg"
+        .menu__title Ответы
+        /.menu__counter 21 093
     - klass = %w(tags).include?(controller_name) ? '_activ' : ''
-    a.menu__point class=klass href=temy_path
-      .menu__icon._theme
-        = svg name: "mobile-theme", klass: "menu__icon-svg"
-      .menu__title Темы
-      /.menu__counter 258
+    .menu__point
+      .menu__border
+        .menu__icon._theme
+          = svg name: "mobile-theme", klass: "menu__icon-svg"
+        a.menu__title class=klass href=temy_path Темы
+        /.menu__counter 258
+        .menu__popular.js-open-popular-themes
+          span популярное
+          .menu__popular-arrow
+            = svg name: "popular-arrow", klass: "menu__popular-arrow-svg"
+
+    .menu__present-ques
+      a.menu__present-ques-button._button-dark-blue href=new_question_path задать вопрос
+
+    .menu__author.js-author._hidden
+      .menu__author-button
+        svg.menu__author-icon
+          use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rambler-topline-user"
+
+        span Войти Рамблер ID
+
+    .menu__user.js-user._hidden
+      .menu__user-avatar.js-user-avatar
+      .menu__user-name.js-user-name
+      .menu__user-output.js-user-output Выход

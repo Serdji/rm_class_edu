@@ -7,7 +7,9 @@ class Tags::SearchIndexSerializer < ActiveModel::Serializer
   attributes :id, :name
 
   attribute :url do
-    Rails.application.routes.url_helpers.tag_path(slug: object.slug)
+    Education::Url.tag_url(
+      slug: object.slug, host: Education::Application.config.domain
+    )
   end
 
   attribute :questions_counter, key: :questions_count
@@ -17,19 +19,17 @@ class Tags::SearchIndexSerializer < ActiveModel::Serializer
     object.is_published? && object.questions_counter > 0
   end
 
-  def image_url
-    object.image.url
-  end
+  delegate :image_url, to: :object
 
   def wide_stripe_url
-    object.image.wide_stripe_url
+    object.image_wide_stripe_url
   end
 
   def short_stripe_url
-    object.image.short_stripe_url
+    object.image_short_stripe_url
   end
 
   def thumb_with_shadow_url
-    object.image.thumb_shadow_url
+    object.image_thumb_with_shadow_url
   end
 end

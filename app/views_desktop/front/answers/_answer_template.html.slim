@@ -3,7 +3,7 @@ script type="text/template" class="js-answer-template"
   .all-answers__block.js-block-answers.js-answer-share id=id data-complainable="true" data-complainable-id=id data-complainable-type="Answer"
     .question-common__header
       .question-common__user
-        img.question-common__avatar src=("<%= answer.user_avatar_url %>".html_safe)
+        .question-common__avatar style='background-image: url(#{("<%= answer.user_avatar_url %>".html_safe)})'
         .question-common__name <%= answer.username %>
 
     .question-common__content

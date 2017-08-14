@@ -1,11 +1,7 @@
 .question-menu
   .wrapper
-    .question-menu__points
-      .question-menu__icon
-        = svg name: 'answers', klass: 'question-menu__icon-svg'
-      a.question-menu__point class=(%w(questions home).include?(controller_name)  ? '_activ' : '') href=otvety_path
+    .question-menu__points.js-menu-ques-themes-drop-down
+      a.question-menu__point data-search-suggest="index" class=(%w(questions home).include?(controller_name)  ? '_activ' : '') href=otvety_path
         span Ответы
-      .question-menu__icon
-        = svg name: 'theme', klass: 'question-menu__icon-svg _theme-svg'
-      a.question-menu__point class=(controller_name == 'tags' ? '_activ' : '') href=temy_path
+      a.question-menu__point.js-open-themes-drop-down data-search-suggest="list_topics" class=(controller_name == 'tags' ? '_activ' : '') href=temy_path
         span Темы

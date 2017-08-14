@@ -31,19 +31,22 @@ module.exports = nodes => {
       .then( params => fetch('/profile', params))
       .then( response => {
         // Если ОК, открываем попап
-        let { status, statusText } = response;
+        let { status } = response;
         if (status >= 200 && status < 300) {
           openPopUp(this);
         } else {
-          throw new Error(statusText);
+          throw new Error(status);
         }
       })
       .catch(error => {
         // Если нет, то открываем форму аунтификации и регистрации
-        if (error.message === 'Unauthorized') {
+        if (error.message === '401') {
           qs('.rambler-topline__user-signin').click();
           // Колбек, после аунтификации открываем форму пожалолваться
-          ramblerIdHelper.registerOnPossibleLoginCallback(() => { openPopUp(this); });
+          ramblerIdHelper.registerOnPossibleLoginCallback(() => {
+            // Проверка на то, открыт ли поп-оп задать вопрос
+            if (!nodes.popUpQuestion.classList.contains('_activ')) openPopUp(this);
+          });
         }
       });
   }

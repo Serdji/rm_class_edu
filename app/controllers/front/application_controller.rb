@@ -1,8 +1,9 @@
 class Front::ApplicationController < ApplicationController
+  include Concerns::Captcha
+
   rescue_from Front::NotAuthenticatedError, with: :not_authenticated_error
   rescue_from Front::NotFoundError, with: :not_found_error
 
-  helper_method :current_rambler_user
   helper_method :current_user
 
   protect_from_forgery with: :exception, prepend: true
@@ -13,14 +14,15 @@ class Front::ApplicationController < ApplicationController
   layout 'front'
 
   def profile
-    if current_user
-      render json: current_user.attributes
+    if rid.authenticated?
+      render json: current_user.try(:attributes) || rid.profile.to_h
     else
       head :unauthorized
     end
   end
 
   # Monitoring by admins
+  # rubocop:disable Rails/OutputSafety
   def root
     render html: '<!DOCTYPE html><html></html>'.html_safe
   end
@@ -28,28 +30,37 @@ class Front::ApplicationController < ApplicationController
   private
 
   def current_user
-    @current_user ||= rambler_id_service.internal_user
-  end
-
-  def current_rambler_user
-    @current_rambler_user ||= rambler_id_service.rambler_user
+    @current_user ||= begin
+      if rid.authenticated?
+        user = rid.find_user_by_chain_ids
+        user.sync_with_rid(rid) if user
+        user
+      end
+    end
   end
 
   def authenticate_user!
-    return if current_user && current_user.response_errors.empty?
-    raise Front::NotAuthenticatedError
+    raise Front::NotAuthenticatedError unless rid.authenticated?
+  end
+
+  def create_user!
+    user = rid.find_user_by_chain_ids
+    return unless rid.authenticated? && !user
+    @current_user = rid.create_user
   end
 
   def rambler_id_service
     @rambler_id_service ||= RamblerIdService.new(rsid)
   end
 
+  alias rid rambler_id_service
+
+  def activity_limiter
+    @activity_limiter ||= UserActivityLimiter.new(current_user.id)
+  end
+
   def rsid
-    if Rails.env.development?
-      ENV['RSID'] || cookies[:rsid]
-    else
-      cookies[:rsid]
-    end
+    cookies[:rsid] || ENV['RSID']
   end
 
   def not_authenticated_error
@@ -62,5 +73,9 @@ class Front::ApplicationController < ApplicationController
 
   # NOTE: disable paper trail log
   def user_for_paper_trail
+  end
+
+  def render_validation_errors(errors)
+    render json: { errors: errors }, status: :unprocessable_entity
   end
 end

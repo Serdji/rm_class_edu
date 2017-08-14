@@ -23,16 +23,32 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
+  def upload_csv
+    csv_file = params[:csv]
+
+    if csv_file.present?
+      statistics = Qa::User.upload_csv(csv_file)
+      windows = browser.platform.windows?
+      builder = Builder::CSV::UploadFakersInfo.new(statistics, windows)
+      send_data builder.build, filename: builder.filename, type: :csv
+    else
+      redirect_to admin_users_path
+    end
+  end
+
   private
 
   def user_params
     params = self.params.require(:user)
-    params = params.permit(:is_sentry) if can? 'users', 'is_sentry'
+    if current_employee.has_role?(:superuser)
+      params = params.permit(:is_sentry, :is_fake)
+    end
     params
   end
 
   def find_user
-    @user = Qa::User.find(params[:id])
+    @user ||= Qa::User.find(params[:id])
     raise Admin::NotFoundError unless @user
+    @user
   end
 end

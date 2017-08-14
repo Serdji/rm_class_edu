@@ -1,4 +1,5 @@
 .js-page-temy-ads
+
 - content_for(:head_title, tags_facade.tag.seo_title)
 - content_for(:og_image, tags_facade.tag.image_url)
 
@@ -8,12 +9,13 @@
   = render 'front/tags/big_theme', tag: tags_facade.tag, head: true
 
 .questions
-  = render partial: 'front/questions/question_with_ad', collection: tags_facade.tag_questions, as: :question, locals: { ads: 'home' }
+  - options = { collection: tags_facade.tag_questions, as: :question, cached: desktop_collection_proc }
+  = render partial: 'front/questions/question', **options
 
 .pagination-wrapper = pagination(tags_facade.tag_questions.object)
 - content_for :relation_links, relation_links(tags_facade.tag_questions)
 
-- cache_desktop [tags_facade.tag, :similar_tags], expires_in: 1.minute do
+- cache_desktop [tags_facade.tag, :similar_tags], expires_in: 5.minutes do
   - if tags_facade.similar_tags.any?
     .question-common__up-title
       span похожие темы

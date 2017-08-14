@@ -36,7 +36,7 @@ class Admin::EmployeesController < Admin::ApplicationController
   private
 
   def find_employee
-    @employee = Employee.find(params[:id])
+    @employee ||= Employee.find(params[:id])
   end
 
   def employee_params
@@ -46,7 +46,7 @@ class Admin::EmployeesController < Admin::ApplicationController
       :password_confirmation,
       :first_name,
       :last_name,
-      role_ids: []
+      :role_id
     )
   end
 

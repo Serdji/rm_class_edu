@@ -1,24 +1,26 @@
 class WebdavFactory
   class << self
-    def yaml(stage = nil)
-      @webdav ||= YAML.load_file(Rails.root.join('config', 'webdav.yml'))
-      stage.present? ? @webdav[stage] : @webdav
-    end
+    delegate :url, :header, to: :new
+  end
 
-    def path(stage)
-      yaml(stage)['path']
-    end
+  def initialize
+    @yaml = Rails.application.config_for('webdav')
+    @yaml.deep_symbolize_keys!
+  end
 
-    def host(stage)
-      yaml(stage)['host']
-    end
+  def path
+    @yaml.fetch(:path)
+  end
 
-    def domain(stage)
-      yaml(stage)['domain']
-    end
+  def header
+    @yaml.fetch(:header)
+  end
 
-    def url(stage)
-      [domain(stage), path(stage)].join('/')
-    end
+  def domain
+    @yaml.fetch(:domain)
+  end
+
+  def url
+    [domain, path].join('/')
   end
 end

@@ -7,24 +7,27 @@ class Front::TagsController < Front::ApplicationController
   end
 
   def show
-    @hide_ban_footer = true
-
-    unless mobile_version?
-      @discussing_questions = tags_facade.discussing_questions
-    end
   end
 
   def search
     options = {
-      page: { size: 7 }, filter: { is_published: true, name: params[:search] }
+      page: { size: 7 },
+      filter: { is_published: true, name: params[:search] }
     }
-    tags = Qa::Tag.where(options)
-    render json: tags.collect { |tag| { id: tag.id, name: tag.name } }
+    tags = View::Qa::Tag.get('tags', options).includes(:seo, :image)
+    tags = tags.map { |tag| { id: tag.id, name: tag.name, image: tag.image_thumb_24x24_url } }
+    render json: tags
   end
 
   def options
-    tags = Qa::Tag.published.all
-    render json: tags.map { |tag| { name: tag.name, id: tag.id } }
+    options = {
+      sort: '-weight',
+      page: { size: 10 },
+      filter: { is_published: true }
+    }
+    tags = View::Qa::Tag.get('tags', options).includes(:seo, :image)
+    tags = tags.map { |tag| { id: tag.id, name: tag.name, image: tag.image_thumb_24x24_url } }
+    render json: tags
   end
 
   private

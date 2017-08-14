@@ -29,8 +29,10 @@ class Questions::SearchIndexSerializer < ActiveModel::Serializer
   attribute :answers_counter, key: :answers_count
 
   attribute :url do
-    decorated = Front::QuestionDecorator.decorate(object)
-    decorated.path
+    Education::Url.question_url(
+      object.id, tag_slug: object.tags.first.slug, slug: object.slug,
+                 host: Education::Application.config.domain
+    )
   end
 
   attribute :modtime do

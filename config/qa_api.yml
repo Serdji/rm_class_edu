@@ -1,12 +1,27 @@
+default: &default
+  api_version: v2
+  api_token: b85d3196d4919ae47eee8ec00fd3cc80
+
 development:
+  <<: *default
   domain: 'http://localhost:3001/api/'
+
 test:
-  domain: 'http://localhost:3001/api/'
+  <<: *default
+  domain: 'http://qa-service:3001/api/'
+
 staging:
+  <<: *default
   domain: 'http://api.stage.class.rambler.ru:8088/api/'
+
 staging2:
+  <<: *default
   domain: 'http://api2.stage.class.rambler.ru:8088/api/'
+
 preprod:
+  <<: *default
   domain: <%= ENV['QA_API_URL'] %>
+
 production:
+  <<: *default
   domain: <%= ENV['QA_API_URL'] %>

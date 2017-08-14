@@ -20,6 +20,7 @@
 //= require admin/datepicker
 //= require admin/signin
 //= require admin/lists
+//= require admin/menu
 //= require admin/employees
 //= require admin/answers
 //= require admin/questions
@@ -27,6 +28,7 @@
 //= require admin/validations
 //= require admin/flash
 //= require admin/grades_subjects_select
+//= require admin/users
 
 //= require admin/simplemde
 //= require_tree ./textEditor

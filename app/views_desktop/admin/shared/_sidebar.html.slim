@@ -1,4 +1,10 @@
 ul.nav.nav-sidebar
+  li class=('active' if controller_name == 'menu')
+    a href=admin_menu_path
+      i.fa.fa-table>
+      | Меню тем
+
+ul.nav.nav-sidebar
   - if can? Metapage.name
     li class=('active' if controller_name == 'metapages')
       a href=admin_metapages_path

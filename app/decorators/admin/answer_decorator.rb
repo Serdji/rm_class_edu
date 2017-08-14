@@ -8,10 +8,15 @@ class Admin::AnswerDecorator < Draper::Decorator
   end
 
   def safe_title
-    h.break_too_long_words(h.strip_tags(object.body).truncate(110))
+    str = h.strip_tags(object.body).truncate(110)
+    str.present? ? str : "Ответ N #{id}"
   end
 
   def human_state_name
     I18n.t(state, scope: 'states.answer')
+  end
+
+  def has_complaints?
+    !complaints.empty?
   end
 end

@@ -1,4 +1,4 @@
-const { fetchAutToken } = require('utils');
+const { qs, fetchAutToken } = require('utils');
 
 const fileName = 'image-file-upload';
 
@@ -44,13 +44,21 @@ module.exports = (cb, value, meta) => {
       .then(json => {
         let editor = tinymce.activeEditor;
 
+        // Выводим рядом с кнопкой название картинки
+        if(qs('.js-img-file-name')) qs('.js-img-file-name').remove();
+        qs('.mce-combobox .mce-btn').insertAdjacentHTML('afterEnd', `<span class="_ok js-img-file-name">${file.name}</span>`);
+
         editor.uploadedImageIds || (editor.uploadedImageIds = []);
         editor.uploadedImageIds.push(json.id);
-
         cb(json.url, { title: file.name });
       })
       .catch(error => {
-        console.error(error)
+        console.log(error);
+
+        // Выводим сообщение в случаи ошибки
+        if(qs('.js-img-file-name')) qs('.js-img-file-name').remove();
+        qs('.mce-combobox .mce-btn').insertAdjacentHTML('afterEnd', '<span class="_error js-img-file-name">Произошла ошибка, попробуйте еще раз</span>');
+
       });
   };
 

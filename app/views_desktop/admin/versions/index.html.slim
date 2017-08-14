@@ -1,5 +1,5 @@
 = render 'admin/shared/head', title: t('label.version_log')
-= render 'filter'
+/ = render 'filter'
 
 table.table.table-hover
   thead
@@ -15,13 +15,13 @@ table.table.table-hover
   tbody
     - versions.each do |version|
       tr
-        td.ids = version.id
+        td.ids= version.id
         td = version.human_event
         td = version.human_block
         td.ids
           = link_to version.item_id, admin_version_path(version.id)
         td
-          = link_to version.human_item || '', admin_version_path(version.id)
+          = link_to version.human_item, admin_version_path(version.id)
         td = version.human_employee
         td.date.text-center = version.human_created_at
 

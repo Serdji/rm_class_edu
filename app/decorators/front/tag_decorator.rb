@@ -2,8 +2,6 @@ class Front::TagDecorator < Draper::Decorator
   include HumanDates
   delegate_all
 
-  delegate :url, to: :image, prefix: true, allow_nil: true
-
   def human_questions_counter
     [
       object.questions_counter,

@@ -11,6 +11,8 @@
         label
           | Ваш вопрос
           = f.text_field :title, class: 'js-max-length-input'
+          .pop-up-question__title-error._hidden
+            span Вопрос должен состоять из 4 и более символов (не считая знаков препинания)
           .pop-up-question__quantity-symbols
             span.js-max-length-counter>
 
@@ -18,7 +20,7 @@
         .pop-up-question__label Подробное описание
         = f.text_area :body, class: 'js-editor-quantity', id: 'ditor-quantity'
         .pop-up-question__quantity-symbols
-          span.js-max-length-counter-editor Можно ввести 4000 cимволов
+          span.js-max-length-counter-editor-ques Можно ввести 4000 cимволов
 
       .input-select._mb
         label
@@ -26,13 +28,15 @@
           - options = { class: 'js-select-tag', multiple: true, data: { placeholder: t('label.choose_tags') } }
           = f.select :tag_ids, [], { include_blank: true }, options
 
+          .pop-up-question__tag-ids-error._hidden
+            span Темы обязательны для заполнения
           .pop-up-question__quantity-symbols
             span.js-max-length-counter-select
-
+      .js-captcha-question
       .pop-up-question__box.js-answer-ui._disabled-user
         .pop-up-question__button._button-dark-blue.js-send-question отправить
         .pop-up-question__login
-          img.pop-up-question__avatar.js-answer-ui-avatar
+          .pop-up-question__avatar.js-answer-ui-avatar
           .pop-up-question__name.js-answer-ui-avatarname
           .question-common__is-sentry.js-answer-ui-sentry дежурный
 

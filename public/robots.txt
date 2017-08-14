@@ -1,22 +1,28 @@
 User-agent: Yandex
-Disallow: /tmp
 Disallow: /assets
 Allow: /assets/font
+Allow: /assets/front/
+Allow: /assets/mobile/
+Disallow: /tmp
 Disallow: /uploads
 Disallow: /licenses.001.txt
 Host: https://class.rambler.ru
 
 User-agent: Googlebot
-Disallow: /tmp
 Disallow: /assets
 Allow: /assets/font
+Allow: /assets/front/
+Allow: /assets/mobile/
+Disallow: /tmp
 Disallow: /uploads
 Disallow: /licenses.001.txt
 
 User-agent: *
-Disallow: /tmp
 Disallow: /assets
 Allow: /assets/font
+Allow: /assets/front/
+Allow: /assets/mobile/
+Disallow: /tmp
 Disallow: /uploads
 Disallow: /licenses.001.txt
 

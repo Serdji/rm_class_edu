@@ -1,7 +1,7 @@
 const SweetScroll = require('sweet-scroll');
 
 module.exports = () => {
-  const sweetScroll = new SweetScroll();
+  const sweetScroll = new SweetScroll({offset: -60});
   let search = window.location.search;
   // Выризаем хешь из урла
   let hash = search.match(/hash_id=([^&]+)/);

@@ -1,4 +1,5 @@
 const { each, qs } = require('utils');
+const OG_DEFAULT_PNG = 'https://class.rambler.ru/8f56f789/front/opengraph.png';
 
 module.exports = (nodes) => {
   // Общий конфиг для шарилок
@@ -76,7 +77,7 @@ module.exports = (nodes) => {
           RamblerShare.init(`[data-social-link='${el.dataset.socialLink}']`,
             Object.assign(commonSocialOptions, {
               description: answerParentIsClass.querySelector('.js-answer-share-text').innerText.slice(0, maxLengthText) + '...',
-              url: `${window.location}?hash_id=${answerParentIsClass.id}`,
+              url: `${window.location.origin}${window.location.pathname}?hash_id=${answerParentIsClass.id}`,
             })
           );
         }
@@ -87,7 +88,8 @@ module.exports = (nodes) => {
             Object.assign(commonSocialOptions, {
               title: questionsParentIsClass.querySelector('.js-questions-share-title').dataset.title,
               description: questionsParentIsClass.querySelector('.js-questions-share-text').innerText.slice(0, maxLengthText) + '...',
-              url: `${window.location.origin}${questionsParentIsClass.querySelector('.js-questions-share-title').getAttribute('href')}`
+              url: `${window.location.origin}${questionsParentIsClass.querySelector('.js-questions-share-title').getAttribute('href')}`,
+              image: OG_DEFAULT_PNG
             })
           );
         }

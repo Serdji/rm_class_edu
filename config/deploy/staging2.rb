@@ -5,5 +5,4 @@ server 'cache02.stage.class.rambler.ru',     roles: %w(queue)
 set :ssh_options, user: 'class'
 
 set :webdav_endpoint, 'http://webdav01.park.rambler.ru/class_stage2'
-set :webdav_verbose, true
 set :webdav_roles, [:front, :backend]

@@ -13,6 +13,10 @@ function config(editor, maxLengthCounter) {
         {title: 'Noindex', value: 'noindex'},
         {title: 'Noindex Nofollow', value: 'noindex nofollow'}
     ],
+    default_link_target: '_blank',
+    anchor_top: false,
+    anchor_bottom: false,
+    link_title: false,
     // Подключаем нужные нам плагины
     plugins: 'placeholder link image',
     // Выставляем нужные нам элементы и в нужном нам порядке

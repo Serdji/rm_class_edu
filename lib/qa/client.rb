@@ -16,6 +16,7 @@ class JsonApiParser < Faraday::Middleware
 
   private
 
+  # rubocop:disable Metrics/AbcSize
   def transform(data, included = false)
     collection = data.is_a?(Array)
     data = [data].flatten
@@ -57,6 +58,7 @@ class Qa::Client
     delegate :total_pages, :total_entries, :per_page, :current_page, to: :@meta
 
     def initialize(response, klass)
+      @klass = klass.to_s.demodulize
       @collection = response.body['data'].map { |attrs| klass.new(attrs) }
       @meta = OpenStruct.new(response.body['meta'])
     end
@@ -64,24 +66,55 @@ class Qa::Client
     def each
       @collection.each { |object| yield object }
     end
+
+    def includes(*models)
+      models.each { |model| includes!(model) }
+      self
+    end
+
+    def includes!(model)
+      includes = linked(model)
+      @collection.each do |item|
+        item.send("#{model}=", includes.key?(item.id) ? includes[item.id] : inclass(model).new)
+      end
+    end
+
+    def inclass(model)
+      if model == :image && @klass == 'Tag'
+        Images::Tag
+      else
+        model.to_s.camelize.safe_constantize
+      end
+    end
+
+    def linked(model)
+      able = polymorphous(model)
+      inclass(model).where(
+        "#{able}_type" => "Qa::#{@klass}",
+        "#{able}_id" => @collection.map(&:id)
+      ).map { |x| [x.send("#{able}_id"), x] }.to_h
+    end
+
+    def polymorphous(model)
+      "#{model}able"
+    end
   end
 
   class << self
     delegate :call, to: :instance
   end
 
+  # TODO: refactor
   def initialize
-    qa_api = Rails.application.config_for(:qa_api)
+    qa_config = Rails.application.config_for(:qa_api)
 
     faraday_options = {
-      url: qa_api.fetch('domain'),
-      headers: { 'X-Api-Version' => 'v1' }
+      url: qa_config.fetch('domain'),
+      headers: {
+        'X-Api-Version' => qa_config.fetch('api_version'),
+        'X-Api-Token' => qa_config.fetch('api_token')
+      }
     }
-
-    cache_config = RedisFactory.get_config_for(:cache)
-    cache_config[:namespace] = 'qa:faraday'
-
-    cache_store = ActiveSupport::Cache::RedisStore.new(cache_config)
 
     @connection = Faraday.new(faraday_options) do |builder|
       # Request
@@ -91,8 +124,12 @@ class Qa::Client
       builder.use JsonApiParser
       builder.use FaradayMiddleware::ParseJson
 
-      cache_options = { shared_cache: false, store: cache_store, serializer: Marshal }
-      builder.use Faraday::HttpCache, **cache_options
+      # Turn off cache for backend
+      unless Socket.gethostname.include? 'back'
+        cache_store = Education::Application.config.http_cache_store
+        cache_options = { shared_cache: false, store: cache_store, serializer: Marshal }
+        builder.use Faraday::HttpCache, **cache_options
+      end
 
       # Adapter
       builder.adapter Faraday.default_adapter

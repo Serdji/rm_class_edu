@@ -4,7 +4,8 @@ module.exports = () => {
     let nodes = {
       questionSocial: qs('.js-question-social'),
       commonSocial: qsa('.js-common-social'),
-      openShare: qsa('.js-open-share')
+      openShare: qsa('.js-open-share'),
+      questionText: qs('.js-question-share-text')
     };
     let script = document.createElement('script');
     // Добавляем CDN шарилок с нашим скриптом

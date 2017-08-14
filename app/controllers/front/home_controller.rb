@@ -18,10 +18,6 @@ class Front::HomeController < Front::ApplicationController
 
   private
 
-  def cookie_switch(value)
-    cookies[MOBILE_KEY] = { value: value, expires: 1.year.from_now }
-  end
-
   def questions_facade
     @questions_facade ||= Front::QuestionsFacade.new(self)
   end

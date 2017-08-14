@@ -15,3 +15,6 @@ Style/StructInheritance:
 
 Style/PredicateName:
   Enabled: false
+
+Style/FormatString:
+  Enabled: false

@@ -17,6 +17,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.force_ssl = true
+
   config.i18n.fallbacks = true
 
   config.active_support.deprecation = :notify

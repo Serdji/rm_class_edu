@@ -16,6 +16,8 @@ require('./modules/landing');
 require('./modules/dataPublished');
 require('./modules/statisticsMetrika');
 require('./modules/bestAnswer');
+require('./modules/transmitEventGa');
+require('./modules/themesDropDown');
 
 // Callbacks advertisement
 require('./modules/adsCB');

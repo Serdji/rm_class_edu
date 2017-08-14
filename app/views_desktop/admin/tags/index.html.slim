@@ -1,7 +1,16 @@
 = content_for :head_buttons do
   = link_to t("label.create"), new_admin_tag_path, class: 'btn btn-primary'
 
+= render 'csv'
 = render 'admin/shared/head', title: t('activemodel.models.tag')
+
+.nav.navbar.navbar-default
+  = form_for [:admin, @search], url: admin_tags_path, method: :get, html: { class: 'navbar-form navbar-left unvisible' } do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+
+    = f.submit t('label.search'), class: 'btn btn-default'
 
 table.table.table-hover
   thead.text-center

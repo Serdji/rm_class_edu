@@ -1,11 +1,5 @@
-class Qa::Answer
+class Qa::Answer < Qa::Base
   PUBLIC_STATES = %w(fresh with_complaints without_complaints).freeze
-
-  include Her::JsonApi::Model
-
-  include Qa::Datable
-  include Qa::Relationable
-  include Qa::Errorable
 
   belongs_to :question, class_name: 'Qa::Question'
   belongs_to :user, class_name: 'Qa::User'
@@ -16,6 +10,9 @@ class Qa::Answer
 
   # TODO: remove hardcoded states
   scope :published, -> { where(filter: { state: %w(fresh without_complaints with_complaints) }) }
+
+  loggable :update
+  boolean_field :best_answer
 
   class << self
     def states_for_select
@@ -35,6 +32,14 @@ class Qa::Answer
       username: user.full_name,
       user_avatar_url: user.avatar_url,
       created_at: I18n.l(created_at.in_time_zone, format: :answer)
+    )
+  end
+
+  def link_with_images(ids)
+    return unless ids.present?
+
+    Image.where(id: ids).update_all(
+      imageable_type: 'Qa::Answer', imageable_id: id, type: 'Images::Answer'
     )
   end
 end

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>add-theme</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="30" width="320" height="50"></rect>
+    </defs>
+    <g id="WORK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Создание-вопроса-и-написание-ответа" transform="translate(-163.000000, -584.000000)">
+            <g id="Комменты" transform="translate(150.000000, 66.000000)"></g>
+        </g>
+        <g id="09.01-Пишем-вопрос-—-Первый-экран" transform="translate(-13.000000, -484.000000)">
+            <g id="Выбрать-тему" transform="translate(0.000000, 441.000000)">
+                <g id="back">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#E8EAF0" stroke-width="1" x="-0.5" y="29.5" width="321" height="51"></rect>
+                </g>
+                <g id="add-theme" transform="translate(13.000000, 43.000000)" fill-rule="nonzero" fill="#315EFB">
+                    <path d="M18.4853821,18 L22.7710964,12 L18.4853821,6 L4.9947834,6 C3.34268102,6 2,7.34137604 2,8.99310226 L2,15.0068977 C2,16.660121 3.34054581,18 4.9947834,18 L18.4853821,18 Z M1,8.99310226 C1,6.78777278 2.79171562,5 4.9947834,5 L19,5 L24,12 L19,19 L4.9947834,19 C2.78852545,19 1,17.2126701 1,15.0068977 L1,8.99310226 Z" id="Rectangle-12"></path>
+                    <path d="M13,12 C13,13.1122704 13.8954305,14 15,14 C16.1122704,14 17,13.1045695 17,12 C17,10.8877296 16.1045695,10 15,10 C13.8877296,10 13,10.8954305 13,12 Z M12,12 C12,10.3410743 13.3375075,9 15,9 C16.6589257,9 18,10.3375075 18,12 C18,13.6589257 16.6624925,15 15,15 C13.3410743,15 12,13.6624925 12,12 Z" id="Rectangle-14"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

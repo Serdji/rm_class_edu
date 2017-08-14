@@ -1,0 +1,38 @@
+.contact-form.js-contact-form-question
+  .contact-form__title Введите ваш вопрос
+  - question = Qa::Question.new(tags: [], title: '', body: '')
+  = form_for question, html: { class: 'pop-up-question__form js-form' } do |f|
+    .contact-form__question.js-text-question contenteditable="true"
+    .contact-form__symbols.js-text-symbols-question._grey
+      span._counter.js-output-counter-question
+      span._counter-error Вопрос должен состоять минимум из четырех символов (не считая знаков препинания)
+
+    .contact-form__title Подробное описание
+
+    .contact-form__description.js-block-description
+      .contact-form__description-text.js-text-description contenteditable="true"
+      .contact-form__description-picture
+        label.js-input-label
+          input.js-input-picture accept="image/*" name="image-file-upload" type="file"
+          .contact-form__description-icon
+            /= svg name: "mobile-img", klass: "contact-form__description-icon-svg"
+            = render 'front/svg/svg_mobile_img'
+          .contact-form__placeholder Добавить изображение
+    .contact-form__symbols.js-text-symbols-description._grey
+      span.js-output-counter-description
+
+    .contact-form__title Темы
+
+    .contact-form__theme.js-text-theme
+      .contact-form__theme-icon
+        = svg name: "ques-answer-theme", klass: "contact-form__theme-icon"
+      .contact-form__placeholder Выбрать тему
+    .contact-form__theme-input.js-theme-input._hidden
+      label
+        - options = {class: 'js-select-tag', multiple: true}
+        = f.select :tag_ids, [], {include_blank: true}, options
+    .contact-form__symbols.js-text-symbols-tag._grey
+      span._counter.js-output-counter-tag
+      span._counter-error Необходимо выбрать темы
+
+    .contact-form__button.js-send-button._button-dark-blue onclick="yaCounter43407619.reachGoal('click_create_button_issue');" Задать вопрос

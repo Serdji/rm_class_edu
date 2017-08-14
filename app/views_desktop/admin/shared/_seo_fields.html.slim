@@ -1,4 +1,6 @@
 = f.fields_for :seo, (f.object.seo || f.object.build_seo) do |ff|
+  = ff.hidden_field :id
+
   .row
     .form-group
       .col-sm-2.text-right

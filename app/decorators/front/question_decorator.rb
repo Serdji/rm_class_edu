@@ -1,11 +1,12 @@
 class Front::QuestionDecorator < Draper::Decorator
   include HumanDates
   include Iso8601Dates
+  include Linkable
+  include Avatarable
 
-  decorates_association :user, with: Front::UserDecorator
+  LINES = 3
 
   delegate_all
-
   delegate :name, to: :main_tag, prefix: true
 
   def published?
@@ -27,10 +28,24 @@ class Front::QuestionDecorator < Draper::Decorator
     answers.reject(&:best_answer)
   end
 
-  def path(anchor = nil)
-    h.question_path object.id, tag_slug: main_tag.slug, slug: object.slug, anchor: anchor
-  rescue
-    id_log(object.id)
+  def path(anchor: false, anchor_name: nil, hash_id: nil)
+    h.question_path(
+      object.id,
+      tag_slug: main_tag.slug,
+      slug: object.slug,
+      anchor: (anchor ? anchor_name || answers_anchor : nil),
+      hash_id: hash_id
+    )
+  rescue => e
+    path_logger(id, e)
+  end
+
+  def mobile_path
+    if answers_counter.positive?
+      path(hash_id: has_best_answer ? 'best-answer' : 'answers')
+    else
+      h.new_question_answer_path(question_id: id)
+    end
   end
 
   def main_tag
@@ -38,39 +53,25 @@ class Front::QuestionDecorator < Draper::Decorator
   end
 
   def safe_body(length: nil, link: false, strip_tags: false, omission: '')
-    result = object.body
-    result = h.strip_tags(result) if strip_tags
-    result = result.truncate(length, omission: omission) if length
-    result = "#{result} (#{more_link})" if link && length && length < body.length
-    result
-  end
-
-  # TODO: refactor
-  def tags
-    @tags ||= begin
-      sorted_tags = taggings.sort_by(&:placement_index).map do |tagging|
-        object.tags.detect { |tag| tag.id.to_i == tagging.tag_id.to_i }
-      end
-
-      sorted_tags.select(&:is_published?)
-    end
-  end
-
-  def anchor
-    if answers_counter.zero?
-      'your-new-answer'
-    elsif has_best_answer
-      'best-answer'
+    result, more = sanitize_with_br(length, strip_tags)
+    result = result.truncate(length, omission: omission, separator: %r{\s(?!/)}) if length
+    result = link_highlight(result) unless length || strip_tags
+    if link && more
+      "#{result} (#{more_link})"
     else
-      'answers'
+      result
     end
+  end
+
+  def tags
+    @tags ||= object.tags.select(&:is_published?)
   end
 
   # TODO: move this from decorator!!!
   def answers
     @answers ||= begin
       options = {
-        page: { size: 500 }, include: 'user', sort: 'created_at',
+        page: { size: 500 }, include: 'user', sort: 'answers.created_at',
         filter: { state: Qa::Answer::PUBLIC_STATES }
       }
       collection = View::Qa::Answer.get("questions/#{object.id}/answers", options)
@@ -85,8 +86,29 @@ class Front::QuestionDecorator < Draper::Decorator
 
   private
 
-  def id_log(id)
-    Rails.logger.info(id)
+  def answers_anchor
+    if answers_counter.zero?
+      'your-new-answer'
+    elsif has_best_answer
+      'best-answer'
+    else
+      'answers'
+    end
+  end
+
+  def sanitize_with_br(length, strip_tags)
+    more = length && length < body.length
+    if strip_tags
+      lines = h.sanitize(body, tags: ['br'], attributes: []).split(%r{<br[ /]*>})
+      [lines[0, LINES].join('<br />'), more || lines.count > LINES]
+    else
+      [h.sanitize(body), more]
+    end
+  end
+
+  def path_logger(id, e)
+    Rails.logger.info(format('Building question (%s) path with error: %s', id, e))
+    Rails.logger.info(e.backtrace.join("\n"))
     id.to_s
   end
 

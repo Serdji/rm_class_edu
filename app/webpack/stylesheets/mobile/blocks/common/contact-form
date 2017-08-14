@@ -1,0 +1,141 @@
+.contact-form
+
+  &__title
+    font-family CorsicaRamblerLX-SemiBold
+    font-size 16px
+    color #262626
+    margin 20px 15px 10px
+
+  &__question,
+  &__description,
+  &__theme
+    background #ffffff
+    border-top 1px solid #e8eaf0
+    border-bottom 1px solid #e8eaf0
+    outline none
+
+  &__question
+    padding 17px 15px
+    min-height 50px
+    box-sizing border-box
+
+    img
+      max-width 100%
+
+  &__symbols
+    padding 6px 15px
+    font-size 14px
+
+    &._grey
+      opacity 0.4
+      color #262626
+
+      ._counter
+        display block
+      ._counter-error
+        display none
+
+    &._error
+      opacity 1
+      color #ff564e
+
+      ._counter
+        display none
+      ._counter-error
+        display block
+
+
+  &__description
+    padding 0 10px
+
+    &-text
+      padding 17px 5px
+      min-height 50px
+      box-sizing border-box
+      border-bottom 1px solid #e8eaf0
+      outline none
+
+      img
+        max-width 100%
+        margin-bottom 20px
+
+    &-picture,
+    label
+      centerBlock()
+
+    label
+      width 100%
+      height 100%
+
+
+    &-picture
+      padding 0 5px
+      height 50px
+
+      input
+        display none
+
+    &-icon
+      width 22px
+      height 22px
+      margin-right 14px
+
+      &-svg
+        width 100%
+        height 100%
+
+  &__placeholder
+    font-size 14px
+    color #8d96b2
+
+
+  &__theme
+    centerBlock()
+    padding 0 15px
+    height 50px
+    &._hidden
+      display none
+
+    &-icon
+      width 24px
+      height 24px
+      margin-right 12px
+
+      &-svg
+        width 100%
+        height 100%
+
+    &-input
+      &._hidden
+        display none
+
+  &__button
+    margin-top 25px
+    height 50px
+    margin-bottom 40px
+
+  &__question,
+  &__description,
+  &__theme
+    word-wrap break-word
+
+    &._focus
+      border-bottom 2px solid #315efb
+      margin-bottom -1px
+
+    &._error
+      border-bottom 2px solid #ff564e
+      margin-bottom -1px
+
+  &__option
+    centerBlock()
+    height 44px
+    border-bottom 1px solid #eeeeee !important
+
+    img
+      width 24px
+      height 24px
+      margin-right 12px
+
+    span
+      font-size 16px

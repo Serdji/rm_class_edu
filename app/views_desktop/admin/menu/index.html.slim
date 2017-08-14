@@ -1,0 +1,50 @@
+script type="text/template" id="tag-template"
+  .tag.row.hidden
+    - position = "<%= position %>".html_safe
+    input form="menu" type="hidden" name="menu[tags][][position]" value=position
+
+    .row
+      .col-md-8
+        select form="menu" name="menu[tags][][tag_id]"
+          = options_from_collection_for_select(@tags, :id, :name)
+      .col-md-4
+        button type="button" class="btn btn-danger menu-tag-remove-js"
+          i class="fa fa-times" aria-hidden="true"
+
+script type="text/template" id="tag-group-template"
+  .row.tag-group.hidden
+    - position = "<%= position %>".html_safe
+    input form="menu" type="hidden" name="menu[tag_groups][][position]" value=position
+
+    .row
+      .col-md-10
+        select form="menu" name="menu[tag_groups][][tag_id]"
+          = options_from_collection_for_select(@tags, :id, :name)
+
+      .col-md-2
+        button type="button" class="btn btn-danger menu-tag-group-remove-js"
+          i class="fa fa-times" aria-hidden="true"
+    .row
+      .col-md-10
+        select form="menu" name="menu[tag_groups][][tag_ids][]" multiple="true"
+          = options_from_collection_for_select(@tags, :id, :name)
+
+= render 'admin/shared/head', title: 'Меню тем'
+
+.menu-constructor data-tags=@menu_tags.to_json data-tag-groups=@menu_tag_groups.to_json
+  .row
+    .col-md-6.left-side
+      h4.text-center Левый блок (популярные темы)
+      .tags
+      .row
+        button type="button" class="btn btn-success add-button menu-tag-add-js" Добавить
+
+    .col-md-6.right-side
+      h4.text-center Правый блок
+      .tag-groups
+      .row
+        button type="button" class="btn btn-success add-button menu-tag-group-add-js" Добавить
+
+.row
+  = form_tag admin_menu_save_path, id: :menu, method: :put do
+    = submit_tag 'Сохранить', class: 'btn btn-primary'

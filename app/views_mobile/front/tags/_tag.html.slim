@@ -1,15 +1,19 @@
-.theme.js-tag-share
+.theme.js-tag-share.js-tag-ads
   .theme__short-stripe
-    img src=tag.image.wide_stripe_url
+    img src=tag.image_wide_stripe_url
   .theme__content
     .theme__cover
-      img src=tag.image.thumb_shadow_url
+      - if local_assigns.fetch(:head, false)
+        img src=tag.image_thumb_with_shadow_url
+      - else
+        a href=tag_path(slug: tag.slug)
+          img src=tag.image_thumb_with_shadow_url
     = render 'front/common/social'
     - if local_assigns.fetch(:head, false)
-      h1.theme__title.js-tag-share-title.js-tag-share-img  data-title=tag.seo_title data-image=tag.image.url data-href=tag_path(slug: tag.slug)
+      h1.theme__title.js-tag-share-title.js-tag-share-img  data-title=tag.seo_title data-image=tag.image_url data-href=tag_path(slug: tag.slug)
         = tag.name.truncate(35)
     - else
-      a.theme__title.js-tag-share-title.js-tag-share-img  data-title=tag.seo_title data-image=tag.image.url href=tag_path(slug: tag.slug)
+      a.theme__title.js-tag-share-title.js-tag-share-img  data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
         = tag.name.truncate(35)
 
   .theme__footer

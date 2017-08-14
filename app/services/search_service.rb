@@ -4,12 +4,23 @@ class SearchService
   DEFAULT_SIZE = 20
 
   class << self
-    delegate :search, :index, :raw_search, :search_question, :search_tag, to: :instance
+    delegate :search, :suggest, :index, :search_question, :search_tag, to: :instance
   end
 
-  # TODO: remove this method
-  def raw_search(query, options = {})
-    search_connection.call(query, options).body
+  def suggest(query, options = {})
+    options = {
+      per_page: 3, is_published: true
+    }.merge(options)
+
+    questions = search(query, options.merge(type: :questions))
+    tags = search(query, options.merge(type: :tags))
+
+    result = { matches: [], total_found: questions.total_found }
+
+    result[:matches] += questions.result.matches
+    result[:matches] += tags.result.matches
+
+    result
   end
 
   def index(data)
@@ -23,7 +34,7 @@ class SearchService
   def search(query, options = {})
     transform_pagination!(options)
 
-    result = raw_search(query, options)
+    result = search_connection.call(query, options).body
     Result.new(result, options.slice(:size, :from))
   end
 

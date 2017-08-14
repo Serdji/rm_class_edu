@@ -1,4 +1,5 @@
-const { fetchAutToken, each } = require('utils');
+const { fetchAutToken, each, qs } = require('utils');
+const Captcha = require('captcha');
 
 module.exports = nodes => {
   nodes.buttonSend.addEventListener('click', send);
@@ -10,10 +11,11 @@ module.exports = nodes => {
       if (checkbox.checked) causeIds.push(checkbox.value);
     });
 
-    let body = nodes.complaintForm['complaint[body]'].value;
-    let email = nodes.complaintForm['complaint[email]'].value;
-    let complainableId = nodes.complaintForm['complaint[complainable_id]'].value;
+    let body             = nodes.complaintForm['complaint[body]'].value;
+    let email            = nodes.complaintForm['complaint[email]'].value;
+    let complainableId   = nodes.complaintForm['complaint[complainable_id]'].value;
     let complainableType = nodes.complaintForm['complaint[complainable_type]'].value;
+    let captcha          = new Captcha('.js-captcha-complaint');
 
     let params = {
       method: 'POST',
@@ -25,21 +27,29 @@ module.exports = nodes => {
           cause_ids: causeIds,
           body: body,
           email: email
+        },
+        captcha: {
+          id: captcha.getId(),
+          input: captcha.getInput()
         }
       })
     };
 
+    this.setAttribute('disabled', 'disabled');
+
     fetchAutToken(params)
       .then(params => fetch(url, params))
       .then(response => {
-        let { status, statusText } = response;
+        let { status } = response;
         let json = response.json();
-
         if (status >= 200 && status < 300) {
+          this.removeAttribute('disabled');
+          captcha.remove();
           return json;
         } else {
+          this.removeAttribute('disabled');
           return json.then(responseError => {
-            let error = Error(statusText);
+            let error = Error(status);
             error.errors = responseError.errors;
             throw error;
           });
@@ -50,16 +60,19 @@ module.exports = nodes => {
         nodes.complaintForm.reset();
         nodes.complaintSuccess.style.display = 'table-cell';
       })
-      .catch(response => {
-        if (response.message === 'Unprocessable Entity') {
-          response.errors.forEach((error) => {
-            let attribute = error.source.replace(/\/data\/attributes\//, '');
-            nodes.complaintForm[`complaint[${attribute}]`].classList.add('_editor-error');
-          });
-        }
-
-        if (response.message === 'Unauthorized') {
-          qs('.rambler-topline__user-signin').click();
+      .catch(({message, errors}) => {
+        console.log(message);
+        switch (message){
+          case '422':
+            Object.keys(errors).forEach((error) => {
+              nodes.complaintForm[`complaint[${error}]`].classList.add('_editor-error');
+            });
+            break;
+          case '429':
+            this.removeAttribute('disabled');
+            captcha.run();
+            break;
+          case '401': qs('.rambler-topline__user-signin').click(); break;
         }
       });
   }

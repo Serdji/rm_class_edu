@@ -1,13 +1,12 @@
-class Qa::Complaint
-  include Her::JsonApi::Model
-
-  include Qa::Datable
-  include Qa::Relationable
-  include Qa::Errorable
-
+class Qa::Complaint < Qa::Base
   belongs_to :user, class_name: 'Qa::User'
 
-  validates :comment, presence: true
+  validates :comment, presence: true, on: :admin
+
+  validates :body, presence: true, on: :front
+  validates :email, presence: true, on: :front
+
+  loggable :update
 
   def answer?
     complainable_type == 'Answer'

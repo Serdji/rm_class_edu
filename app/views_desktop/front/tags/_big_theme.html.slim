@@ -1,20 +1,21 @@
 .big-theme__wrapper.js-tag-ads
-  .big-theme__wide-stripe: img src=tag.image.wide_stripe_url
+  .big-theme__wide-stripe: img src=tag.image_wide_stripe_url
   .big-theme.js-tag-share
     .big-theme__header
       = render 'front/questions/question_social'
     .big-theme__content
       .big-theme__cover
-        img src=tag.image.thumb_shadow_url
-      .big-theme__box
-        - title = capture do
-          a.big-theme__title._hover-reference-blue.js-tag-share-title href=tag_path(slug: tag.slug)
-            = tag.name.truncate(30)
         - if local_assigns.fetch(:head, false)
-          h1.big-theme__title.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image.url data-href=tag_path(slug: tag.slug)
+          img src=tag.image_thumb_with_shadow_url
+        - else
+          a href=tag_path(slug: tag.slug)
+            img src=tag.image_thumb_with_shadow_url
+      .big-theme__box
+        - if local_assigns.fetch(:head, false)
+          h1.big-theme__title.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image_url data-href=tag_path(slug: tag.slug)
             = tag.name.truncate(30)
         - else
-          a.big-theme__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-c=tag.image.url href=tag_path(slug: tag.slug)
+          a.big-theme__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
             = tag.name.truncate(30)
         .big-theme__counters
           .big-theme__icon

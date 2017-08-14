@@ -1,11 +1,11 @@
-.answer.js-answer-share id="answers-#{answer.id}" data-complainable="true" data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type="Answer"
+.answer.js-answer-share.js-answer-ads id="answers-#{answer.id}" data-complainable="true" data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type="Answer"
   .questions__header
     .questions__user
-      .questions__avatar: img src=answer.user.avatar_url
+      .questions__avatar style=answer.user_avatar_style
       .questions__name = answer.user_full_name
   .questions__content
     .questions__text.js-answer-share-text
-      p == sanitize(answer.body)
+      p == answer.safe_body
     .questions__data
       .questions__data-icon
         = svg name: 'ico_time', klass: 'questions__data-icon-svg'

@@ -3,7 +3,7 @@
 .best-answer.js-answer-share id="answers-#{answer.id}" data-answer-id=answer.id data-complainable="true" data-complainable-id=answer.id data-complainable-type="Answer"
   .question-common__header
     .question-common__user
-      img.question-common__avatar src=answer.user.avatar_url
+      .question-common__avatar style=answer.user_avatar_style
       .question-common__name = answer.user_full_name
       - if answer.user.is_sentry
         .question-common__is-sentry дежурный
@@ -11,7 +11,7 @@
 
   .question-common__content
     .question-common__text.js-answer-share-text
-      p == break_too_long_words(sanitize(answer.body))
+      p == sanitize(answer.body)
 
     .question-common__data
       .question-common__data-icon

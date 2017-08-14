@@ -4,7 +4,8 @@ script type="text/template" class="js-search-suggest-template"
 
     <% questions.forEach(function(question) { %>
       - url = "<%= question.url %>".html_safe
-      a.search-result__item.js-search-question data-search-suggest="klass::search::element_question" href=url <%= question.title %>
+      a.search-result__item.js-search-question data-search-suggest="klass::search::element_question" href=url
+        span <%= question.title %>
     <% }) %>
   <% } %>
 
@@ -35,14 +36,16 @@ script type="text/template" class="js-search-suggest-template"
 .search.js-search
   .search__select
     .input-select
-      input.js-search-input placeholder="Искать вопросы и темы"
-        .clear-input.js-clear-input data-search-suggest="klass::search::cross_button"
+      input.js-search-input data-search-suggest="klass::search::search_enter" placeholder="Искать вопросы и темы"
+        .clear-input.js-clear-input._hidden data-search-suggest="klass::search::cross_button"
           = svg name: 'close', klass: "clear-input-svg"
 
     .search-result.search-result_hidden
 
   .search__botton._button-dark-blue.js-open-pop-up-ques.js-clear-button data-search-suggest="klass::search::create_issue_button"
     | Задать вопрос
+    ._button-dark-blue-icon
+      = svg name: 'combined-shape-copy-9', klass: "_button-dark-blue-icon-svg"
   = render 'front/questions/pop_up_question'
   = render 'front/questions/pop_up_complaint'
 

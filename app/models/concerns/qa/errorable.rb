@@ -1,12 +1,31 @@
 module Qa::Errorable
-  extend ActiveSupport::Concern
+  class ErrorStruct < Struct.new(:error)
+    def message
+      error.fetch(:title)
+    end
+
+    def status
+      error.fetch(:status)
+    end
+
+    def source
+      error.fetch(:source)
+    end
+
+    def field
+      source.split('/').last.to_sym
+    end
+  end
 
   def errors
-    response_errors&.each do |err|
-      key = err[:source].split('/').last.to_sym
-      next if super.key? key
-      super.add(key, :invalid, message: err[:title])
+    errors = super
+
+    response_errors.each do |error|
+      error = ErrorStruct.new(error)
+      errors.add(error.field, error.message)
     end
-    super
+
+    self.response_errors = {}
+    errors
   end
 end

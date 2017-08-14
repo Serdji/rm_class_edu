@@ -9,7 +9,6 @@ Dir[Rails.root.join('spec/supports/**/*.rb')].each { |file| require(file) }
 
 require 'spec_helper'
 require 'rspec/rails'
-require 'webmock/rspec'
 
 require 'simplecov'
 SimpleCov.start do
@@ -47,5 +46,12 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end

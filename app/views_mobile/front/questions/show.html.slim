@@ -1,6 +1,8 @@
+.js-page-question-ads
 = render 'common/seo_attributes', object: questions_facade.question
 
 - content_for :head_title, questions_facade.question.seo_title
+- content_for :canonical, [Settings.host, questions_facade.question.path].join
 
 - cache_mobile questions_facade.question do
   = render 'front/questions/show_question', question: questions_facade.question
@@ -11,32 +13,28 @@
 
 - if best_answer
   - cache_mobile best_answer do
-    .title Лучший ответ
+    .title#best-answer Лучший ответ
     = render 'front/answers/answer', answer: best_answer
-
-  .baner
-    = render 'front/ads/ban_content'
+    .js-best-answer-ads
 
 - unless questions_facade.question.hide_more_answers?
   .title
     span>
       = questions_facade.question.best_answer ? 'еще ответы' : 'ответы'
     span.title__counter#answers = "#{answers_count}"
-  = render partial: 'front/answers/answer_with_ad', collection: questions_facade.question.without_best_answer, as: :answer
+  - options = { collection: questions_facade.question.without_best_answer, as: :answer, cached: mobile_collection_proc }
+  = render partial: 'front/answers/answer', **options
 
-- if questions_facade.question.answers_counter.zero? || answers_count % 2 != 0
-  .baner
-    = render 'front/ads/ban_content'
+.answer__wrapper.js-sticking-button-stop
+  a.answer__button.js-sticking-button._button-dark-blue href=new_question_answer_path(questions_facade.question.id)
+    span написать ответ
+.js-last-answer-ads
 
 - cache_mobile [questions_facade.question, :similar_questions], expires_in: 1.minute do
   - if questions_facade.similar_questions.any?
     .title похожие вопросы
     - options = { collection: questions_facade.similar_questions, cached: mobile_collection_proc }
     = render partial: 'front/questions/question', **options
-
-- if questions_facade.similar_questions.any? && questions_facade.similar_tags.any?
-  .baner
-    = render 'front/ads/ban_content'
 
 - cache_mobile [questions_facade.question, :similar_tags], expires_in: 1.minute do
   - if questions_facade.similar_tags.any?

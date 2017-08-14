@@ -10,19 +10,6 @@ class ApplicationController < ActionController::Base
     render json: { token: form_authenticity_token }
   end
 
-  # TODO: move this to ImagesController
-  def upload_image
-    file = Faraday::UploadIO.new(params[:image].path, 'image/jpeg')
-    image = Qa::Image.new(image: file)
-    image.save
-
-    if image.response_errors.any?
-      render json: image.response_errors, status: :unprocessable_entity
-    else
-      render json: image.attributes.slice('id', 'url')
-    end
-  end
-
   private
 
   def application_facade

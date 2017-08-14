@@ -40,6 +40,6 @@ class Admin::MetapagesController < Admin::ApplicationController
   end
 
   def find_metapage
-    @metapage = Metapage.find(params[:id])
+    @metapage ||= Metapage.find(params[:id])
   end
 end
