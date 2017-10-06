@@ -8,18 +8,19 @@
 - cache_desktop [tags_facade.tag, :big_theme, :with_head] do
   = render 'front/tags/big_theme', tag: tags_facade.tag, head: true
 
-.questions
+.questions data-event-counters="lass::theme_card::theme"
   - options = { collection: tags_facade.tag_questions, as: :question, cached: desktop_collection_proc }
   = render partial: 'front/questions/question', **options
 
-.pagination-wrapper = pagination(tags_facade.tag_questions.object)
+- data_event_counters = ['klass', 'theme_card', 'pagination', params.fetch(:page, 1)].join('::')
+.pagination-wrapper data-event-counters=data_event_counters = pagination(tags_facade.tag_questions.object)
 - content_for :relation_links, relation_links(tags_facade.tag_questions)
 
 - cache_desktop [tags_facade.tag, :similar_tags], expires_in: 5.minutes do
   - if tags_facade.similar_tags.any?
     .question-common__up-title
       span похожие темы
-    .tag
+    .tag data-event-counters="klass::theme_card::similar_themes"
       - options = { collection: tags_facade.similar_tags, as: :tag, cached: desktop_collection_proc }
       = render partial: 'front/tags/tag', **options
 

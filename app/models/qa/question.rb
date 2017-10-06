@@ -77,19 +77,16 @@ class Qa::Question < Qa::Base
     @redirect = Redirect.new(attributes)
   end
 
-  def redirect_path
-    redirect.redirect_path if redirect
-  end
+  delegate :redirect_path, to: :redirect
 
   private
 
   def check_title_length
     value = @attributes[:title].to_s
 
-    unless value.gsub(/[^а-яА-Яa-zA-Z0-9]/, '').length > 3
-      scope = 'qa.errors.models.question.attributes'
-      errors.add('title', I18n.t('title.too_few_chars', scope: scope, count: 4))
-    end
+    return if value.gsub(/[^а-яА-Яa-zA-Z0-9]/, '').length > 3
+    scope = 'qa.errors.models.question.attributes'
+    errors.add('title', I18n.t('title.too_few_chars', scope: scope, count: 4))
   end
 
   def check_tag_ids
@@ -98,12 +95,7 @@ class Qa::Question < Qa::Base
 
     scope = 'qa.errors.models.question.attributes'
 
-    if length.zero?
-      errors.add('tag_ids', I18n.t('tag_ids.presence', scope: scope))
-    end
-
-    if length > 10
-      errors.add('tag_ids', I18n.t('tag_ids.too_big', scope: scope))
-    end
+    errors.add('tag_ids', I18n.t('tag_ids.presence', scope: scope)) if length.zero?
+    errors.add('tag_ids', I18n.t('tag_ids.too_big', scope: scope)) if length > 10
   end
 end

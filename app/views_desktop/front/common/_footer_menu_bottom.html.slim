@@ -1,16 +1,12 @@
 .footer__box._bottom
   .footer__menu._bottom-menu
     ul
-      li
-        a._hover-reference-blue.js-send-ga rel="nofollow" href=toggle_path Мобильная версия
-      li
-        a._hover-reference-gray rel="nofollow" target="_blank" href="https://reklama.rambler.ru/price/" Реклама
-      li
-        a._hover-reference-gray rel="nofollow" target="_blank" href="http://help.rambler.ru/feedback/class/form/142/" Обратная связь
-      li
-        a._hover-reference-gray rel="nofollow" target="_blank" href="http://help.rambler.ru/class/class-legal/1552/" Пользовательское соглашение
-      li
-        a._hover-reference-gray rel="nofollow" target="_blank" href="https://rambler-co.ru/jobs" Вакансии
+      li = fake_link 'Мобильная версия', path: toggle_path, class: '_hover-reference-blue js-send-ga'
+      li = fake_link 'Реклама', path: 'https://reklama.rambler.ru/price/', target: '_blank', class: '_hover-reference-gray', target: :blank
+      li = fake_link 'Обратная связь', path: 'http://help.rambler.ru/feedback/class/form/142/', class: '_hover-reference-gray', target: :blank
+      li = fake_link 'Пользовательское соглашение', path: 'http://help.rambler.ru/class/class-legal/1552/', class: '_hover-reference-gray', target: :blank
+      li = fake_link 'Вакансии', path: 'https://rambler-co.ru/jobs', class: '_hover-reference-gray', target: :blank
+
   .footer__сopyright
     span.footer__сopyright-title
       a rel="nofollow" href="https://rambler-co.ru/" &copy; Рамблер,

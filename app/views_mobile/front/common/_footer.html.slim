@@ -1,18 +1,15 @@
 .footer
   .footer__top
     .footer__logo
-      a.footer__rambler data-cerber-logo="logo_footer_rambler" href="https://www.rambler.ru/?utm_source=mclass&utm_content=mhead&utm_medium=logo_footer&utm_campaign=self_promo"
-      a.footer__class href=(DomainFactory.url + '/')
+      - path = 'https://www.rambler.ru/?utm_source=mclass&utm_content=mhead&utm_medium=logo_footer&utm_campaign=self_promo'
+      = fake_link path: path, class: 'footer__rambler', data: { 'cerber-logo' => 'logo_footer_rambler' }, target: :blank
+      = fake_link path: (DomainFactory.url + '/'), class: 'footer__class'
       = svg name: 'footer_logo', klass: 'footer__logo-svg'
   .footer__bottom
     ul.footer__menu
-      li
-        a._hover-reference-blue.js-send-ga rel="nofollow" href=toggle_path
-          | Полная версия
-      li
-        a._hover-reference-blue target="_blank" rel="nofollow" href="http://help.rambler.ru/feedback/class/form/142/" Обратная связь
-      li
-        a._hover-reference-blue target="_blank" rel="nofollow" href="http://help.rambler.ru/class/class-legal/1552/" Пользовательское соглашение
+      li = fake_link 'Полная версия', path: toggle_path, class: '_hover-reference-blue js-send-ga'
+      li = fake_link 'Обратная связь', path: 'http://help.rambler.ru/feedback/class/form/142/', target: :blank, class: '_hover-reference-blue'
+      li = fake_link 'Пользовательское соглашение', path: 'http://help.rambler.ru/class/class-legal/1552/', target: :blank, class: '_hover-reference-blue'
 
     .footer__сopyright
       span.footer__сopyright-title

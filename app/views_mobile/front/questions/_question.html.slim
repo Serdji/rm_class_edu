@@ -1,8 +1,9 @@
-.questions.js-questions-share.js-questions-ads
+.questions.js-questions-share.js-questions-ads data-complaint=complaint_form_path(id: question.id, complainable: :question)
   .questions__header
     .questions__user
       .questions__avatar style=question.user_avatar_style
       .questions__name = question.user.full_name
+      = render 'front/questions/ellipsis'
   .questions__content.js-biog
     a.questions__title.js-questions-share-title data-title=question.seo_title href=question.path
       = question.title
@@ -15,15 +16,15 @@
 
     .questions__hash._hide.js-hash-tags
       - question.tags.each do |tag|
-        a.questions__point.js-point-tags href=tag_path(slug: tag.slug)
-          span = tag.name
+        = fake_link tag.name, path: tag_path(slug: tag.slug), class: 'questions__point js-point-tags'
 
   .questions__footer
-    a.questions__answer href=question.mobile_path
+    = fake_link path: question.mobile_path, class: 'questions__answer' do
       .questions__answer-icon
         = svg name: 'ico_message', klass: 'questions__answer-icon-svg'
       - if question.answers_counter > 0
         = question.human_answers_counter
       - else
         | Ответить
+
     = render 'front/common/social'

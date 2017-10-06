@@ -1,4 +1,3 @@
-
 namespace 'db:seed' do
   def subject_grade(subject, grade, sepatator = ' ')
     result = []

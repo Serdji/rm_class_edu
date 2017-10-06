@@ -12,7 +12,7 @@ stdout_path "#{shared}/log/unicorn.stdout.log"
 
 listen 8088, reuseport: true
 
-worker_processes %w(production staging).include?(ENV['RACK_ENV']) ? 16 : 2
+worker_processes %w(production).include?(ENV['RACK_ENV']) ? 16 : 2
 
 timeout 30
 

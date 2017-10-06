@@ -1,0 +1,27 @@
+.js-page-temy-ads
+
+- content_for(:head_title, tags_facade.multi_tag.seo_title)
+/ - content_for(:og_image, tags_facade.multi_tag.image_url)
+
+= render 'common/seo_attributes', object: tags_facade.multi_tag
+
+- cache_desktop [tags_facade.multi_tag, :big_theme, :with_head] do
+  = render 'front/multi_tags/big_theme', tag: tags_facade.multi_tag, head: true, title_length: 45
+
+.questions data-event-counters="lass::multi_theme_card::theme"
+  - options = { collection: tags_facade.multi_tag_questions, as: :question, cached: desktop_collection_proc }
+  = render partial: 'front/questions/question', **options
+
+- data_event_counters = ['klass', 'multi_theme_card', 'pagination', params.fetch(:page, 1)].join('::')
+.pagination-wrapper data-event-counters=data_event_counters = pagination(tags_facade.multi_tag_questions.object)
+- content_for :relation_links, relation_links(tags_facade.multi_tag_questions)
+
+- cache_desktop [tags_facade.multi_tag, :similar_multi_tags], expires_in: 5.minutes do
+  - if tags_facade.similar_multi_tags.any?
+    .question-common__up-title
+      span похожие темы
+    .tag data-event-counters="klass::multi_theme_card::similar_themes"
+      - options = { collection: tags_facade.similar_multi_tags, as: :tag, cached: desktop_collection_proc }
+      = render partial: 'front/tags/tag', **options
+
+.js-temy-ban-direct

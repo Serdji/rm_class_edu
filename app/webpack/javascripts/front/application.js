@@ -3,6 +3,8 @@
 require('polyffils');
 require('svg');
 require('copywritingDate');
+require('fakeLink');
+
 require('_stylesheets/front/application');
 require('./modules/stickingBaner')();
 require('./modules/textEditor');

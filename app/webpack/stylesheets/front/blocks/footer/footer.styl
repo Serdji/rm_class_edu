@@ -5,8 +5,10 @@
     li
       display inline-block
       list-style-type none
-      a
-        color #ffffff
+      color #ffffff
+
+      a, span
+        color @color
 
   &__rambler,
   &__class
@@ -20,6 +22,7 @@
     width 62%
 
   &__class
+    cursor pointer
     right 0
     width 30%
 
@@ -49,7 +52,7 @@
     &._bottom-menu
       li
         margin-right 28px
-        a
+        a, span
           font-size 13px
           &._activ
             font-weight bold

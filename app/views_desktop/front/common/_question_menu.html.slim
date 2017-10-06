@@ -1,7 +1,8 @@
 .question-menu
   .wrapper
     .question-menu__points.js-menu-ques-themes-drop-down
-      a.question-menu__point data-search-suggest="index" class=(%w(questions home).include?(controller_name)  ? '_activ' : '') href=otvety_path
+      - page_name = [controller_name, action_name, params.fetch(:id, nil), params.fetch(:slug, nil)].compact.join('#')
+      a.question-menu__point data-event-counters="klass::#{page_name}::index" class=(%w(questions home).include?(controller_name)  ? '_activ' : '') href=otvety_path
         span Ответы
-      a.question-menu__point.js-open-themes-drop-down data-search-suggest="list_topics" class=(controller_name == 'tags' ? '_activ' : '') href=temy_path
+      a.question-menu__point.js-open-themes-drop-down data-event-counters="klass::#{page_name}::list_topics" class=(controller_name == 'tags' ? '_activ' : '') href=temy_path
         span Темы

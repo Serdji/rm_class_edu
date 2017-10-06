@@ -5,11 +5,14 @@
       = "Результаты поиска по запросу «#{params[:query]}»"
 
     - active = 'search-page__subtitle--active'
-    a.search-page__subtitle data-search-suggest=(@search_result.empty? ? "search_result_questions_blank" : "search_result_questions") class=(active if questions_active?) href=search_serp_path(type: 'questions', query: params[:query])
+    - controller_action = [controller_name, action_name].join('#')
+    - data_event_counters = ['klass', 'search_results', controller_action, 'switch', 'questions'].join('::')
+    a.search-page__subtitle data-event-counters=data_event_counters class=(active if questions_active?) href=search_serp_path(type: 'questions', query: params[:query])
       span.search-page__subtitle-text Вопросы
       span.search-page__counter = "(#{@search_result.questions_found})"
 
-    a.search-page__subtitle data-search-suggest=(@search_result.empty? ? "search_result_topics_blank" : "search_result_topics") class=(active if tags_active?) href=search_serp_path(type: 'tags', query: params[:query])
+    - data_event_counters = ['klass', 'search_results', controller_action, 'switch', 'tags'].join('::')
+    a.search-page__subtitle data-event-counters=data_event_counters class=(active if tags_active?) href=search_serp_path(type: 'tags', query: params[:query])
       span.search-page__subtitle-text Темы
       span.search-page__counter = "(#{@search_result.tags_found})"
 
@@ -40,4 +43,6 @@
     = render 'questions' if questions_active?
     = render 'tags' if tags_active?
 
-.pagination-wrapper.js-search-pag-ads = pagination(@search_result)
+- data_event_counters = ['klass', 'search_results', 'questions', 'pagination', params.fetch(:page, 1)].join('::')
+.pagination-wrapper.js-search-pag-ads data-event-counters=data_event_counters
+  = pagination(@search_result)

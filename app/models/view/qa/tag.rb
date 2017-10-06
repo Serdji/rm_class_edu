@@ -33,7 +33,8 @@ class View::Qa::Tag
   alias read_attribute_for_serialization send
 
   def cache_key
-    "tags/#{id}-#{updated_at.utc.to_s(:number)}"
+    # TODO: remove try later
+    "tags/#{id}-#{updated_at.utc.to_s(:number)}/#{image.try(:cache_key)}"
   end
 
   delegate :title, :keywords, :description, to: :seo, prefix: true, allow_nil: true

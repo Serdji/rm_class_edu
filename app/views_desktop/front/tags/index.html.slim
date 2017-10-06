@@ -2,9 +2,10 @@
 = render 'common/seo_attributes', object: tags_facade.metapage
 - content_for :head_title, tags_facade.metapage.seo_title
 
-- content_for :relation_links, relation_links(tags_facade.tags)
+- content_for :relation_links, relation_links(tags_facade.tag_pages)
 
-.tag
-  = render partial: 'front/tags/various_tag', collection: tags_facade.tags, as: :tag
+.tag data-event-counters="klass::themes::top_themes"
+  = render partial: 'front/tags/various_tag', collection: tags_facade.tag_pages, as: :tag
 
-.pagination-wrapper.js-temy-pag-ads = pagination(tags_facade.tags.object)
+- data_event_counters = ['klass', 'themes', 'pagination', params.fetch(:page, 1)].join('::')
+.pagination-wrapper.js-temy-pag-ads data-event-counters=data_event_counters = pagination(tags_facade.tag_pages.object)

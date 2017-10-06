@@ -1,0 +1,30 @@
+.big-theme__wrapper.js-tag-ads
+  .big-theme__wide-stripe
+    .big-theme__wide-stripe-blue
+  .big-theme.js-tag-share
+    .big-theme__header
+      = render 'front/questions/question_social'
+    .big-theme__content
+      .big-theme__box
+        - if local_assigns.fetch(:head, false)
+          h1.big-theme__title.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-href=multi_tag_path(slug: tag.slug)
+            = tag.name
+        - else
+          - controller_action = [controller_name, action_name].join('#')
+          - data_event_counters = ['klass', controller_action, 'themes_block', tag.id].join('::')
+
+          a.big-theme__title._hover-reference-blue.js-tag-share-title.js-tag-share-img[
+            data-title=tag.seo_title
+            data-event-counters=data_event_counters
+            href=multi_tag_path(slug: tag.slug)
+          ] = tag.name
+
+        .big-theme__counters
+          .big-theme__icon
+            = svg name: 'ico_question_gray', klass: 'big-theme__icon-svg'
+          span._question>
+            = tag.human_questions_counter
+          .big-theme__icon
+            = svg name: 'ico_message', klass: 'big-theme__icon-svg'
+          span>
+            = tag.human_answers_counter

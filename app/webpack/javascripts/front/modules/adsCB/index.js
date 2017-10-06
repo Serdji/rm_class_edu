@@ -2,9 +2,9 @@ const { qsa, qs }    = require('utils');
 const iterAds        = require('./iterAds');
 const callAds        = require('./callAds');
 const sidebarIsAds   = require('./sidebarIsAds');
-const autoScroll     = require('../socialButton/autoScroll');
 const CONF           = require('./configAds');
-let height240x400    = false;
+const switch240x200  = require('./switch240x200');
+const substrateNone = require('./substrateNone');
 
 let nodes = {
   banerSideba: qsa('.js-baner-sidebar'),
@@ -16,34 +16,15 @@ let nodes = {
   rootBanDirect: qs('.js-root-ban-direct'),
   similarThemesAds: qs('.js-similar-themes-ads')
 };
+
+
 // Если включин AddBlock
 sidebarIsAds(nodes);
-let test = 1;
-// Колбек отрабатывает после загрузке всей рекламмы
-Begun.Autocontext.Callbacks.register({
-  block: {
-    draw() {
-      // каждые 500ms проверяем банеры
-      let intId = setInterval(() => {
-        sidebarIsAds(nodes);
-        let ban240x400 = qs('#ban_240x400 div[id^="begun_block"]');
-        if (!height240x400 && ban240x400) {
-          height240x400 = ban240x400.clientHeight;
-          if (height240x400 !== 0 && height240x400 <= 400) {
-            callAds(CONF.context_240x200);
-          }
-        }
-      }, 500);
-      // через 10 секунд перестаем проверять
-      setTimeout(() => {
-        clearInterval(intId);
-      }, 10000);
-      setTimeout(() => {
-        autoScroll();
-      }, 500);
-    }
-  },
-});
+//Рекламма 240х200
+switch240x200(nodes);
+//Убираем подложку
+substrateNone();
+
 
 callAds(CONF.ban_240x400);
 callAds(CONF.native);

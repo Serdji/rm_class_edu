@@ -19,7 +19,7 @@ table.table.table-hover
   thead.text-center
     tr
       th = qa_sort_link(:id)
-      th Название
+      th = t(:title, scope: 'activemodel.attributes.qa/complaint')
       th = qa_sort_link('users.first_name')
       th.nowrap = qa_sort_link('complaints.updated_at')
       th.nowrap = qa_sort_link('complaints.created_at')

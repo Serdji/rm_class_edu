@@ -10,7 +10,6 @@
       .col-sm-5
         = f.text_field :name, class: 'form-control'
         = render 'admin/shared/field_errors', object: @tag_form, field: :name
-        /= render 'admin/shared/field_errors', object: @tag_form.tag, field: :name
       .col-sm-5
         = f.check_box :is_published, class: 'control-label'
         = f.label :is_published, class: 'control-label label-inline'
@@ -38,6 +37,13 @@
         - options = @tag_form.linked_tags
         = f.select :linked_tag_ids, options, { include_blank: true }, html_opts
         = render 'admin/shared/field_errors', object: @tag_form, field: :linked_tag_ids
+
+    .form-group
+      = f.label :tag_character_id, class: 'col-sm-2 control-label'
+      .col-sm-5
+        - roles = Qa::TagCharacter.all.map{ |r| [r.title, r.id] }
+        = f.select :tag_character_id, roles, {include_blank: t('label.choose_tag_char')}, class: 'form-control'
+        = render 'admin/shared/field_errors', object: @tag_form, field: :tag_character_id
 
   .row
     h4 Изображение

@@ -17,4 +17,25 @@ module Front::ApplicationHelper
   def sanitize(text, options = {})
     super(text, options).gsub(/\n/, '<br />')
   end
+
+  def fake_link(name = nil, **attributes, &block)
+    path = attributes.delete(:path)
+    raise ArgumentError unless path
+
+    attributes[:class] ||= ''
+    attributes[:class] << ' _fake-link'
+
+    attributes[:data] ||= {}
+    attributes[:data][:href] = path
+
+    if attributes.delete(:target) == :blank
+      attributes[:data]['new-window'] = true
+    end
+
+    if block_given?
+      content_tag(:span, attributes, &block)
+    else
+      content_tag(:span, name, attributes)
+    end
+  end
 end

@@ -25,8 +25,18 @@ ul.nav.nav-sidebar
   - if can? Qa::Tag.name
     li class=('active' if controller_name == 'tags')
       a href=admin_tags_path
-        i.fa.fa-hashtag>
+        i.fa.fa-tag>
         = t('activemodel.models.tag')
+  - if can? Qa::MultiTag.name
+    li class=('active' if controller_name == 'multi_tags')
+      a href=admin_multi_tags_path
+        i.fa.fa-tags>
+        = t('activemodel.models.multi_tag')
+  - if can? Qa::TagCharacter.name
+    li class=('active' if controller_name == 'tag_characters')
+      a href=admin_tag_characters_path
+        i.fa.fa-cubes>
+        = t('activemodel.models.tag_character')
   - if can? SeoLink.name
     li class=('active' if controller_name == 'seo_links')
       a href=admin_seo_links_path
@@ -44,8 +54,6 @@ ul.nav.nav-sidebar
       a href=admin_complaints_path
         i.fa.fa-child>
         = t('activemodel.models.complaint')
-
-ul.nav.nav-sidebar
   - if can? Employee.name
     li class=('active' if controller_name == 'employees')
       a href=admin_employees_path

@@ -34,11 +34,7 @@ module Education
     config.action_view.sanitized_allowed_tags = %w(strong a b em i u sub sup img br)
     config.action_view.sanitized_allowed_attributes = %w(src alt rel href height width)
 
-    cache_config = RedisFactory.get_config_for(:cache).merge(namespace: 'qa:faraday')
-    http_cache_store = ActiveSupport::Cache::RedisStore.new(cache_config)
-
     config.cache_store = :redis_store, RedisFactory.get_config_for(:cache)
-    config.http_cache_store = http_cache_store
 
     config.middleware.use Prometheus::Client::Rack::Exporter
     config.middleware.use Prometheus::ExceptionsCollector

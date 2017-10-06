@@ -39,6 +39,10 @@ Rails.application.routes.draw do
       get 'page-:page', to: 'home#index'
 
       resources :complaints, only: :create
+      get 'complaints/:complainable/:id.:format',
+          to: 'complaints#new',
+          as: :complaint_form,
+          defaults: { format: 'htm' }
 
       controller :questions do
         get '/temy-:tag_slug/:slug-:id.:format',
@@ -48,6 +52,12 @@ Rails.application.routes.draw do
         get '/:tag_slug/:slug-:id.:format',
             action: 'redirect',
             defaults: { format: 'htm' }
+      end
+
+      controller :multi_tags do
+        get '/temy-multi-:slug-page-1', to: redirect('/temy-multi-%{slug}', status: 301)
+        get '/temy-multi-:slug-page-:page', action: 'show'
+        get '/temy-multi-:slug', action: 'show', as: :multi_tag, page: 1
       end
 
       controller :tags do

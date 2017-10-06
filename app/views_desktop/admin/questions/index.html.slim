@@ -37,7 +37,7 @@ table.table.table-hover
   thead.text-center
     tr
       th = qa_sort_link('questions.id')
-      th = I18n.t(:title, scope: 'activemodel.attributes.qa/question')
+      th = t(:title, scope: 'activemodel.attributes.qa/question')
       th = qa_sort_link(:state)
       th = Redirect.model_name.human
       th.nowrap = qa_sort_link('questions.updated_at')

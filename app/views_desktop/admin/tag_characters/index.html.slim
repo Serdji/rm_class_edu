@@ -1,0 +1,22 @@
+= content_for :head_buttons do
+  = link_to t('label.create'), new_admin_tag_character_path, class: 'btn btn-primary'
+
+= render 'admin/shared/head', title: t('activemodel.models.tag_character')
+
+table.table.table-hover
+  thead.text-center
+    tr
+      th = qa_sort_link(:id)
+      th = qa_sort_link(:title)
+
+  tbody.middle-vertical-align
+    - @characters.each do |character|
+      tr
+        td.ids.text-center = character.id
+        - if can? controller_name, 'edit'
+          td = link_to character.title, edit_admin_tag_character_path(character)
+        - else
+          td = character.title
+
+.text-center
+  = will_paginate(@characters, renderer: BootstrapPagination::Rails, param_name: 'page[number]')

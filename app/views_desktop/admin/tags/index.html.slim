@@ -1,11 +1,15 @@
 = content_for :head_buttons do
-  = link_to t("label.create"), new_admin_tag_path, class: 'btn btn-primary'
+  = link_to t('label.create'), new_admin_tag_path, class: 'btn btn-primary'
 
 = render 'csv'
 = render 'admin/shared/head', title: t('activemodel.models.tag')
 
 .nav.navbar.navbar-default
   = form_for [:admin, @search], url: admin_tags_path, method: :get, html: { class: 'navbar-form navbar-left unvisible' } do |f|
+    .form-group
+      - attributes = { class: 'js-select-ize _textbooks-class', data: { placeholder: 'Выберите признак' } }
+      = f.select :tag_character_id, Qa::TagCharacter.all.map{ |r| [r.title, r.id] }, { include_blank: true }, attributes
+
     .form-group
       = f.label :name
       = f.text_field :name, class: 'form-control'

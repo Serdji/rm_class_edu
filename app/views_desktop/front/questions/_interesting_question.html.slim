@@ -1,7 +1,8 @@
 .popular-questions__block
+  - data_event_counters = ['klass', question.slug, 'right_menu', 'interesting_questions', question.id].join('::')
   .popular-questions__title = question.main_tag_name
   .popular-questions__theme
-    a._hover-reference-blue> href=question.path
+    a._hover-reference-blue> data-event-counters=data_event_counters href=question.path
       = question.title
     .popular-questions__wrapper
       .popular-questions__box

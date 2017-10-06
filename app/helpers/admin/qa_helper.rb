@@ -53,7 +53,7 @@ class QaSortLinkBuilder
 
   def translate_attribute
     resource = params['controller'].split('/').last.singularize
-    klass = "Qa::#{resource.capitalize}".constantize
+    klass = "Qa::#{resource.camelize}".constantize
     klass.human_attribute_name(attribute)
   end
 end

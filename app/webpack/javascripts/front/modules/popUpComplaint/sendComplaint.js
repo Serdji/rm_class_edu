@@ -61,7 +61,6 @@ module.exports = nodes => {
         nodes.complaintSuccess.style.display = 'table-cell';
       })
       .catch(({message, errors}) => {
-        console.log(message);
         switch (message){
           case '422':
             Object.keys(errors).forEach((error) => {

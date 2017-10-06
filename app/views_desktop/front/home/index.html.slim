@@ -9,7 +9,8 @@
 
 - content_for :relation_links, relation_links(questions_facade.questions)
 
-.pagination-wrapper = pagination(questions_facade.questions.object)
+- data_event_counters = ['klass', 'questions', 'pagination', params.fetch(:page, 1)].join('::')
+.pagination-wrapper data-event-counters=data_event_counters = pagination(questions_facade.questions.object)
 
 - cache_desktop [:today_discussing_tags], expires_in: 5.minutes do
   - if application_facade.today_discussing_tags.any?

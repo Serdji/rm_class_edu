@@ -1,6 +1,6 @@
 .pop-up.pop-up-complaint.js-pop-up-complaint
   .pop-up__block
-    .pop-up__close.js-close-pop-up-complaint
+    .pop-up__close.js-close-pop-up-complaint data-event-counters="klass::complain::form_complaint::close_button"
       = svg name: 'close', klass: 'pop-up__close-svg'
       = svg name: 'close-hover', klass: 'pop-up__close-svg _activ'
 
@@ -13,7 +13,7 @@
       .checkbox-block.pop-up-complaint__checkbox
         - Qa::ComplaintCause.each_cause do |cause|
           label.checkbox-block__label
-            input.checkbox-block__input type="checkbox" name="complaint[cause_ids][]" value=cause.id
+            input.checkbox-block__input data-event-counters="klass::complain::form_complaint::checkboxes::#{cause.id}" type="checkbox" name="complaint[cause_ids][]" value=cause.id
             span.checkbox-block__visual-checkbox
               = svg name: 'checked', klass: 'checkbox-block__svg'
             span.checkbox-block__text = cause.human_name
@@ -28,7 +28,7 @@
         | E-mail для обратной связи
         input.pop-up-complaint__email name="complaint[email]" type="email" placeholder="name@rambler.ru"
       .js-captcha-complaint
-      .pop-up-complaint__button._button-dark-blue.js-send-complaint Отправить
+      .pop-up-complaint__button._button-dark-blue.js-send-complaint data-event-counters="klass::complain::form_complaint::send_button" Отправить
 
       .pop-up-question__agreement
         span> Нажимая кнопку «Отправить», вы принимаете условия

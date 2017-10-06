@@ -6,13 +6,7 @@ class Front::HomeController < Front::ApplicationController
   def index; end
 
   def mobile_toggle
-    value = if params.fetch(:mobile_force, false)
-              MOBILE_VERSION
-            else
-              mobile_version? ? DESKTOP_VERSION : MOBILE_VERSION
-            end
-    cookie_switch(value)
-
+    cookie_switch(mobile_cookie)
     redirect_back fallback_location: root_path
   end
 
@@ -20,5 +14,13 @@ class Front::HomeController < Front::ApplicationController
 
   def questions_facade
     @questions_facade ||= Front::QuestionsFacade.new(self)
+  end
+
+  def mobile_cookie
+    if params.fetch(:mobile_force, false)
+      MOBILE_VERSION
+    else
+      mobile_version? ? DESKTOP_VERSION : MOBILE_VERSION
+    end
   end
 end

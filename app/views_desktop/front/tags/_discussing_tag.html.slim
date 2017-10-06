@@ -1,6 +1,8 @@
 .popular-themes__short-stripe: img src=tag.image_short_stripe_url
 .popular-themes__theme
-  a.popular-themes__title._hover-reference-blue data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
+  - controller_action = [controller_name, action_name].join('#')
+  - data_event_counters = ['klass', controller_action, 'left_menu', 'popular_themes', tag.slug].join('::')
+  a.popular-themes__title._hover-reference-blue data-event-counters=data_event_counters data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
     = tag.name
   .popular-themes__question
     .popular-themes__icon

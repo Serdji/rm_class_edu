@@ -21,7 +21,7 @@ set :migration_servers, -> { primary(fetch(:migration_role)) }
 set :assets_roles, [:backend]
 
 set :keep_assets, 2
-set :keep_releases, 20
+set :keep_releases, 10
 
 set :bundle_jobs, 4
 set :bundle_bins, fetch(:bundle_bins, []) + %w(eye)

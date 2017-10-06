@@ -1,7 +1,7 @@
 .question-common__up-title#your-new-answer
   span ваш ответ
 
-.your-answer.js-your-answer.js-your-answer-ads
+.your-answer.js-your-answer.js-your-answer-ads data-event-counters="klass::question_card::your_answer"
   .your-answer__block
     - question = questions_facade.question.object
     - path = question_answers_path(question_id: question.id)

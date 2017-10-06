@@ -1,6 +1,7 @@
 .menu._hidden.js-menu
   .menu__block
-    = render 'front/common/menu_themes'
+    - if application_facade.tag_menu.visible?
+      = render 'front/common/menu_themes'
     .menu__header
       .menu__border._header
         .menu__logo
@@ -21,10 +22,11 @@
           = svg name: "mobile-theme", klass: "menu__icon-svg"
         a.menu__title class=klass href=temy_path Темы
         /.menu__counter 258
-        .menu__popular.js-open-popular-themes
-          span популярное
-          .menu__popular-arrow
-            = svg name: "popular-arrow", klass: "menu__popular-arrow-svg"
+        - if application_facade.tag_menu.visible?
+          .menu__popular.js-open-popular-themes
+            span популярное
+            .menu__popular-arrow
+              = svg name: "popular-arrow", klass: "menu__popular-arrow-svg"
 
     .menu__present-ques
       a.menu__present-ques-button._button-dark-blue href=new_question_path задать вопрос

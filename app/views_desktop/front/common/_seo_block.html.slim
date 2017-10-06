@@ -4,4 +4,5 @@
     = svg name: 'reference', klass: 'reference-block__icon-svg'
   .reference-block__reference
     - seo_links.each do |seo_link|
-      a._hover-reference-blue href=seo_link.url = seo_link.title
+      - data_event_counters = "klass::#{seo_link.title}::right_menu::often_search::#{seo_link.id}::"
+      a._hover-reference-blue data-event-counters=data_event_counters href=seo_link.url = seo_link.title

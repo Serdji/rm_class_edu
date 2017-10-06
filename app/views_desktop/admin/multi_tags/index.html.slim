@@ -1,0 +1,26 @@
+= content_for :head_buttons do
+  = link_to t('label.create'), new_admin_multi_tag_path, class: 'btn btn-primary'
+
+= render 'admin/shared/head', title: t('activemodel.models.multi_tag')
+
+table.table.table-hover
+  thead.text-center
+    tr
+      th = qa_sort_link(:id)
+      th = t(:title, scope: 'activemodel.attributes.qa/multi_tag')
+      th.nowrap = qa_sort_link(:updated_at)
+      th.nowrap = qa_sort_link(:created_at)
+
+  tbody.middle-vertical-align
+    - multi_tags.each do |tag|
+      tr
+        td.ids.text-center = tag.id
+        - if can? controller_name, 'edit'
+          td = link_to tag.title, edit_admin_multi_tag_path(tag)
+        - else
+          td = tag.title
+        td.nowrap.date.text-center = tag.human_updated_at
+        td.nowrap.date.text-center = tag.human_created_at
+
+.text-center
+  = will_paginate(@multi_tags, renderer: BootstrapPagination::Rails, param_name: 'page[number]')

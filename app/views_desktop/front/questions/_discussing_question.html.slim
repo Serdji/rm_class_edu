@@ -1,5 +1,6 @@
 .recently-questions__block
-  a.recently-questions__title._hover-reference-blue href=question.path
+  - data_event_counters = ['klass', question.slug, 'left_menu', 'popular_questions', question.id].join('::')
+  a.recently-questions__title._hover-reference-blue data-event-counters=data_event_counters href=question.path
     = question.title
   .popular-questions__wrapper
     .popular-questions__box

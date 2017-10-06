@@ -67,16 +67,8 @@ class Front::QuestionDecorator < Draper::Decorator
     @tags ||= object.tags.select(&:is_published?)
   end
 
-  # TODO: move this from decorator!!!
   def answers
-    @answers ||= begin
-      options = {
-        page: { size: 500 }, include: 'user', sort: 'answers.created_at',
-        filter: { state: Qa::Answer::PUBLIC_STATES }
-      }
-      collection = View::Qa::Answer.get("questions/#{object.id}/answers", options)
-      Front::AnswerDecorator.decorate_collection(collection)
-    end
+    @answers ||= Front::AnswerDecorator.decorate_collection(object.answers)
   end
 
   def hide_more_answers?
@@ -113,6 +105,6 @@ class Front::QuestionDecorator < Draper::Decorator
   end
 
   def more_link
-    h.link_to('Подробнее...', path)
+    h.fake_link 'Подробнее...', class: 'more-link', path: path
   end
 end

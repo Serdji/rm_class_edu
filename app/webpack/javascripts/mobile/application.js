@@ -3,6 +3,7 @@
 require('polyffils');
 require('svg');
 require('copywritingDate');
+require('fakeLink');
 
 require('_stylesheets/mobile/application');
 
@@ -16,6 +17,8 @@ require('./modules/authorization');
 require('./modules/contactForm');
 require('./modules/stickingButton');
 require('./modules/openThemes');
+require('./modules/popUpComplaint');
+require('./modules/ellipsisPopUp');
 
 // Callbacks advertisement
 require('./modules/adsCB');

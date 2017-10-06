@@ -72,6 +72,8 @@ Rails.application.routes.draw do
             get 'report', action: :report, as: :report
           end
         end
+        o.resources :tag_characters
+        o.resources :multi_tags
 
         o.resources :complaints, only: [:index, :edit, :update]
         o.resources :users, only: [:index, :edit, :update] do

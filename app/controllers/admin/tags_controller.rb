@@ -2,8 +2,6 @@ class Admin::TagsController < Admin::ApplicationController
   decorates_assigned :tags, with: Admin::TagDecorator
   before_action :find_tag, only: [:update, :destroy, :edit]
 
-  decorates_assigned :tags, with: Admin::TagDecorator
-
   add_breadcrumb :tags, path: proc { admin_tags_path }, with: [:new, :create]
 
   def index
@@ -66,7 +64,7 @@ class Admin::TagsController < Admin::ApplicationController
 
   def tag_params
     params.require(:tag_form).permit(
-      :id, :name, :slug, :weight, :is_published,
+      :id, :name, :slug, :weight, :is_published, :tag_character_id,
       seo_attributes: [:id, :title, :keywords, :description],
       image_attributes: [
         :id, :imageable_id, :imageable_type, :image, :image_cache
@@ -80,6 +78,7 @@ class Admin::TagsController < Admin::ApplicationController
 
     if @tag_form.save
       SearchIndexJob.perform(@tag_form.id, type: 'tags', event: event.to_s)
+      TagPagesService.recreate
       redirect_to_success edit_admin_tag_path(@tag_form.id)
     else
       render_fail @tag_form

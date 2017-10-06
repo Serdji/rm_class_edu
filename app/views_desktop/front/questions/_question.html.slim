@@ -8,7 +8,8 @@
     = render 'front/questions/ellipsis'
 
   .question-common__content.js-biog
-    a.question-common__title._hover-reference-blue.js-questions-share-title data-search-suggest="card_question" data-title=question.seo_title href=question.path
+    - data_event_counters = ['klass', 'questions', 'top_questions', question.id, 'title'].join('::')
+    a.question-common__title._hover-reference-blue.js-questions-share-title data-event-counters=data_event_counters data-title=question.seo_title href=question.path
       = question.title
     .question-common__text.js-question-share-text.js-questions-share-text
       p == question.safe_body(length: 135, link: true, strip_tags: true)
@@ -19,15 +20,17 @@
 
     .question-common__hash._hide.js-hash-tags
       - question.tags.each do |tag|
-        a.question-common__point.js-point-tags href=tag_path(slug: tag.slug)
-          span = tag.name
+        span.question-common__point
+          = fake_link tag.name, path: tag_path(slug: tag.slug)
 
   .question-common__footer
-    a.question-common__answer._hover-reference-blue href=question.path(anchor: true)
+    - data_event_counters = ['klass', 'questions', 'top_questions', question.id, 'answer_button'].join('::')
+    = fake_link path: question.path(anchor: true), class: 'question-common__answer _hover-reference-blue' do
       .question-common__answer-icon
         = svg name: 'ico_message', klass: 'question-common__answer-icon-svg'
       - if question.answers_counter > 0
         = question.human_answers_counter
       - else
         | Ответить
+
     = render 'front/questions/question_social'

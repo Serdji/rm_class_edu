@@ -18,12 +18,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :application_facade
 
-  def menu_service
-    @menu_service ||= MenuService.new(self)
-  end
-
-  helper_method :menu_service
-
   def ad_service
     @ad_service ||= AdService.new
   end

@@ -4,6 +4,7 @@ class Qa::Tag < Qa::Base
 
   has_many :linked_tags, class_name: 'Qa::Tag'
   has_many :questions, class_name: 'Qa::Question'
+  belongs_to :tag_character, class_name: 'Qa::TagCharacter'
 
   # TODO: implement it in json api
   # instead of hardcoded scopes

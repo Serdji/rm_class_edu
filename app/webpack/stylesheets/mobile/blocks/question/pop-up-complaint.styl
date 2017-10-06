@@ -1,0 +1,100 @@
+.pop-up-complaint
+  padding 30px 25px
+  box-sizing border-box
+  background #ffffff
+
+  &__title
+    font-size 22px
+    font-weight bold
+    color #262626
+    margin-bottom 20px
+    font-family CorsicaRamblerLX-Medium
+
+  // &__form
+
+  &__checkbox
+    margin-bottom 30px
+
+  &__label
+    display block
+    color #262626
+    font-size 15px
+    line-height 1.47
+    font-family Roboto
+
+  &__textarea
+    display block
+    margin-top 10px
+    width 100%
+    height 120px
+    object-fit contain
+    resize vertical
+    outline none
+    background-color transparent
+    border 1px solid #ccc
+    padding 10px 15px
+    box-sizing border-box
+    border-radius 1px
+    -webkit-appearance: none;
+    &:focus
+      border 1px solid #315efb
+    &::placeholder
+      color rgba(38, 38, 38, 0.4)
+      font-size 13px
+
+  &__quantity-symbols
+    opacity .4
+    font-size 13px
+    line-height 1.54
+    color #262626
+    margin-bottom 35px
+
+  &__email
+    padding-left 15px
+    background transparent
+    box-sizing border-box
+    line-height 2.5
+    color #262626
+    transition all .15s ease-out
+    display block
+    margin-top 8px
+    width 100%
+    height 45px
+    border 1px solid #ccc
+    border-radius 1px
+    outline none
+    -webkit-appearance: none;
+    &:focus
+      border 1px solid #315efb
+    &::placeholder
+      color rgba(38, 38, 38, 0.4)
+      font-size 13px
+
+  &__button
+    height 40px
+    width 100%
+    margin-top 30px
+    margin-bottom 20px
+    font-size 12px
+
+  &__success-container
+    display table
+    width 100%
+
+  &__success
+    display none
+    // display flex
+    vertical-align middle
+    height 300px
+    text-align center
+
+  &__success-title
+    font-size 32px
+    font-weight bold
+    line-height 0.84
+    text-align center
+    margin-bottom 14px
+
+  &__success-text
+    font-size 15px
+    line-height 1.47

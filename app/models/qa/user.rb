@@ -22,7 +22,8 @@ class Qa::User < Qa::Base
       create(attributes)
     end
 
-    # TODO: simplify this
+    # TODO: simplify this!
+    #
     # rubocop:disable Metrics/AbcSize
     def upload_csv(file)
       qa_config = Rails.application.config_for(:qa_api)
@@ -31,7 +32,8 @@ class Qa::User < Qa::Base
         url: qa_config.fetch('domain'),
         headers: {
           'X-Api-Version' => qa_config.fetch('api_version'),
-          'X-Api-Token' => qa_config.fetch('api_token')
+          'X-Api-Token' => qa_config.fetch('api_token'),
+          'X-Without-Cache' => 'true'
         }
       }
 

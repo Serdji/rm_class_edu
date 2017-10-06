@@ -1,5 +1,5 @@
 class UserActivityLimiter
-  NAMESPACE = 'user_activity_limiter'
+  NAMESPACE = 'user_activity_limiter'.freeze
   THRESHOLD = 5
   TTL = 1.minute
 

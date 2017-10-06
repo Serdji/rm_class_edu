@@ -1,14 +1,13 @@
 .footer__box._top
   .footer__logo
     a.footer__rambler data-cerber-logo=" logo_footer_class" href="https://www.rambler.ru/?utm_source=class&utm_content=head&utm_medium=logo_footer&utm_campaign=self_promo"
-    a.footer__class href=(DomainFactory.url + '/') data-cerber-logo='logo_footer_class'
+    = fake_link path: (DomainFactory.url + '/'), class: 'footer__class', data: { 'cerber-logo': 'logo_footer_class' }
     = svg name: 'footer_logo', klass: 'footer__logo-svg'
   .footer__menu._top-menu
     ul
-      li
-        a._hover-reference-gray class=menu_service.library_class href=otvety_path Ответы
-      li
-        a._hover-reference-gray class=menu_service.library_class href=temy_path Темы
+      li = fake_link 'Ответы', path: otvety_path, class: '_hover-reference-gray'
+      li = fake_link 'Темы', path: temy_path, class: '_hover-reference-gray'
+
   / .footer__social
     .footer__social-vk
       a href='#'

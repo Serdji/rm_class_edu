@@ -1,3 +1,3 @@
 class Qa::TagImage
-  include Her::JsonApi::Model
+  include Her::Model
 end

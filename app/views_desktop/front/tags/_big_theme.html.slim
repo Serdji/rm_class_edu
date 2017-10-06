@@ -1,3 +1,5 @@
+- title_length = local_assigns.fetch(:title_length, 30)
+
 .big-theme__wrapper.js-tag-ads
   .big-theme__wide-stripe: img src=tag.image_wide_stripe_url
   .big-theme.js-tag-share
@@ -8,15 +10,24 @@
         - if local_assigns.fetch(:head, false)
           img src=tag.image_thumb_with_shadow_url
         - else
-          a href=tag_path(slug: tag.slug)
+          = link_to tag_path(slug: tag.slug) do
             img src=tag.image_thumb_with_shadow_url
+
       .big-theme__box
         - if local_assigns.fetch(:head, false)
           h1.big-theme__title.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image_url data-href=tag_path(slug: tag.slug)
-            = tag.name.truncate(30)
+            = tag.name.truncate(title_length)
         - else
-          a.big-theme__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
-            = tag.name.truncate(30)
+          - controller_action = [controller_name, action_name].join('#')
+          - data_event_counters = ['klass', controller_action, 'themes_block', tag.id].join('::')
+
+          a.big-theme__title._hover-reference-blue.js-tag-share-title.js-tag-share-img[
+            data-title=tag.seo_title
+            data-image=tag.image_url
+            data-event-counters=data_event_counters
+            href=tag_path(slug: tag.slug)
+          ] = tag.name.truncate(title_length)
+
         .big-theme__counters
           .big-theme__icon
             = svg name: 'ico_question_gray', klass: 'big-theme__icon-svg'

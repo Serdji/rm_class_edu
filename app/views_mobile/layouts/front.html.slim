@@ -58,8 +58,10 @@ html
       - cache_mobile [:front, :ads, :google_tag] do
         = render 'common/ads/google_tag'
 
-      script src="//ssp.rambler.ru/lpdid.js"
-      script src="//ssp.rambler.ru/capirs.js"
+      - if Rails.env.production?
+        script src="//ssp.rambler.ru/lpdid.js"
+        script src="//ssp.rambler.ru/capirs.js"
+
       script src=javascript_path('vendors', app: 'mobile')
       script src=javascript_path('application', app: 'mobile')
 

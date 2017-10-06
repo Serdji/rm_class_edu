@@ -2,12 +2,12 @@ class Admin::TagForm
   include ActiveModel::Model
 
   TAG_ATTRIBUTES = %w(
-    id name slug weight is_published linked_tag_ids
+    id name slug weight is_published tag_character_id linked_tag_ids
   ).freeze
 
   attr_accessor(*TAG_ATTRIBUTES)
 
-  attr_reader :seo, :image
+  attr_reader :seo, :image, :tag_character_id
 
   validates :name, presence: true
   validates :weight, inclusion: { in: 1..1000 }
@@ -36,7 +36,7 @@ class Admin::TagForm
   end
 
   def linked_tags
-    tags = Qa::Tag.where(id: linked_tag_ids).all
+    tags = Qa::Tag.where(filter: { id: linked_tag_ids }).all
     Qa::Tag.tags_for_select(tags)
   end
 

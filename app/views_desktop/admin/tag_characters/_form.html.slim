@@ -1,0 +1,12 @@
+= form_for([:admin, @character], html: {class: 'form-horizontal'}) do |f|
+  .form-group
+    = f.label :title, class: 'col-sm-2 control-label required'
+    .col-sm-5
+      = f.text_field :title, class: 'form-control'
+      = render 'admin/shared/field_errors', object: @character, field: :title
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit t("label.#{action_name}"), class: 'btn btn-primary'
+      - unless @character.new_record?
+        - opts = { method: :delete, class: 'btn btn-danger btn-remove', data: { confirm: 'Внимание! Признак будет удален у всех привязанных тем.' } }
+        = link_to t('label.delete'), admin_tag_character_path(@character), opts

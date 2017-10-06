@@ -52,6 +52,7 @@ class QuestionFilter < BaseFilter
   end
 
   def apply_user_type
+    result['with_user'] = true if fake_users? || real_users?
     result['users.is_fake'] = true if fake_users?
     result['users.is_fake'] = false if real_users?
   end

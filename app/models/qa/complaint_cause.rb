@@ -1,5 +1,5 @@
 class Qa::ComplaintCause
-  include Her::JsonApi::Model
+  include Her::Model
 
   # rubocop:disable Style/MutableConstant
   CAUSES = []

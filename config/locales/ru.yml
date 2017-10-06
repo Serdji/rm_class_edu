@@ -133,6 +133,7 @@ ru:
     choose_role:       Выберите роль
     choose_subject:    Выберите предмет
     choose_tags:       Выберите тему
+    choose_tag_char:   Выберите признак
     create:            Создать
     delete:            Удалить
     edit:              Сохранить
@@ -153,6 +154,8 @@ ru:
     url_label:         URL страницы на сайте
     year:              Год
     books_title:       Учебники, которые пригодятся на уроке
+    complaint_body:    Недопустимый контент находится на сайте
+    complaint_comment: Редактура и модерация текста произведены после уточнения информации по факту жалобы со стороны пользователя.
 
   events:
     create:            Создание
@@ -222,13 +225,19 @@ ru:
         <<: *defaults
         name:                Название
         weight:              Сортировка
-        linked_tag_ids:      Связанные темы
+        linked_tag_ids:      Дочерние темы
         is_published:        При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
+      qa/tag_character:
+        <<: *defaults
+      qa/multi_tag:
+        <<: *defaults
+        tag_ids:             Темы
       admin/tag_form:
         <<: *defaults
         name:                Название
         weight:              Сортировка
-        linked_tag_ids:      Связанные темы
+        linked_tag_ids:      Дочерние темы
+        tag_character_id:    Признак
         is_published:        При снятии флажка, вопросы, которые привязаны только к этой теме снимутся с публикации
       qa/answer:
         <<: *defaults
@@ -245,7 +254,9 @@ ru:
         best_answer:         Лучший ответ
     models:
       question:       Вопросы
+      multi_tag:      Мульти-темы
       tag:            Темы
+      tag_character:  Признаки
       user:           Пользователи
       answer:         Ответы
       complaint:      Жалобы
@@ -285,8 +296,26 @@ ru:
         genitive:     тема
         dative:       теме
         zero:         тем
+      qa/tag_character:
+        one:          признак
+        few:          признака
+        many:         признаков
+        other:        признаки
+        accusative:   признака
+        genitive:     признак
+        dative:       призну
+        zero:         признаков
+      qa/multi_tag:
+        one:          мульти-тема
+        few:          мульти-темы
+        many:         мульти-тем
+        other:        мульти-темы
+        accusative:   мульти-темы
+        genitive:     мульти-тема
+        dative:       мульти-теме
+        zero:         мульти-тем
       qa/user:
-        one:          пользователь
+        one:          мультитема
         few:          пользователя
         many:         пользователей
         other:        пользователи
@@ -301,34 +330,36 @@ ru:
         invalid_size: имеет неверный размер
 
     models:
-      application: Главная
-      library:     Библиотека
-      author:      Авторы
-      book:        Книги
-      textbook:    Учебники
-      catalog:     Каталог
-      dashboard:   Главная
-      employee:    Сотрудники
-      grade:       Классы
-      metapage:    SEO-информация
-      page:        Страницы
-      publishing:  Издательства
-      redirect:    Редирект
-      role:        Роли
-      subject:     Предметы
-      seo:         SEO
-      seo_link:    SEO-блок
-      section:     Решения к учебнику
-      paragraph:   Решения к учебнику
-      question:    Вопросы
-      user:        Пользователи
-      answer:      Ответы
-      complaint:   Жалобы
-      tag:         Темы
-      setting:     Настройки
-      settings:    Настройки
-      version:     Лог действий
-      images/tag:  Обложка темы
+      application:   Главная
+      library:       Библиотека
+      author:        Авторы
+      book:          Книги
+      textbook:      Учебники
+      catalog:       Каталог
+      dashboard:     Главная
+      employee:      Сотрудники
+      grade:         Классы
+      metapage:      SEO-информация
+      page:          Страницы
+      publishing:    Издательства
+      redirect:      Редирект
+      role:          Роли
+      subject:       Предметы
+      seo:           SEO
+      seo_link:      SEO-блок
+      section:       Решения к учебнику
+      paragraph:     Решения к учебнику
+      question:      Вопросы
+      user:          Пользователи
+      answer:        Ответы
+      complaint:     Жалобы
+      tag:           Темы
+      tag_character: Признаки
+      multi_tag:     Мульти-темы
+      setting:       Настройки
+      settings:      Настройки
+      version:       Лог действий
+      images/tag:    Обложка темы
 
     attributes:
       defaults: &defaults
@@ -346,56 +377,11 @@ ru:
         seo:
           keywords:   Ключевые слова
 
-      author:
-        <<: *defaults
-        full_name:     ФИО
-        description:   Описание
-        slug:          Чпу
-        is_published:  При снятии флажка, все связанные учебники и решения снимутся с публикации
-
-      author/photo:
-        photo: Фото
-        _destroy: Удалить
-
-      book:
-        <<: *defaults
-        subject_id:    Предмет
-        publishing_id: Издательство
-        grade_ids:     Классы
-        grades:        Классы
-        author_ids:    Авторы
-        authors:       Авторы
-        year:          Год издания
-        isbn:          ISBN
-        udk:           УДК
-        bbk:           ББК
-        weight:        Сортировка
-        description:   Описание
-        state:         Статус
-
-      textbook:
-        <<: *defaults
-        is_popular:      Популярные учебники
-        is_often_search: Показывать в блоке "Часто ищут" на главной
-        block_name:      Название промоблока
-        books_title:     Заголовок для блока
-        blockbook_ids:   Учебники
-        published_at:    Дата публикации
-
-      catalog:
-        <<: *defaults
-        parent_id: Вложение раздела в оглавлении
-
       employee:
         <<: *defaults
         password:              Пароль
         password_confirmation: Подтверждение
         roles:                 Роли
-
-      grade:
-        <<: *defaults
-        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
-        grade:        Идентификатор класса
 
       metapage:
         <<: *defaults
@@ -404,36 +390,10 @@ ru:
         description: Описание
         metapages_type_id: Раздел сайта
 
-      page:
-        <<: *defaults
-
-      paragraph:
-        <<: *defaults
-        condition:   Условие задачи
-        solution:    Решение
-        answer:      Ответ
-        state:       Статус
-        catalog_id:  Вложение раздела в оглавлении
-        is_empty:    Отображать на сайте не кликабельное решение
-        author_info: Автор решения задачи
-
-      subject:
-        <<: *defaults
-        weight:       Сортировка
-        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
-
       seo_link:
         <<: *defaults
         title:        Заголовок
         url:          Ссылка
-
-      subject/icon:
-        icon: Иконка
-        _destroy: Удалить
-
-      publishing:
-        <<: *defaults
-        is_published: При снятии флажка, все связанные учебники и решения снимутся с публикации
 
       seo:
         title:       Title-заголовок

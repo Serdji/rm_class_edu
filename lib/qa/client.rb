@@ -1,54 +1,3 @@
-class JsonApiParser < Faraday::Middleware
-  def call(request_env)
-    @app.call(request_env).on_complete do |response_env|
-      if response_env.status == 404
-        response_env.body = { data: nil }
-      else
-        @included = response_env.body['included']
-
-        response_env.body = {
-          data: transform(response_env.body['data']),
-          meta: response_env.body['meta']
-        }.with_indifferent_access
-      end
-    end
-  end
-
-  private
-
-  # rubocop:disable Metrics/AbcSize
-  def transform(data, included = false)
-    collection = data.is_a?(Array)
-    data = [data].flatten
-
-    result = Array.new(data.size) do |i|
-      entity = if included
-                 @included.find do |object|
-                   object['id'] == data[i]['id'] && object['type'] == data[i]['type']
-                 end
-               else
-                 data[i]
-               end
-
-      transform_entity(entity)
-    end
-
-    collection ? result : result.first
-  end
-
-  def transform_entity(entity)
-    attributes = entity['attributes']
-    attributes['id'] = entity['id']
-
-    relationships = entity['relationships']
-    relationships&.each do |name, relationship|
-      attributes[name] = transform(relationship['data'], true)
-    end
-
-    attributes
-  end
-end
-
 class Qa::Client
   include Singleton
 
@@ -121,15 +70,7 @@ class Qa::Client
       builder.use Her::Middleware::AcceptJSON
 
       # Response
-      builder.use JsonApiParser
       builder.use FaradayMiddleware::ParseJson
-
-      # Turn off cache for backend
-      unless Socket.gethostname.include? 'back'
-        cache_store = Education::Application.config.http_cache_store
-        cache_options = { shared_cache: false, store: cache_store, serializer: Marshal }
-        builder.use Faraday::HttpCache, **cache_options
-      end
 
       # Adapter
       builder.adapter Faraday.default_adapter

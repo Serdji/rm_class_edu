@@ -38,6 +38,8 @@ class View::Qa::Question
   attribute :tags, Array[View::Qa::Tag]
 
   attribute :user, View::Qa::User
+
+  attribute :answers, Array[View::Qa::Answer]
   attribute :best_answer, View::Qa::Answer
 
   alias read_attribute_for_serialization send

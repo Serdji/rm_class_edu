@@ -2,11 +2,20 @@
   .tag__short-stripe: img src=tag.image_short_stripe_url
   .tag__content
     .tag__cover
-      a href=tag_path(slug: tag.slug)
+      = fake_link path: tag_path(slug: tag.slug) do
         img src=tag.image_thumb_with_shadow_url
+
     = render 'front/questions/question_social'
-    a.tag__title._hover-reference-blue.js-tag-share-title.js-tag-share-img data-search-suggest="card_topic" data-title=tag.seo_title data-image=tag.image_url href=tag_path(slug: tag.slug)
-      = tag.name.truncate(35)
+
+    - controller_action = [controller_name, action_name].join('#')
+    - data_event_counters = ['klass', controller_action, 'themes_block', tag.id, 'title'].join('::')
+    a.tag__title._hover-reference-blue.js-tag-share-title.js-tag-share-img[
+      data-search-suggest="card_topic"
+      data-title=tag.seo_title
+      data-image=tag.image_url
+      data-event-counters=data_event_counters
+      href=tag_path(slug: tag.slug)
+    ] = tag.name.truncate(35)
 
   .tag__footer
     .tag__question

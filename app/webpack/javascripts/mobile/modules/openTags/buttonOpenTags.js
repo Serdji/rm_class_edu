@@ -41,7 +41,8 @@ module.exports = nodes => {
       let prButtonTag    = parseInt(getComputedStyle(buttonTag).paddingRight, 10) * 2;
       let widthHashTags  = parseInt(getComputedStyle(hashTags).width, 10);
       // Высчитываем получившиеся значения и расширяем hash с тегами до появления кнопки тега
-      hashTags.style.width = `${widthButtonTag + widthHashTags + prButtonTag}px`;
+      let hashTagsWidth = widthButtonTag + widthHashTags + prButtonTag;
+      hashTags.style.width = `${hashTagsWidth > 400 ? 300 : hashTagsWidth}px`;
     }
   });
 };

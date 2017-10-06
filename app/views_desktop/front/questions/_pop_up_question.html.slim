@@ -1,7 +1,7 @@
 .pop-up.pop-up-question.js-pop-up-question
   .pop-up__block
     .pop-up-question__title Задать вопрос
-    .pop-up__close.js-close-pop-up-ques
+    .pop-up__close.js-close-pop-up-ques data-event-counters="klass::create_question::form_question::close_button"
       = svg name: 'close', klass: 'pop-up__close-svg'
       = svg name: 'close-hover', klass: 'pop-up__close-svg _activ'
 
@@ -34,7 +34,7 @@
             span.js-max-length-counter-select
       .js-captcha-question
       .pop-up-question__box.js-answer-ui._disabled-user
-        .pop-up-question__button._button-dark-blue.js-send-question отправить
+        .pop-up-question__button._button-dark-blue.js-send-question data-event-counters="klass::create_question::form_question::send_button" отправить
         .pop-up-question__login
           .pop-up-question__avatar.js-answer-ui-avatar
           .pop-up-question__name.js-answer-ui-avatarname

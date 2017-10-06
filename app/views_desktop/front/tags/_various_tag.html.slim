@@ -1,7 +1,11 @@
 - i = tag_iteration.index
 - if i % 5 == 0
-  - cache_desktop [tag, :big_theme] do
-    = render 'front/tags/big_theme', tag: tag
+  - cache_desktop [tag.tagable, :big_theme] do
+    - if tag.multi_tag?
+      = render 'front/multi_tags/big_theme', tag: tag
+    - else
+      = render 'front/tags/big_theme', tag: tag
 - else
-  - cache_desktop tag do
-    = render 'front/tags/tag', tag: tag
+  - unless tag.multi_tag?
+    - cache_desktop tag.tagable do
+      = render 'front/tags/tag', tag: tag

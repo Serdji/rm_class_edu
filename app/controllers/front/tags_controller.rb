@@ -3,20 +3,17 @@ class Front::TagsController < Front::ApplicationController
 
   helper_method :tags_facade
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def search
     options = {
       page: { size: 7 },
       filter: { is_published: true, name: params[:search] }
     }
-    tags = View::Qa::Tag.get('tags', options).includes(:seo, :image)
-    tags = tags.map { |tag| { id: tag.id, name: tag.name, image: tag.image_thumb_24x24_url } }
-    render json: tags
+
+    render json: tags(options)
   end
 
   def options
@@ -25,9 +22,8 @@ class Front::TagsController < Front::ApplicationController
       page: { size: 10 },
       filter: { is_published: true }
     }
-    tags = View::Qa::Tag.get('tags', options).includes(:seo, :image)
-    tags = tags.map { |tag| { id: tag.id, name: tag.name, image: tag.image_thumb_24x24_url } }
-    render json: tags
+
+    render json: tags(options)
   end
 
   private
@@ -39,5 +35,13 @@ class Front::TagsController < Front::ApplicationController
   def check_tag
     tag = tags_facade.tag
     raise Front::NotFoundError unless tag && tag.published?
+  end
+
+  def tags(options)
+    tags = View::Qa::Tag.get('tags', options).includes(:seo, :image)
+
+    tags.map do |tag|
+      { id: tag.id, name: tag.name, image: tag.image_thumb_24x24_url }
+    end
   end
 end

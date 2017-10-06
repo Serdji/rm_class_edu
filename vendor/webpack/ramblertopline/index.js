@@ -63,8 +63,8 @@
         small: 900
       },
       widths: { // ширина .rambler-topline__inner
-        large: 1200,
-        medium: 900,
+        large: 1220,
+        medium: 920,
         small: 900
       }
     }

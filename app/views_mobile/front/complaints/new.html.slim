@@ -1,0 +1,37 @@
+.pop-up.pop-up-complaint.js-pop-up-complaint
+  .pop-up__block
+
+    = form_for application_facade.new_complaint, html: {class: 'pop-up-complaint__form js-complaint-form'} do |f|
+      input type="hidden" name="complaint[complainable_id]" value=""
+      input type="hidden" name="complaint[complainable_type]" value=""
+
+      .pop-up-complaint__title Выберите причину жалобы и оставьте комментарий
+
+      .checkbox-block.pop-up-complaint__checkbox
+        - Qa::ComplaintCause.each_cause do |cause|
+          label.checkbox-block__label
+            input.checkbox-block__input data-event-counters="klass::complain::form_complaint::checkboxes::#{cause.id}" type="checkbox" name="complaint[cause_ids][]" value=cause.id
+            span.checkbox-block__visual-checkbox
+              = svg name: 'checked', klass: 'checkbox-block__svg'
+            span.checkbox-block__text = cause.human_name
+
+      label.pop-up-complaint__label
+        | Опишите, пожалуйста, подробно причину для более быстрой <br /> обработки вашей жалобы:
+        textarea.pop-up-complaint__textarea.js-textarea-complaint name="complaint[body]" placeholder="Текст сообщения"
+        .pop-up-complaint__quantity-symbols
+          span.js-max-length-counter-complaint Можно ввести 4000 cимволов
+
+      label.pop-up-complaint__label
+        | E-mail для обратной связи
+        input.pop-up-complaint__email name="complaint[email]" type="email" placeholder="name@rambler.ru"
+      .js-captcha-complaint
+      .pop-up-complaint__button._button-dark-blue.js-send-complaint data-event-counters="klass::complain::form_complaint::send_button" Отправить
+
+      .pop-up-question__agreement
+        span> Нажимая кнопку «Отправить», вы принимаете условия
+        a._hover-reference-blue href="http://help.rambler.ru/class/class-legal/1552/" target="_blank" пользовательского соглашения
+
+    .pop-up-complaint__success-container
+      .pop-up-complaint__success.js-complain-success
+        .pop-up-complaint__success-title Спасибо
+        .pop-up-complaint__success-text Ваша заявка будет рассмотрена в течение 5 рабочих дней.

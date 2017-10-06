@@ -1,9 +1,11 @@
 - @search_result.each_with_index do |question, i|
   .search-page__item
-    a.search-page__item-title href=question.url == sanitize(question.title)
+    - data_event_counters =['klass', 'search_results', 'questions', 'results', question.id, 'title'].join('::')
+    a.search-page__item-title data-event-counters=data_event_counters href=question.url == sanitize(question.title)
 
     - enqueue_if_invalid(question)
 
+    - data_event_counters =['klass', 'search_results', 'questions', 'results', question.id, 'answer_button'].join('::')
     - if question.answers_count > 0 && question.answers.count > 0
       - answer = question.answers.first
       .search-page__text
@@ -13,12 +15,11 @@
 
       - if question.answers_count == 1
         - anchor = answer.is_best? ? "#best-answer" : "#answers"
-        a.search-page__answer href="#{question.url}#{anchor}" 1 ответ
+        a.search-page__answer data-event-counters=data_event_counters href="#{question.url}#{anchor}" 1 ответ
 
       - if question.answers_count > 1
         - count = question.answers_count - 1
-        - has_best_answer = question.answers.find(&:is_best?)
-        - anchor = has_best_answer ? "#best-answer" : "#answers"
-        a.search-page__answer href="#{question.url}#{anchor}" = "Еще #{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
+        - anchor = question.has_best_answer ? "#best-answer" : "#answers"
+        a.search-page__answer data-event-counters=data_event_counters href="#{question.url}#{anchor}" = "Еще #{count} #{I18n.t('activemodel.models.qa/answer', count: count)}"
     - else
-      a.search-page__answer href="#{question.url}#your-new-answer" Ответить
+      a.search-page__answer data-event-counters=data_event_counters href="#{question.url}#your-new-answer" Ответить

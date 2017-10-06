@@ -22,7 +22,7 @@ class Questions::SearchIndexSerializer < ActiveModel::Serializer
     end
   end
 
-  attributes :id, :title, :body, :state
+  attributes :id, :title, :body, :state, :has_best_answer
 
   attribute(:type) { 'questions' }
 

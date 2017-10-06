@@ -15,7 +15,7 @@ class AnswerFilter < BaseFilter
 
   def apply(relation)
     ACCESSORS.each { |name| send "apply_#{name}" }
-    relation.where(filter: result, include: 'user')
+    relation.where(filter: result)
   end
 
   def normalize_attributes!(attributes)
@@ -32,6 +32,7 @@ class AnswerFilter < BaseFilter
   end
 
   def apply_user_type
+    result['with_user'] = true
     result['users.is_fake'] = true if fake_users?
     result['users.is_fake'] = false if real_users?
   end

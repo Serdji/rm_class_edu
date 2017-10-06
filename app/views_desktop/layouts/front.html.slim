@@ -44,7 +44,7 @@ html lang="en"
         .main__left-sidebar.js-left-sidebar
 
           .js-float-left-sidebar
-            - cache_desktop most_discussing_questions_key, expires_in: 5.minutes do
+            - cache_desktop most_discussing_questions_key, expires_in: 30.minutes do
               - questions = most_discussing_questions
               - if questions.any?
                 .question-common__up-title
@@ -53,7 +53,7 @@ html lang="en"
                   - options = { collection: questions, as: :question, cached: desktop_collection_proc }
                   = render partial: 'front/questions/discussing_question', **options
 
-            - cache_desktop [:most_discussing_tags], expires_in: 5.minutes do
+            - cache_desktop [:most_discussing_tags], expires_in: 30.minutes do
               - if application_facade.most_discussing_tags.any?
                 .question-common__up-title
                   span Обсуждаемые темы
@@ -103,17 +103,20 @@ html lang="en"
           - cache_desktop [:front, :footer_menu_bottom] do
             = render 'front/common/footer_menu_bottom'
 
+      // TODO: add control through Rails.env or ENV
       - if Rails.env.production?
         - cache_desktop [:front, :common, :counters, :counters_app] do
           = render 'common/counters/counters_app'
 
+      // TODO: add control through Rails.env or ENV
       script src="//ssp.rambler.ru/lpdid.js"
       script src="//ssp.rambler.ru/capirs.js"
+
       script src=javascript_path('vendors', app: 'front')
       script src=javascript_path('application', app: 'front')
 
+      // TODO: add control through Rails.env or ENV
       - cache_desktop [:front, :ads, :google_tag] do
         = render 'common/ads/google_tag'
 
       #fullscreen>
-

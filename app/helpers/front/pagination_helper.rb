@@ -1,11 +1,21 @@
-class MobileLinkRenderer < WillPaginate::ActionView::LinkRenderer
-  def left_gap
-    page = if ((total_pages - 3)..total_pages).cover?(current_page)
-             total_pages - 6
-           else
-             current_page - 3
-           end
+class FakeLinkRenderer < WillPaginate::ActionView::LinkRenderer
+  def previous_or_next_page(page, text, classname)
+    if page
+      attributes = {
+        path: url(page),
+        class: classname,
+        rel: rel_value(page)
+      }
 
+      @template.fake_link(text, attributes)
+    else
+      super
+    end
+  end
+end
+
+class MobileLinkRenderer < FakeLinkRenderer
+  def left_gap
     link(gap_text, page, class: 'gap') if page > 0
   end
 
@@ -13,10 +23,23 @@ class MobileLinkRenderer < WillPaginate::ActionView::LinkRenderer
     page = (1..4).cover?(current_page) ? 7 : (current_page + 3)
     link(gap_text, page, class: 'gap') if page <= total_pages
   end
+
+  private
+
+  def page
+    if ((total_pages - 3)..total_pages).cover?(current_page)
+      total_pages - 6
+    else
+      current_page - 3
+    end
+  end
 end
 
 module Front::PaginationHelper
-  DEFAULT_OPTIONS = { inner_window: 1, outer_window: 0 }.freeze
+  DEFAULT_OPTIONS = {
+    inner_window: 1, outer_window: 0,
+    renderer: FakeLinkRenderer
+  }.freeze
 
   def pagination(collection, options = {})
     check_page_for(collection)

@@ -26,4 +26,4 @@
               - name << ',' if main_tag['tags'].count != (index + 1)
               a.menu-themes__sub-theme-point> href=tag['url'] = name
 
-    a.menu-themes__button._button-dark-blue rel="nofollow" href=temy_path Показать все
+    = fake_link 'Показать все', path: temy_path, class: 'menu-themes__button _button-dark-blue'

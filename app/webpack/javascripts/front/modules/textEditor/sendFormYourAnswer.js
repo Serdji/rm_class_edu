@@ -80,6 +80,7 @@ module.exports = nodes => {
       .catch(({message}) => {
         switch (message){
           case '401':
+            nodes.formButton.removeAttribute('disabled');
             qs('.rambler-topline__user-signin').click();
             break;
           case '429':
