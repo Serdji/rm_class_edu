@@ -1,4 +1,5 @@
 module Concerns::Captcha
+  # rubocop:disable Metrics/AbcSize
   def check_captcha!
     if activity_limiter.exceeded? && !activity_limiter.user_blocked?
       activity_limiter.block_user

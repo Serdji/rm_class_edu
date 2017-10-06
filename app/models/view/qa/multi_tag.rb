@@ -15,6 +15,8 @@ class View::Qa::MultiTag
   attribute :slug, String
   attribute :tags, Array[View::Qa::Tag]
 
+  attribute :is_published, Boolean
+
   attribute :created_at, DateTime
   attribute :updated_at, DateTime
 

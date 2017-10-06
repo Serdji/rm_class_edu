@@ -23,7 +23,8 @@ class Front::TagsFacade
   def tag_pages
     @tag_pages ||= begin
       collection = TagPage.order(:placement_index)
-                          .paginate(page: params[:page], per_page: PER_PAGE_TAGS_LIMIT).qa_build
+                          .paginate(page: params[:page], per_page: PER_PAGE_TAGS_LIMIT)
+                          .qa_build
       Front::TagPageDecorator.decorate_collection(collection)
     end
   end
@@ -66,7 +67,11 @@ class Front::TagsFacade
 
   def multi_tag
     @multi_tag ||= begin
-      multi_tag = View::Qa::MultiTag.get "multi_tags/slug/#{params[:slug]}", include: 'tags'
+      options = {
+        include: 'tags',
+        filter: { is_published: true }
+      }
+      multi_tag = View::Qa::MultiTag.get("multi_tags/slug/#{params[:slug]}", options)
       Front::MultiTagDecorator.decorate(multi_tag)
     end
   end

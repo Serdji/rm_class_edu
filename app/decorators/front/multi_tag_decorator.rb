@@ -23,4 +23,8 @@ class Front::MultiTagDecorator < Draper::Decorator
   def name
     tags.select(&:is_published).map(&:name).join(', ')
   end
+
+  def published?
+    is_published?
+  end
 end

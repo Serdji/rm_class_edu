@@ -1,4 +1,4 @@
-.all-answers__block.js-block-answers.js-answer-share data-event-counters="klass::question_card::answers" id="answers-#{answer.id}" data-complainable="true" data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type="Answer"
+.all-answers__block.js-block-answers.js-answer-share data-event-counters="klass::question_card::answers" id="answers-#{answer.id}" data-complainable='true' data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type='Answer' itemscope='' itemtype='http://schema.org/Answer' itemprop='suggestedAnswer'
   .question-common__header
     .question-common__user
       .question-common__avatar style=answer.user_avatar_style
@@ -8,7 +8,7 @@
     = render 'front/questions/ellipsis', answer: answer
 
   .question-common__content
-    .question-common__text.js-answer-share-text
+    .question-common__text.js-answer-share-text itemprop='text'
       p == answer.safe_body
     .question-common__data
       .question-common__data-icon

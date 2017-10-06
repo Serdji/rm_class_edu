@@ -1,4 +1,5 @@
-.answer.js-answer-share.js-answer-ads id="answers-#{answer.id}" data-complainable="true" data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type="Answer" data-complaint=complaint_form_path(id: answer.id, complainable: :answer)
+- is_best = local_assigns.fetch(:is_best, false)
+.answer.js-answer-share.js-answer-ads id="answers-#{answer.id}" data-complainable="true" data-answer-id=answer.id data-complainable-id=answer.id data-complainable-type="Answer" data-complaint=complaint_form_path(id: answer.id, complainable: :answer) itemscope='' itemtype='http://schema.org/Answer' itemprop=(is_best ? 'acceptedAnswer' : 'suggestedAnswer')
   .questions__header
     .questions__user
       .questions__avatar style=answer.user_avatar_style

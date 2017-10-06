@@ -1,6 +1,8 @@
 class Admin::TagCharactersController < Admin::ApplicationController
   before_action :find_tag_character, only: [:edit, :update, :destroy]
-  add_breadcrumb :tag_characters, path: proc { admin_tag_characters_path }, with: [:new, :create, :destroy]
+  add_breadcrumb :tag_characters,
+                 path: proc { admin_tag_characters_path },
+                 with: [:new, :create, :destroy]
 
   before_action :build_tag_character, only: [:new, :create]
 

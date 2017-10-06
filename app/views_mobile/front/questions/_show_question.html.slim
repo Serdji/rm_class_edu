@@ -1,4 +1,4 @@
-.question.js-question-share.js-sticking-button-start data-complainable='true' data-complainable-id=question.id data-complainable-type='Question' data-complaint=complaint_form_path(id: question.id, complainable: :question)
+.question.js-question-share.js-sticking-button-start data-complainable='true' data-complainable-id=question.id data-complainable-type='Question' data-complaint=complaint_form_path(id: question.id, complainable: :question) itemscope='' itemtype='http://schema.org/Question'
   .questions__header
     .questions__hash._hide.js-hash-tags
       - question.tags.each do |tag|
@@ -8,9 +8,9 @@
     .questions__user
       .questions__avatar style=question.user_avatar_style
       .questions__name = question.user.full_name
-    h1.questions__title.js-questions-share-title = question.title
+    h1.questions__title.js-questions-share-title itemprop='name' = question.title
     .question__social.js-question-social.rambler-share
-    .questions__text == question.safe_body
+    .questions__text itemprop='text' == question.safe_body
     .questions__data
       .questions__data-icon
         = svg name: 'ico_time', klass: 'questions__data-icon-svg'

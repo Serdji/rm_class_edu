@@ -1,4 +1,4 @@
-.question.js-question-share data-complainable="true" data-complainable-id=question.id data-complainable-type="Question"
+.question.js-question-share data-complainable='true' data-complainable-id=question.id data-complainable-type='Question' itemscope='' itemtype='http://schema.org/Question'
   .question-common__header._question
     .question-common__hash._hide.js-hash-tags
       - question.tags.each do |tag|
@@ -12,10 +12,10 @@
         .question-common__is-sentry дежурный
 
   .question-common__content
-    h1.question-common__title.js-question-share-title data-event-counters="klass::question_card::question"
+    h1.question-common__title.js-question-share-title data-event-counters="klass::question_card::question" itemprop='name'
       = question.title
     .question-social.rambler-share.js-question-social
-    .question-common__text.js-question-share-text
+    .question-common__text.js-question-share-text itemprop='text'
       p == question.safe_body
     .question-common__data
       .question-common__data-icon

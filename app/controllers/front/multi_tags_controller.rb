@@ -13,6 +13,6 @@ class Front::MultiTagsController < Front::ApplicationController
 
   def check_tag
     tag = tags_facade.multi_tag
-    raise Front::NotFoundError unless tag
+    raise Front::NotFoundError unless tag&.object && tag.published?
   end
 end

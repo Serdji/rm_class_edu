@@ -1,6 +1,6 @@
 .question-common__up-title#best-answer
   span Лучший ответ
-.best-answer.js-answer-share id="answers-#{answer.id}" data-answer-id=answer.id data-complainable="true" data-complainable-id=answer.id data-complainable-type="Answer"
+.best-answer.js-answer-share id="answers-#{answer.id}" data-answer-id=answer.id data-complainable='true' data-complainable-id=answer.id data-complainable-type='Answer' itemscope='' itemtype='http://schema.org/Answer' itemprop='acceptedAnswer'
   .question-common__header
     .question-common__user
       .question-common__avatar style=answer.user_avatar_style
@@ -10,7 +10,7 @@
     = render 'front/questions/ellipsis'
 
   .question-common__content
-    .question-common__text.js-answer-share-text
+    .question-common__text.js-answer-share-text itemprop='text'
       p == sanitize(answer.body)
 
     .question-common__data

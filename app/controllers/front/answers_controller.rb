@@ -12,6 +12,7 @@ class Front::AnswersController < Front::ApplicationController
     raise Front::NotFoundError if desktop_version? || !@question
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     state = current_user.is_fake? ? :without_complaints : :fresh
     attributes = { question_id: params[:question_id], state: state }
@@ -27,6 +28,7 @@ class Front::AnswersController < Front::ApplicationController
       render json: @answer.response_errors, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def make_best
     @question = Qa::Question.find(@answer.question_id, include: 'tags')

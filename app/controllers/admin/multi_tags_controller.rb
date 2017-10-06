@@ -46,13 +46,13 @@ class Admin::MultiTagsController < Admin::ApplicationController
   end
 
   def build_multi_tag
-    @multi_tag = Qa::MultiTag.new slug: '', tag_ids: []
+    @multi_tag = Qa::MultiTag.new slug: '', tag_ids: [], is_published: true
     @multi_tag.build_seo
   end
 
   def multi_tag_params
     params.require(:multi_tag).permit(
-      :slug,
+      :slug, :is_published,
       seo_attributes: [:title, :description, :keywords],
       tag_ids: []
     )

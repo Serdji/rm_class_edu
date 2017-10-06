@@ -37,7 +37,7 @@ html lang="en"
         = render 'front/common/question_menu'
 
     main
-      - if application_facade.tag_menu.visible?
+      - if application_facade.tag_menu&.visible?
         = render 'front/tags/themes_drop_down'
 
       .wrapper.js-float-wrapper

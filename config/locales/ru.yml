@@ -232,6 +232,7 @@ ru:
       qa/multi_tag:
         <<: *defaults
         tag_ids:             Темы
+        is_published:        Опубликовано
       admin/tag_form:
         <<: *defaults
         name:                Название

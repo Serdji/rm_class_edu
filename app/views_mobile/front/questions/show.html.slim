@@ -14,7 +14,7 @@
 - if best_answer
   - cache_mobile best_answer do
     .title#best-answer Лучший ответ
-    = render 'front/answers/answer', answer: best_answer
+    = render 'front/answers/answer', answer: best_answer, is_best: true
     .js-best-answer-ads
 
 - unless questions_facade.question.hide_more_answers?

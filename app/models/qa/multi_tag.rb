@@ -21,4 +21,6 @@ class Qa::MultiTag < Qa::Base
   def tags?
     tag_ids.present?
   end
+
+  boolean_field :is_published
 end

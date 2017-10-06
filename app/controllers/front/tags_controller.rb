@@ -34,7 +34,7 @@ class Front::TagsController < Front::ApplicationController
 
   def check_tag
     tag = tags_facade.tag
-    raise Front::NotFoundError unless tag && tag.published?
+    raise Front::NotFoundError unless tag&.object && tag.published?
   end
 
   def tags(options)

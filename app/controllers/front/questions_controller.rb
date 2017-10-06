@@ -19,6 +19,7 @@ class Front::QuestionsController < Front::ApplicationController
     redirect_to Front::QuestionDecorator.new(@question).path, status: 301
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     state = current_user.is_fake? ? :without_complaints : :fresh
     attributes = { seo_attributes: {}, state: state }
@@ -34,6 +35,7 @@ class Front::QuestionsController < Front::ApplicationController
       render json: @question.errors.messages, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

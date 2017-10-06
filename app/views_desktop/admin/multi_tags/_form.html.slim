@@ -20,6 +20,11 @@
         = f.text_field :slug, class: 'form-control'
         = render 'admin/shared/field_errors', object: @multi_tag, field: :slug
 
+    .form-group
+      = f.label :is_published, class: 'col-sm-2 control-label'
+      .col-sm-5
+        = f.check_box :is_published, class: 'control-label'
+
   .row
     h4 SEO
     = render 'admin/shared/seo_fields', f: f

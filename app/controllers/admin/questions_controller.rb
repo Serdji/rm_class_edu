@@ -29,7 +29,8 @@ class Admin::QuestionsController < Admin::ApplicationController
   private
 
   def find_question
-    @question ||= Qa::Question.find(params[:id], include: 'user,tags,complaints', filter: { is_interesting: true })
+    options = { include: 'user,tags,complaints', filter: { is_interesting: true } }
+    @question ||= Qa::Question.find(params[:id], options)
     raise Admin::NotFoundError unless @question
     @question
   end

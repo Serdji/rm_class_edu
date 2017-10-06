@@ -43,11 +43,17 @@ class TagPagesService
     end
 
     def tags
-      Qa::Tag.where(has_questions: true, page: { size: 1000 }, sort: '-weight')
+      options = {
+        has_questions: true,
+        filter: { is_published: true },
+        page: { size: 1000 },
+        sort: '-weight'
+      }
+      Qa::Tag.where(options)
     end
 
     def multi_tags
-      Qa::MultiTag.where(page: { size: 1000 }, sort: 'id')
+      Qa::MultiTag.where(page: { size: 1000 }, filter: { is_published: true }, sort: 'id')
     end
 
     def tag_hash(coll, from, to)

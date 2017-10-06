@@ -13,10 +13,10 @@ module HerExt
 
       def on_complete(env)
         env[:body] = case env[:status]
-          when 500 then print_error(env) && bare_response
-          when 204 then bare_response
-          else parse(env[:body])
-        end
+                       when 500 then print_error(env) && bare_response
+                       when 204 then bare_response
+                       else parse(env[:body])
+                     end
       end
 
       private

@@ -9,6 +9,7 @@ class Admin::MenuController < Admin::ApplicationController
     @menu_tags = ::Menu::Tag.ordered
   end
 
+  # rubocop:disable Metrics/AbcSize
   def save
     ::Menu::Tag.delete_all
     ::Menu::TagGroup.delete_all
@@ -21,6 +22,7 @@ class Admin::MenuController < Admin::ApplicationController
     TagMenuBuilder.perform_now
     redirect_to admin_menu_path, success: 'Меню сохранено успешно'
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 
